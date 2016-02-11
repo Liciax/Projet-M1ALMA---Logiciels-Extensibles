@@ -1,1 +1,2 @@
-class=donnees.Produit;nom=;
+class=donnees.Produit;nom=Banana d'Afrique;type=Aliment;prix=3;quantite=50
+class=donnees.Produit;nom=Orange de Madagascar;type=Aliment;prix=1;quantite=150
