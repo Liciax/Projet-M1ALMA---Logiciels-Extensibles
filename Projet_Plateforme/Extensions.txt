@@ -1,0 +1,1 @@
+class=appli.AfficheurStock;Description=affichage simple via console
