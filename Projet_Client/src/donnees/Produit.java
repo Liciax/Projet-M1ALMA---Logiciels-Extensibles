@@ -70,6 +70,16 @@ public class Produit {
 	public void setQuantité(int quantité) {
 		this.quantité = quantité;
 	}
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Produit [nom=" + nom + ", type=" + type + ", prix=" + prix
+				+ ", quantité=" + quantité + "]";
+	}
 	
 	
 }
