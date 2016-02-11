@@ -1,10 +1,15 @@
 package appli;
 
+import donnees.Produit;
 import donnees.Stock;
 
 public class AfficheurStock implements Afficheur{
-
-	private Stock stock_actuel;
+	
+	public void afficher(Stock current) {
+		for(Produit p: current.getStockProduit()) {
+			p.toString();
+		}
+	}
 	
 	
 }
