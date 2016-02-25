@@ -1,6 +1,5 @@
 package donnees;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Vector;
 
@@ -31,6 +30,6 @@ public class Magasin {
 	
 	@Override
 	public String toString() {
-		return "Magasin " + nomMag + "= [" + Arrays.asList(produits).toString() + "]";
+		return "Magasin " + nomMag + "=" + Arrays.asList(produits).toString();
 	}
 }
