@@ -6,6 +6,10 @@ public class Produit {
 	private String type;
 	private float prix;
 	
+	public Produit() {
+		super();
+	}
+
 	/**
 	 * @param nom
 	 * @param type

@@ -1,16 +1,13 @@
 package donnees;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+
 
 public class IProducteur {
 
 	private ArrayList<String> donnees;
-	
 	
 	public IProducteur() {
 		super();
@@ -22,13 +19,14 @@ public class IProducteur {
 			while((ligne = br.readLine())!=null) {
 				donnees.add(ligne);
 			}
+			br.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
 	public Produit getProduit(){
-		Class produit = null;
+		Class<?> produit = null;
 		Object oProduit = null;
 		for (String s : donnees) {
 			if(s.contains("class=donnees.Produit")) {
@@ -44,10 +42,10 @@ public class IProducteur {
 	}
 	
 	public Magasin getMagasin() {
-		Class magasin = null;
+		Class<?> magasin = null;
 		Object oMagasin = null;
 		for (String s : donnees) {
-			if(s.contains("class=donnees.Magasin")) {
+			if(s.contains("donnees.Magasin")) {
 				try {
 					magasin = Class.forName(s.split("; ")[0].split("=")[1]);
 					oMagasin = magasin.newInstance();

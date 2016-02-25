@@ -8,9 +8,8 @@ public class Magasin {
 	private String nomMag;
 	private ArrayList<Produit> produits;
 	
-	public Magasin(String nom) {
-		this.nomMag = nom;
-		produits = new ArrayList<Produit>();
+	public Magasin() {
+		super();
 	}
 
 	public String getNomMag() {
