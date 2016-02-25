@@ -1,2 +1,2 @@
-class=afficheur.AfficheurConsole;descr=afficheur console
-class=donnees.IProducteur;descr=producteur de magasin
+class=afficheur.AfficheurConsole;descr=afficheur console;type=IAfficheur;load=now
+class=donnees.IProducteur;descr=producteur de magasin;type=IProducteur;load=now

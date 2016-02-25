@@ -15,6 +15,7 @@ public class Plateforme {
 		liste_extensions = new Vector<String>();
 	}
 	
+	
 	public void loadExten() {
 		BufferedReader br;
 		int i;
@@ -37,10 +38,11 @@ public class Plateforme {
 	
 	public Object loadAppli() {
 		int i;
+		System.out.println("voici la liste des applications que vous pouvez charger");
 		for(i = 0; i < liste_extensions.size(); i++) {
-			System.out.println((liste_extensions.get(i).split(";")[1]).split("=")[1]);
+			System.out.println("- " + (liste_extensions.get(i).split(";")[1]).split("=")[1]);
 			if((liste_extensions.get(i).split(";")[2]).split("=")[1].equals("now")){
-				System.out.println("on le charge tout de suite!");
+				System.out.println("Cette application doit se charger automatiquement. Chargement...");
 				try {
 					return Class.forName((liste_extensions.get(i).split(";")[0]).split("=")[1]).newInstance();//ne trouve pas la classe! 
 				} catch (InstantiationException | IllegalAccessException
@@ -53,35 +55,6 @@ public class Plateforme {
 		}
 		return null;
 	}
-	
-	
-//	public static Object loadAppli() {
-//		BufferedReader br;
-//		int i;
-//		String templigne;
-//		Vector<String> listeClass = new Vector<String>();
-//		Object app;
-//		//on va lire le fichier
-//		try {
-//			//lecture...
-//			br = new BufferedReader(new FileReader("src/plateforme/node.txt"));
-//			while((templigne= br.readLine()) != null) {
-//				//cas ou la ligne n'est pas un commentaire
-//				if(!templigne.split(":")[0].equals("#")) {
-//					listeClass.add((templigne.split(";")[0]).split("=")[1]);
-//					System.out.println((templigne.split(";")[1]).split("=")[1]);
-//				}
-//				
-//			}
-//			Scanner sc = new Scanner(System.in);
-//			System.out.println("lequel?");
-//			i = sc.nextInt();
-//			app = Class.forName(listeClass.get(i)).newInstance();
-//		} catch (Exception e) {
-//			app = null;
-//		}
-//		return app;
-//	}
 	
 	public static void makeClassDoIt(Object obj) throws Exception {
 		String temp = "doIt";
@@ -111,66 +84,7 @@ public class Plateforme {
 	
 	public Object CreaInstance(String nomClasse) throws Exception{
 		return Class.forName(nomClasse).newInstance();
-	}
-	
-//	public Object getIAfficheur() {
-//		
-//		BufferedReader br;
-//		int i;
-//		String templigne;
-////		Vector<Class> listeClass = new Vector<Class>();
-//		Vector<String> listeClass = new Vector<String>();
-//		Object classe;
-//		try {
-//			//lecture...
-//			br = new BufferedReader(new FileReader("nodeAfficheur.txt"));
-//			while((templigne= br.readLine()) != null) {
-//				//cas ou la ligne n'est pas un commentaire
-//				if(!templigne.split(":")[0].equals("#")) {
-//					listeClass.add((templigne.split(";")[0]).split("=")[1]);
-//				}
-//				
-//			}
-//			Scanner sc = new Scanner(System.in);
-//			System.out.println("l'afficheur?");
-//			i = sc.nextInt();
-//			classe = Class.forName(listeClass.get(i)).newInstance();
-//		} catch (Exception e) {
-//			classe = null;
-//		}
-//		return classe;
-//		
-//	}
-//	
-//	public Object getIProducteur() {
-//		BufferedReader br;
-//		int i;
-//		String templigne;
-////		Vector<Class> listeClass = new Vector<Class>();
-//		Vector<String> listeClass = new Vector<String>();
-//		Object classe;
-//		//on va lire le fichier
-//		try {
-//			//lecture...
-//			br = new BufferedReader(new FileReader("nodeProducteur.txt"));
-//			while((templigne= br.readLine()) != null) {
-//				//cas ou la ligne n'est pas un commentaire
-//				if(!templigne.split(":")[0].equals("#")) {
-//					listeClass.add((templigne.split(";")[0]).split("=")[1]);
-//				}
-//				
-//			}
-//			Scanner sc = new Scanner(System.in);
-//			System.out.println("le producteur?");
-//			i = sc.nextInt();
-//			classe = Class.forName(listeClass.get(i)).newInstance();
-//		} catch (Exception e) {
-//			classe = null;
-//		}
-//		return classe;
-//	}
-	
-	
+	}	
 	
 	public Vector<String> getListe_extensions() {
 		return liste_extensions;
