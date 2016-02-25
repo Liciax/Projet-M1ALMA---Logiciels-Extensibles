@@ -1,0 +1,1 @@
+class=appli/Application.java;descr=appli;load=now;

@@ -13,6 +13,15 @@ import plateforme.Plateforme;
 
 public class Application {
 	
+	
+	
+	/**
+	 * 
+	 */
+	public Application() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public void doIt() {
 		Vector<String> listeExtention = Plateforme.getPlateforme().getExtensions();
@@ -40,7 +49,7 @@ public class Application {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		aff.afficheMagasin(prod.getMagasin());
+		//aff.afficheMagasin(prod.getMagasin());
 	}
 
 }
