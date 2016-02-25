@@ -3,23 +3,24 @@ package donnees;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
 public class IProducteur {
 
-	private HashMap<String, String> mapDonnees;
+	private ArrayList<String> donnees;
 	
 	
 	public IProducteur() {
 		super();
-		mapDonnees = new HashMap<String, String>();
+		donnees = new ArrayList<String>();
 		
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("src/donnees/donnees.txt"));
 			String ligne;
 			while((ligne = br.readLine())!=null) {
-				mapDonnees.put(ligne.split("; ")[0].split("=")[1],ligne.split("; ")[1]);
+				donnees.add(ligne);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -27,10 +28,34 @@ public class IProducteur {
 	}
 
 	public Produit getProduit(){
-	
+		Class produit = null;
+		Object oProduit = null;
+		for (String s : donnees) {
+			if(s.contains("class=donnees.Produit")) {
+				try {
+					produit = Class.forName(s.split("; ")[0].split("=")[1]);
+					oProduit = produit.newInstance();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return (Produit)oProduit;
 	}
 	
 	public Magasin getMagasin() {
-		
+		Class magasin = null;
+		Object oMagasin = null;
+		for (String s : donnees) {
+			if(s.contains("class=donnees.Magasin")) {
+				try {
+					magasin = Class.forName(s.split("; ")[0].split("=")[1]);
+					oMagasin = magasin.newInstance();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return (Magasin)oMagasin;
 	}
 }
