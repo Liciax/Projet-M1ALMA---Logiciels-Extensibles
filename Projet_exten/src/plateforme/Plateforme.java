@@ -38,11 +38,12 @@ public class Plateforme {
 	
 	public Object loadAppli() {
 		int i;
-		System.out.println("voici la liste des applications que vous pouvez charger");
+		System.out.println("Voici la liste des applications que vous pouvez charger :");
 		for(i = 0; i < liste_extensions.size(); i++) {
-			System.out.println("- " + (liste_extensions.get(i).split(";")[1]).split("=")[1]);
+			System.out.println(" - " + (liste_extensions.get(i).split(";")[1]).split("=")[1]);
 			if((liste_extensions.get(i).split(";")[2]).split("=")[1].equals("now")){
 				System.out.println("Cette application doit se charger automatiquement. Chargement...");
+				System.out.println("--------------------------------");
 				try {
 					return Class.forName((liste_extensions.get(i).split(";")[0]).split("=")[1]).newInstance();//ne trouve pas la classe! 
 				} catch (InstantiationException | IllegalAccessException

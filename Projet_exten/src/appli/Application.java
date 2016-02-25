@@ -19,7 +19,7 @@ public class Application {
 	public void doIt() {
 		Vector<String> listeExtention = Plateforme.getPlateforme().getExtensions();
 		int i;
-		System.out.println("Liste des extensions proposées :");
+		System.out.println("Liste des extensions proposees :");
 		for (i = 0; i < listeExtention.size(); i++) {
 			System.out.println(" - " + listeExtention.get(i));
 		}
@@ -42,6 +42,8 @@ public class Application {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("--------------------------------");
+		System.out.println("Voici le magasin que IProducteur a choisi de creer :");
 		aff.afficheMagasin(prod.getMagasin());
 	}
 
