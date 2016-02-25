@@ -48,7 +48,7 @@ public class Plateforme {
 		m1.invoke(obj, null);
 	}
 	
-	public Vector<String> getExtension() {
+	public Vector<String> getExtensions() {
 		BufferedReader br;
 		int i;
 		String templigne;
@@ -75,62 +75,62 @@ public class Plateforme {
 		return Class.forName(nomClasse).newInstance();
 	}
 	
-	public Object getIAfficheur() {
-		
-		BufferedReader br;
-		int i;
-		String templigne;
-//		Vector<Class> listeClass = new Vector<Class>();
-		Vector<String> listeClass = new Vector<String>();
-		Object classe;
-		try {
-			//lecture...
-			br = new BufferedReader(new FileReader("nodeAfficheur.txt"));
-			while((templigne= br.readLine()) != null) {
-				//cas ou la ligne n'est pas un commentaire
-				if(!templigne.split(":")[0].equals("#")) {
-					listeClass.add((templigne.split(";")[0]).split("=")[1]);
-				}
-				
-			}
-			Scanner sc = new Scanner(System.in);
-			System.out.println("l'afficheur?");
-			i = sc.nextInt();
-			classe = Class.forName(listeClass.get(i)).newInstance();
-		} catch (Exception e) {
-			classe = null;
-		}
-		return classe;
-		
-	}
-	
-	public Object getIProducteur() {
-		BufferedReader br;
-		int i;
-		String templigne;
-//		Vector<Class> listeClass = new Vector<Class>();
-		Vector<String> listeClass = new Vector<String>();
-		Object classe;
-		//on va lire le fichier
-		try {
-			//lecture...
-			br = new BufferedReader(new FileReader("nodeProducteur.txt"));
-			while((templigne= br.readLine()) != null) {
-				//cas ou la ligne n'est pas un commentaire
-				if(!templigne.split(":")[0].equals("#")) {
-					listeClass.add((templigne.split(";")[0]).split("=")[1]);
-				}
-				
-			}
-			Scanner sc = new Scanner(System.in);
-			System.out.println("le producteur?");
-			i = sc.nextInt();
-			classe = Class.forName(listeClass.get(i)).newInstance();
-		} catch (Exception e) {
-			classe = null;
-		}
-		return classe;
-	}
+//	public Object getIAfficheur() {
+//		
+//		BufferedReader br;
+//		int i;
+//		String templigne;
+////		Vector<Class> listeClass = new Vector<Class>();
+//		Vector<String> listeClass = new Vector<String>();
+//		Object classe;
+//		try {
+//			//lecture...
+//			br = new BufferedReader(new FileReader("nodeAfficheur.txt"));
+//			while((templigne= br.readLine()) != null) {
+//				//cas ou la ligne n'est pas un commentaire
+//				if(!templigne.split(":")[0].equals("#")) {
+//					listeClass.add((templigne.split(";")[0]).split("=")[1]);
+//				}
+//				
+//			}
+//			Scanner sc = new Scanner(System.in);
+//			System.out.println("l'afficheur?");
+//			i = sc.nextInt();
+//			classe = Class.forName(listeClass.get(i)).newInstance();
+//		} catch (Exception e) {
+//			classe = null;
+//		}
+//		return classe;
+//		
+//	}
+//	
+//	public Object getIProducteur() {
+//		BufferedReader br;
+//		int i;
+//		String templigne;
+////		Vector<Class> listeClass = new Vector<Class>();
+//		Vector<String> listeClass = new Vector<String>();
+//		Object classe;
+//		//on va lire le fichier
+//		try {
+//			//lecture...
+//			br = new BufferedReader(new FileReader("nodeProducteur.txt"));
+//			while((templigne= br.readLine()) != null) {
+//				//cas ou la ligne n'est pas un commentaire
+//				if(!templigne.split(":")[0].equals("#")) {
+//					listeClass.add((templigne.split(";")[0]).split("=")[1]);
+//				}
+//				
+//			}
+//			Scanner sc = new Scanner(System.in);
+//			System.out.println("le producteur?");
+//			i = sc.nextInt();
+//			classe = Class.forName(listeClass.get(i)).newInstance();
+//		} catch (Exception e) {
+//			classe = null;
+//		}
+//		return classe;
+//	}
 	
 	
 	
