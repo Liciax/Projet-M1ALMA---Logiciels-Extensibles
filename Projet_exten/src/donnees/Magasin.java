@@ -5,10 +5,20 @@ import java.util.Arrays;
 
 public class Magasin {
 
+	private String nomMag;
 	private ArrayList<Produit> produits;
 	
-	public Magasin() {
+	public Magasin(String nom) {
+		this.nomMag = nom;
 		produits = new ArrayList<Produit>();
+	}
+
+	public String getNomMag() {
+		return nomMag;
+	}
+
+	public void setNomMag(String nomMag) {
+		this.nomMag = nomMag;
 	}
 
 	public ArrayList<Produit> getProduits() {
@@ -21,6 +31,6 @@ public class Magasin {
 	
 	@Override
 	public String toString() {
-		return "Magasin = [" + Arrays.asList(produits).toString() + "]";
+		return "Magasin " + nomMag + "= [" + Arrays.asList(produits).toString() + "]";
 	}
 }
