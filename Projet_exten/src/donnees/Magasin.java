@@ -2,16 +2,17 @@ package donnees;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Vector;
 
 public class Magasin {
 
 	private String nomMag;
-	private ArrayList<Produit> produits;
+	private Vector<Produit> produits;
 	
 	public Magasin() {
 		super();
 	}
-
+	
 	public String getNomMag() {
 		return nomMag;
 	}
@@ -20,12 +21,12 @@ public class Magasin {
 		this.nomMag = nomMag;
 	}
 
-	public ArrayList<Produit> getProduits() {
+	public Vector<Produit> getProduits() {
 		return produits;
 	}
 
-	public void setProduits(ArrayList<Produit> produits) {
-		this.produits = produits;
+	public void setProduits(Vector<Produit> stock) {
+		this.produits = stock;
 	}
 	
 	@Override
