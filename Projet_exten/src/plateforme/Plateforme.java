@@ -85,7 +85,7 @@ public class Plateforme {
 	
 	public static void makeClassDoIt(Object obj) throws Exception {
 		String temp = "doIt";
-		Method m1 = obj.getClass().getMethod(temp, String.class);
+		Method m1 = obj.getClass().getMethod(temp, null);
 		m1.invoke(obj, null);
 	}
 	
@@ -93,21 +93,18 @@ public class Plateforme {
 		BufferedReader br;
 		int i;
 		String templigne;
-//		Vector<Class> listeClass = new Vector<Class>();
 		Vector<String> listeClass = new Vector<String>();
-		Object classe;
 		try {
 			//lecture...
-			br = new BufferedReader(new FileReader("nodeExtensions.txt"));
-			while((templigne= br.readLine()) != null) {
-				//cas ou la ligne n'est pas un commentaire
-				if(!templigne.split(":")[0].equals("#")) {
-					listeClass.add((templigne.split(";")[0]).split("=")[1]);
-				}
+			br = new BufferedReader(new FileReader("src/plateforme/nodeExtension.txt"));
+			templigne= br.readLine();
+			while(templigne != null) {
+				listeClass.add((templigne.split(";")[0]).split("=")[1]);
+	            templigne= br.readLine();
 				
 			}
 		} catch (Exception e) {
-			classe = null;
+		  e.printStackTrace();
 		}
 		return listeClass;
 	}

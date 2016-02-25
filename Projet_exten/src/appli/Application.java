@@ -26,15 +26,16 @@ public class Application {
 	public void doIt() {
 		Vector<String> listeExtention = Plateforme.getPlateforme().getExtensions();
 		int i;
+		System.out.println(listeExtention.size());
 		for (i = 0; i < listeExtention.size(); i++) {
-			System.out.println((listeExtention.get(i).split(";")[1]).split("=")[1]);
+			System.out.println(listeExtention.get(i));
 		}
 		Scanner sc = new Scanner(System.in);
 		System.out.println("quel affichage?");
 		i = sc.nextInt();
 		IAfficheur aff = null;
 		try {
-			aff = (IAfficheur) Plateforme.getPlateforme().CreaInstance((listeExtention.get(i).split(";")[0]).split("=")[1]);
+			aff = (IAfficheur) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -44,12 +45,12 @@ public class Application {
 		i = sc.nextInt();
 		IProducteur prod = null;
 		try {
-			prod = (IProducteur) Plateforme.getPlateforme().CreaInstance((listeExtention.get(i).split(";")[0]).split("=")[1]);
+			prod = (IProducteur) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//aff.afficheMagasin(prod.getMagasin());
+		aff.afficheMagasin(prod.getMagasin());
 	}
 
 }
