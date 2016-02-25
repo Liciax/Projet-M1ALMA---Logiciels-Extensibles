@@ -9,8 +9,8 @@ public class Stock {
 	/**
 	 * @param stockProduit
 	 */
-	public Stock(Vector<Produit> stockProduit) {
-		this.stockProduit = stockProduit;
+	public Stock() {
+		this.stockProduit = new Vector<Produit>();
 		
 	}
 

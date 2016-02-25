@@ -1,3 +1,2 @@
-class=donnees.Produit
-id=banane1|nom=Banana d'Afrique;type=Aliment;prix=3;quantite=50
-id=orange1|nom=Orange de Madagascar;type=Aliment;prix=1;quantite=150
+nom=Banana d'Afrique;type=Aliment;prix=3;quantite=50
+nom=Orange de Madagascar;type=Aliment;prix=1;quantite=150
