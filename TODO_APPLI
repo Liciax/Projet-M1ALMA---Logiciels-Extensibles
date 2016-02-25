@@ -1,0 +1,11 @@
+# extensions du projet
+* Application : l'extension principale
+* IAfficheur : extension gérant les affichages
+* IProducteur : extension gérant l'instanciation des données
+
+# TODO
+* Refactoring IProducteur :
+  * créé une vraie interface et une classe concrête qui gère la création des données par défaut
+* Création d'un affichage graphique plus développé
+* Ajouter le système de Panier, voir un historique
+
