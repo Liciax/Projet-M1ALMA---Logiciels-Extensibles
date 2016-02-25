@@ -1,1 +1,1 @@
-class=appli/Application.java;descr=appli;load=now;
+class=appli.Application;descr=appli;load=now;
