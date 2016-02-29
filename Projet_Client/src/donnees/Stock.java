@@ -5,15 +5,6 @@ import java.util.Vector;
 public class Stock {
 	
 	private Vector<Produit> stockProduit;
-	
-	/**
-	 * @param stockProduit
-	 */
-	public Stock() {
-		this.stockProduit = new Vector<Produit>();
-		
-	}
-
 
 	/**
 	 * @return the stockProduit
