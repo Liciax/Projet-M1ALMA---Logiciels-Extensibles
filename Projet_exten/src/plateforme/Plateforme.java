@@ -3,7 +3,6 @@ package plateforme;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.lang.reflect.Method;
-import java.util.Scanner;
 import java.util.Vector;
 
 public class Plateforme {
