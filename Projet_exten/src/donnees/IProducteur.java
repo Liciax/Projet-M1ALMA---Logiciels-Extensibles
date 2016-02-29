@@ -26,18 +26,19 @@ public class IProducteur {
 		}
 	}
 
+	
 	public ArrayList<Produit> getProduits(){
 		Class<?> produit = null;
-		ProduitConcret concret;
+		Produit concret;
 		ArrayList<Produit> oProduit = new ArrayList<Produit>();
 		for (String s : donnees) {
 			if(s.contains("class=donnees.Produit")) {
 				try {
-					produit = Class.forName(s.split("; ")[0].split("=")[1]);
+					produit = Class.forName(s.split(";")[0].split("=")[1]);
 					concret = (ProduitConcret) produit.newInstance();
-					concret.setNom(s.split("; ")[1].split("=")[1]);
-                    concret.setPrix(Float.parseFloat(s.split("; ")[3].split("=")[1]));
-                    concret.setType(s.split("; ")[2].split("=")[1]);
+					concret.setNom(s.split(";")[1].split("=")[1]);
+                    concret.setPrix(Float.parseFloat(s.split(";")[3].split("=")[1]));
+                    concret.setType(s.split(";")[2].split("=")[1]);
                     oProduit.add(concret);
 					
 					
@@ -56,9 +57,9 @@ public class IProducteur {
 		for (String s : donnees) {
 			if(s.contains("donnees.Magasin")) {
 				try {
-					magasin = Class.forName(s.split("; ")[0].split("=")[1]);
+					magasin = Class.forName(s.split(";")[0].split("=")[1]);
 					oMagasin = (Magasin) magasin.newInstance();
-					oMagasin.setNomMag(s.split("; ")[1].split("=")[1]);
+					oMagasin.setNomMag(s.split(";")[1].split("=")[1]);
 					
 				} catch (Exception e) {
 					e.printStackTrace();
