@@ -32,15 +32,13 @@ public class ProducteurDefaut implements IProducteur {
 			if(s.contains("class=donnees.Produit")) {
 				try {
 					produit = Class.forName(s.split(";")[0].split("=")[1]);
-					if(concret == null){
+				
 						concret = (Produit) produit.newInstance();
-						
-						
 						concret.setNom(s.split(";")[1].split("=")[1]);
 						concret.setType(s.split(";")[2].split("=")[1]);
 	                    concret.setPrix(Float.parseFloat(s.split(";")[3].split("=")[1]));
 	                    oProduit.add(concret);
-					}		
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
