@@ -1,12 +1,13 @@
 package donnees;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Vector;
 
 public class Magasin {
 
 	private String nomMag;
-	private Vector<Produit> produits;
+	private ArrayList<Produit> produits;
 	
 	public Magasin() {
 		super();
@@ -20,11 +21,11 @@ public class Magasin {
 		this.nomMag = nomMag;
 	}
 
-	public Vector<Produit> getProduits() {
+	public ArrayList<Produit> getProduits() {
 		return produits;
 	}
 
-	public void setProduits(Vector<Produit> stock) {
+	public void setProduits(ArrayList<Produit> stock) {
 		this.produits = stock;
 	}
 	

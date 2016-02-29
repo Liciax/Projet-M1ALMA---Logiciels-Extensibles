@@ -26,10 +26,10 @@ public class IProducteur {
 		}
 	}
 
-	public Vector<Produit> getProduit(){
+	public ArrayList<Produit> getProduit(){
 		Class<?> produit = null;
 		Produit concret;
-		Vector<Produit> oProduit = new Vector<Produit>();
+		ArrayList<Produit> oProduit = new ArrayList<Produit>();
 		for (String s : donnees) {
 			if(s.contains("class=donnees.Produit")) {
 				try {
@@ -52,7 +52,7 @@ public class IProducteur {
 	public Magasin getMagasin() {
 		Class<?> magasin = null;
 		Magasin oMagasin = null;
-		Vector<Produit> stock = getProduit();
+		ArrayList<Produit> stock = getProduit();
 		for (String s : donnees) {
 			if(s.contains("donnees.Magasin")) {
 				try {
