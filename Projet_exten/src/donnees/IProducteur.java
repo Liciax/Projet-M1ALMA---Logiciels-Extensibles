@@ -3,6 +3,7 @@ package donnees;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Vector;
 
 
 public class IProducteur {
@@ -25,35 +26,46 @@ public class IProducteur {
 		}
 	}
 
-	public Produit getProduit(){
+	public Vector<Produit> getProduit(){
 		Class<?> produit = null;
-		Object oProduit = null;
+		Produit concret;
+		Vector<Produit> oProduit = new Vector<Produit>();
 		for (String s : donnees) {
 			if(s.contains("class=donnees.Produit")) {
 				try {
 					produit = Class.forName(s.split("; ")[0].split("=")[1]);
-					oProduit = produit.newInstance();
+					concret = (Produit) produit.newInstance();
+					concret.setNom(s.split("; ")[1].split("=")[1]);
+                    concret.setPrix(Float.parseFloat(s.split("; ")[3].split("=")[1]));
+                    concret.setType(s.split("; ")[2].split("=")[1]);
+                    oProduit.add(concret);
+					
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		}
-		return (Produit)oProduit;
+		return oProduit;
 	}
 	
 	public Magasin getMagasin() {
 		Class<?> magasin = null;
-		Object oMagasin = null;
+		Magasin oMagasin = null;
+		Vector<Produit> stock = getProduit();
 		for (String s : donnees) {
 			if(s.contains("donnees.Magasin")) {
 				try {
 					magasin = Class.forName(s.split("; ")[0].split("=")[1]);
-					oMagasin = magasin.newInstance();
+					oMagasin = (Magasin) magasin.newInstance();
+					oMagasin.setNomMag(s.split("; ")[1].split("=")[1]);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		}
+		oMagasin.setProduits(stock);
 		return (Magasin)oMagasin;
 	}
 }

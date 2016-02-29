@@ -1,0 +1,15 @@
+Il est possible de manipuler cette API de plusieurs manieres:
+On peut modifier le fichier donnees.txt afin de rajouter des Magasins ou des Produits: 
+Un Produit est noté de la forme "class='nom de classe'; nom='nom de produit'; type='type de produit'; prix='prix'"
+Un Magasin est noté de la forme "class='nom de classe'; nomMag='nom du magasin'"
+il sera possible dans le futur de rajouter des données sur ces lignes pour accomoder des Produits et des Magasins plus complexes.
+Il faut evidement que ces classes (et plus tard toute classes heritant de celles-ci) respectent la norme javabeans.
+ces 2 classes sont des prototypes, sur lequelles il faudra faire su refactoring.
+
+On a ensuite IProducteur qui doit implementer des getters sur toutes les données qu'il propose. il est a un etat de prototype et devra etre retravaillé.
+IAfficheur decrit la forme que tout afficheur doit avoir pour etre utilisé. Pour créer un affichage des données de cette API il faut implementer
+afficheProduit(Produit p) et afficheMagasin(Magasin mag).
+
+il est possible d'ajouter des Iafficheurs et des IProducteurs en modifiant le fichier nodeExtension.txt
+
+enfin on a une classe Application qui doit implementer doIt() et on peut ajouter d'autres applications en modifiant le fichier node.txt
