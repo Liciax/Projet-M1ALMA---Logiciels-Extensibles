@@ -1,5 +1,5 @@
-class=donnees.Magasin; nomMag=Auchan;
-class=donnees.Produit; nom=Banana d'Afrique; type=Aliment; prix=1.5;
-class=donnees.Produit; nom=Boeuf; type=Aliment; prix=18.5;
-class=donnees.Produit; nom=Toto au zoo; type=Livre; prix=8.9;
+class=donnees.Magasin; NomMag=Auchan;
+class=donnees.Produit; Nom=Banana d'Afrique; Type=Aliment; Prix=1.5;
+class=donnees.Produit; Nom=Boeuf; Type=Aliment; Prix=18.5;
+class=donnees.Produit; Nom=Toto au zoo; Type=Livre; Prix=8.9;
 
