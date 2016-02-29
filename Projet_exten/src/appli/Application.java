@@ -3,7 +3,7 @@ package appli;
 import java.util.Scanner;
 import java.util.Vector;
 
-import donnees.IProducteur;
+import donnees.ProducteurDefaut;
 import afficheur.IAfficheur;
 import plateforme.Plateforme;
 
@@ -36,9 +36,9 @@ public class Application {
 		
 		System.out.println("Quel producteur ? ");
 		i = sc.nextInt();
-		IProducteur prod = null;
+		ProducteurDefaut prod = null;
 		try {
-			prod = (IProducteur) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+			prod = (ProducteurDefaut) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
