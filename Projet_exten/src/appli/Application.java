@@ -21,7 +21,7 @@ public class Application {
 		int i;
 		System.out.println("Liste des extensions proposees :");
 		for (i = 0; i < listeExtention.size(); i++) {
-			System.out.println(" - " + listeExtention.get(i));
+			System.out.println(i + " - " + listeExtention.get(i));
 		}
 		System.out.println("--------------------------------");
 		Scanner sc = new Scanner(System.in);
