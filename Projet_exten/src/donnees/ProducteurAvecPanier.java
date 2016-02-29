@@ -4,11 +4,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-public class ProducteurDefaut implements IProducteur {
+public class ProducteurAvecPanier {
 
-	private ArrayList<String> donnees;
+private ArrayList<String> donnees;
 	
-	public ProducteurDefaut() {
+	public ProducteurAvecPanier() {
 		super();
 		donnees = new ArrayList<String>();
 		
@@ -47,10 +47,29 @@ public class ProducteurDefaut implements IProducteur {
 		return oProduit;
 	}
 	
+	public Panier getPanier(){
+		Class<?> produit = null;
+		Panier concret = null;
+		
+		for (String s : donnees) {
+			if(s.contains("class=donnees.Panier")) {
+				try {
+					produit = Class.forName(s.split(";")[0].split("=")[1]);
+				
+						concret = (Panier) produit.newInstance();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return concret;
+	}
+	
 	public Magasin getMagasin() {
 		Class<?> magasin = null;
 		Magasin oMagasin = null;
 		ArrayList<Produit> stock = getProduits();
+		Panier p = getPanier();
 		for (String s : donnees) {
 			if(s.contains("donnees.Magasin")) {
 				try {
@@ -63,7 +82,7 @@ public class ProducteurDefaut implements IProducteur {
 				}
 			}
 		}
-		
+//		oMagasin.//attention: merde avec setpanier inexistant!
 		oMagasin.setProduits(stock);
 		return (Magasin)oMagasin;
 	}

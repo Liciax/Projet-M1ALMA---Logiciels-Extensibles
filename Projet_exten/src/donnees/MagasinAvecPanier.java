@@ -9,6 +9,7 @@ public class MagasinAvecPanier implements Magasin {
 	private ArrayList<Produit> produits;
 	private Panier panier;
 	
+	
 	public String getNomMag() {
 		return nomMag;
 	}
@@ -28,8 +29,13 @@ public class MagasinAvecPanier implements Magasin {
 		this.panier = panier;
 	}
 	
+	public void ajouter(Produit p) {
+		panier.getContenu().add(p);
+	}
+	
 	public String toString() {
-		return "Magasin " + nomMag + "=" + Arrays.asList(produits).toString() + "/n et Panier Actuel:" + Arrays.asList().toString();
+		ajouter(produits.get(0));
+		return "Magasin " + nomMag + "=" + Arrays.asList(produits).toString() + "/n et Panier Actuel:" + Arrays.asList(panier.getContenu()).toString();
 	}
 
 }

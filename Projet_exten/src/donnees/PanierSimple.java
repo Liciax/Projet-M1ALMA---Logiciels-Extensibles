@@ -9,7 +9,7 @@ public class PanierSimple implements Panier {
 		setContenu(new ArrayList<Produit>());
 	}
 	
-	private void valider() {
+	public void valider() {
 		float i = 0;
 		for(Produit p: contenu) {
 			i += p.getPrix();
@@ -17,7 +17,7 @@ public class PanierSimple implements Panier {
 		System.out.println("ce panier va vous couter " + i + "€");
 	}
 	
-	private void vider() {
+	public void vider() {
 		contenu.clear();
 	}
 
@@ -28,5 +28,6 @@ public class PanierSimple implements Panier {
 	public void setContenu(ArrayList<Produit> contenu) {
 		this.contenu = contenu;
 	}
+
 	
 }
