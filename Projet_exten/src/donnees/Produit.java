@@ -1,74 +1,35 @@
 package donnees;
 
-public class Produit {
+public interface Produit {
 
-	private String nom;
-	private String type;
-	private float prix;
-	
-	public Produit() {
-		super();
-	}
-
-	/**
-	 * @param nom
-	 * @param type
-	 * @param prix
-	 */
-	public Produit(String nom, String type, float prix) {
-		super();
-		this.nom = nom;
-		this.type = type;
-		this.prix = prix;
-	}
-	
 	/**
 	 * @return the nom
 	 */
-	public String getNom() {
-		return nom;
-	}
-	
+	public abstract String getNom();
+
 	/**
 	 * @param nom the nom to set
 	 */
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-	
+	public abstract void setNom(String nom);
+
 	/**
 	 * @return the type
 	 */
-	public String getType() {
-		return type;
-	}
-	
+	public abstract String getType();
+
 	/**
 	 * @param type the type to set
 	 */
-	public void setType(String type) {
-		this.type = type;
-	}
-	
+	public abstract void setType(String type);
+
 	/**
 	 * @return the prix
 	 */
-	public float getPrix() {
-		return prix;
-	}
-	
+	public abstract float getPrix();
+
 	/**
 	 * @param prix the prix to set
 	 */
-	public void setPrix(float prix) {
-		this.prix = prix;
-	}
+	public abstract void setPrix(float prix);
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Produit=[nom=" + nom + ", type=" + type + ", prix=" + prix + "]";
-	}	
 }

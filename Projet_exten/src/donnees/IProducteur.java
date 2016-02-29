@@ -26,15 +26,15 @@ public class IProducteur {
 		}
 	}
 
-	public Vector<Produit> getProduit(){
+	public ArrayList<Produit> getProduits(){
 		Class<?> produit = null;
-		Produit concret;
-		Vector<Produit> oProduit = new Vector<Produit>();
+		ProduitConcret concret;
+		ArrayList<Produit> oProduit = new ArrayList<Produit>();
 		for (String s : donnees) {
 			if(s.contains("class=donnees.Produit")) {
 				try {
 					produit = Class.forName(s.split("; ")[0].split("=")[1]);
-					concret = (Produit) produit.newInstance();
+					concret = (ProduitConcret) produit.newInstance();
 					concret.setNom(s.split("; ")[1].split("=")[1]);
                     concret.setPrix(Float.parseFloat(s.split("; ")[3].split("=")[1]));
                     concret.setType(s.split("; ")[2].split("=")[1]);
@@ -52,7 +52,7 @@ public class IProducteur {
 	public Magasin getMagasin() {
 		Class<?> magasin = null;
 		Magasin oMagasin = null;
-		Vector<Produit> stock = getProduit();
+		ArrayList<Produit> stock = getProduits();
 		for (String s : donnees) {
 			if(s.contains("donnees.Magasin")) {
 				try {

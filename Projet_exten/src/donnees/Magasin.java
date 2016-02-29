@@ -1,35 +1,15 @@
 package donnees;
 
-import java.util.Arrays;
-import java.util.Vector;
+import java.util.ArrayList;
 
-public class Magasin {
+public interface Magasin {
 
-	private String nomMag;
-	private Vector<Produit> produits;
-	
-	public Magasin() {
-		super();
-	}
-	
-	public String getNomMag() {
-		return nomMag;
-	}
+	public abstract String getNomMag();
 
-	public void setNomMag(String nomMag) {
-		this.nomMag = nomMag;
-	}
+	public abstract void setNomMag(String nomMag);
 
-	public Vector<Produit> getProduits() {
-		return produits;
-	}
+	public abstract ArrayList<Produit> getProduits();
 
-	public void setProduits(Vector<Produit> stock) {
-		this.produits = stock;
-	}
-	
-	@Override
-	public String toString() {
-		return "Magasin " + nomMag + "=" + Arrays.asList(produits).toString();
-	}
+	public abstract void setProduits(ArrayList<Produit> stock);
+
 }
