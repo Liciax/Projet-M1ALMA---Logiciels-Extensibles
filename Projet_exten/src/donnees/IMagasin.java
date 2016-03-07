@@ -11,5 +11,9 @@ public interface IMagasin {
 	public abstract ArrayList<IProduit> getProduits();
 
 	public abstract void setProduits(ArrayList<IProduit> stock);
+	
+	public IPanier getPanier();
+	
+	public void setPanier(IPanier panier);
 
 }

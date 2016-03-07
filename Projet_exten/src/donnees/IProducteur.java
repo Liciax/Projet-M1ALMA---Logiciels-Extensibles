@@ -6,7 +6,7 @@ import donnees.IProduit;
 
 public interface IProducteur {
 
-	public ArrayList<IProduit> getProduits();
+	//public ArrayList<IProduit> getProduits();
 	
 	public IMagasin getMagasin();
 }

@@ -49,4 +49,16 @@ public class MagasinConcret implements IMagasin {
 	public String toString() {
 		return "Magasin " + nomMag + "=" + Arrays.asList(produits).toString();
 	}
+
+	@Override
+	public IPanier getPanier() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setPanier(IPanier panier) {
+		// TODO Auto-generated method stub
+		
+	}
 }
