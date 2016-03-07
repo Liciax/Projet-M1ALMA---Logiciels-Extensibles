@@ -4,3 +4,4 @@ class=afficheur.AfficheurConsoleBeau;descr=afficheur console beau;type=IAfficheu
 class=donnees.ProducteurDefaut;descr=producteur de magasin;type=IProducteur;load=now
 class=donnees.ProducteurAvecPanier;descr=producteur de magasin avec panier;type=IProducteur;load=now
 class=actuateur.ActuateurConcret;descr=retir un produit du magasin pour l'ajouter au panier;type=IActuateur;load=now
+class=actuateur.ActuateurAjoutDirect;descr=ajoute un produit au magasin;type=IActuateur;load=now

@@ -7,10 +7,12 @@ import java.util.ArrayList;
 public class ProducteurAvecPanier implements IProducteur {
 
 private ArrayList<String> donnees;
+private IMagasin Magasin;
 	
 	public ProducteurAvecPanier() {
 		super();
 		donnees = new ArrayList<String>();
+		Magasin = null;
 		
 		try {
 			BufferedReader br = new BufferedReader(new FileReader("src/donnees/donnees.txt"));
@@ -56,8 +58,7 @@ private ArrayList<String> donnees;
 			if(s.contains("class=donnees.Panier")) {
 				try {
 					produit = Class.forName(s.split(";")[0].split("=")[1]);
-				
-						concret = (IPanier) produit.newInstance();
+					concret = (IPanier) produit.newInstance();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -65,26 +66,85 @@ private ArrayList<String> donnees;
 		}
 		return concret;
 	}
+//	
+//	public IMagasin getMagasin() {
+//		Class<?> magasin = null;
+//		IMagasin oMagasin = null;
+//		ArrayList<IProduit> stock = getProduits();
+//		IPanier p = getPanier();
+//		for (String s : donnees) {
+//			if(s.contains("class=donnees.Magasin")) {
+//				try {
+//					magasin = Class.forName(s.split(";")[0].split("=")[1]);
+//					oMagasin = (IMagasin) magasin.newInstance();
+//					oMagasin.setNomMag(s.split(";")[1].split("=")[1]);
+//					
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}
+////		oMagasin.//attention: merde avec setpanier inexistant!
+//		oMagasin.setProduits(stock);
+//		oMagasin.setPanier(getPanier());
+//		return (IMagasin)oMagasin;
+//	}
 	
-	public IMagasin getMagasin() {
-		Class<?> magasin = null;
-		IMagasin oMagasin = null;
-		ArrayList<IProduit> stock = getProduits();
-		IPanier p = getPanier();
-		for (String s : donnees) {
-			if(s.contains("class=donnees.Magasin")) {
-				try {
-					magasin = Class.forName(s.split(";")[0].split("=")[1]);
-					oMagasin = (IMagasin) magasin.newInstance();
-					oMagasin.setNomMag(s.split(";")[1].split("=")[1]);
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		}
-//		oMagasin.//attention: merde avec setpanier inexistant!
-		oMagasin.setProduits(stock);
-		return (IMagasin)oMagasin;
-	}
+	
+	   public ArrayList<IProduit> getProduits(IMagasin oMagasin){
+	        Class<?> produit = null;
+	        IProduit concret = null;
+	        ArrayList<IProduit> oProduit = new ArrayList<IProduit>();
+	        for (String s : donnees) {
+	            if(s.contains("class=donnees.Produit")) {//c'est un produit, on va maintenant verifier que c'est un produit du bon magasin.
+	                if(s.split(";")[5].split("=")[1].equals(oMagasin.getNomMag())) {//bon mag
+	                    try {
+	                        produit = Class.forName(s.split(";")[0].split("=")[1]);
+	                    
+	                            concret = (IProduit) produit.newInstance();
+	                            concret.setNom(s.split(";")[1].split("=")[1]);
+	                            concret.setType(s.split(";")[2].split("=")[1]);
+	                            concret.setPrix(Float.parseFloat(s.split(";")[3].split("=")[1]));
+	                            concret.setQuantites(Integer.parseInt(s.split(";")[4].split("=")[1]));
+	                            oProduit.add(concret);
+	                        
+	                    } catch (Exception e) {
+	                        e.printStackTrace();
+	                    }
+	                }
+	            }
+	        }
+	        return oProduit;
+	    }
+	    
+	    public IMagasin getMagasin() {
+	      if(Magasin == null) {
+	        Class<?> magasin = null;
+            ArrayList<String> magPos = new ArrayList<String>();
+            System.out.println("liste des magasins: ");
+            for (String s : donnees) {
+                if(s.contains("donnees.Magasin")) {
+                    magPos.add(s.split(";")[0].split("=")[1]);
+                    System.out.println(s.split(";")[1].split("=")[1]);
+                    if(s.split(";")[2].split("=")[1].equals("now")) {
+                      System.out.println("load obligatoire, debut...");
+                        try {
+                          magasin = Class.forName(s.split(";")[0].split("=")[1]);
+                          Magasin = (IMagasin) magasin.newInstance();
+                          Magasin.setNomMag(s.split(";")[1].split("=")[1]);
+                          
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+
+            ArrayList<IProduit> stock = getProduits(Magasin);
+            Magasin.setProduits(stock);
+            Magasin.setPanier(getPanier());
+	      }
+	        
+	        return Magasin;
+	    }
 }

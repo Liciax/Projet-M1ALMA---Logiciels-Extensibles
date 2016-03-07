@@ -1,5 +1,6 @@
 package actuateur;
 
+import donnees.IMagasin;
 import donnees.IPanier;
 import donnees.IProducteur;
 import donnees.IProduit;
@@ -9,9 +10,10 @@ public class ActuateurConcret implements IActuateur{
 
 	public boolean ajouter(IProduit prod, IPanier pan){
 		boolean trouve = false;
-		for(IProduit ip: pan.getContenu()){
+		for(IProduit ip: (pan).getContenu()){
 			if(prod.getNom().equals(ip.getNom())) {
 				ip.setQuantites(ip.getQuantites() + 1);
+				prod.setQuantites(prod.getQuantites() - 1);
 				trouve = true;
 			}
 		}
@@ -23,7 +25,9 @@ public class ActuateurConcret implements IActuateur{
 			nouv.setQuantites(1);
 			pan.getContenu().add(nouv);
 			trouve = true;
+			prod.setQuantites(prod.getQuantites() - 1);
 		}
+		System.out.println(" ici panier : " + pan.getContenu().size());
 		return trouve;
 		
 	}
