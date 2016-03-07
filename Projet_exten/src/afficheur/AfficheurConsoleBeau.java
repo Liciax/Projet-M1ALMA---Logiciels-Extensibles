@@ -13,6 +13,7 @@ public class AfficheurConsoleBeau implements IAfficheur{
 		System.out.println("Nom : "+p.getNom());
 		System.out.println("Type : "+p.getType());
 		System.out.println("Prix :"+p.getPrix()+"€");
+		System.out.println("Quantites :"+p.getQuantites());
 		
 	}
 

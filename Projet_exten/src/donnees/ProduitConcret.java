@@ -5,6 +5,7 @@ public class ProduitConcret implements IProduit {
 	private String nom;
 	private String type;
 	private float prix;
+	private int quantites;
 	
 	public ProduitConcret() {
 		super();
@@ -14,12 +15,14 @@ public class ProduitConcret implements IProduit {
 	 * @param nom
 	 * @param type
 	 * @param prix
+	 * @param quantites
 	 */
-	public ProduitConcret(String nom, String type, float prix) {
+	public ProduitConcret(String nom, String type, float prix, int q) {
 		super();
 		this.nom = nom;
 		this.type = type;
 		this.prix = prix;
+		this.quantites = q;
 	}
 	
 	/* (non-Javadoc)
@@ -70,11 +73,19 @@ public class ProduitConcret implements IProduit {
 		this.prix = prix;
 	}
 
+	public int getQuantites() {
+		return quantites;
+	}
+
+	public void setQuantites(int quantites) {
+		this.quantites = quantites;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Produit=[nom=" + nom + ", type=" + type + ", prix=" + prix + "]";
+		return "Produit=[nom=" + nom + ", type=" + type + ", prix=" + prix + ", quantites=" + quantites + "]";
 	}	
 }

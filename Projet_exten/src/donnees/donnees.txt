@@ -1,5 +1,5 @@
 class=donnees.MagasinConcret;NomMag=Auchan;
-class=donnees.ProduitConcret;Nom=Banana d'Afrique;Type=Aliment;Prix=1.5;
-class=donnees.ProduitConcret;Nom=Boeuf;Type=Aliment;Prix=18.5;
-class=donnees.ProduitConcret;Nom=Toto au zoo;Type=Livre;Prix=8.9;
-class=donnees.ProduitConcret;Nom=TShirt HellFest;Type=Vêtements;Prix=20;
+class=donnees.ProduitConcret;Nom=Banana d'Afrique;Type=Aliment;Prix=1.5;Quantites=50;
+class=donnees.ProduitConcret;Nom=Boeuf;Type=Aliment;Prix=18.5;Quantites=5;
+class=donnees.ProduitConcret;Nom=Toto au zoo;Type=Livre;Prix=8.9;Quantites=2;
+class=donnees.ProduitConcret;Nom=TShirt HellFest;Type=Vêtements;Prix=20;Quantites=10;

@@ -37,6 +37,7 @@ public class ProducteurDefaut implements IProducteur {
 						concret.setNom(s.split(";")[1].split("=")[1]);
 						concret.setType(s.split(";")[2].split("=")[1]);
 	                    concret.setPrix(Float.parseFloat(s.split(";")[3].split("=")[1]));
+	                    concret.setQuantites(Integer.parseInt(s.split(";")[4].split("=")[1]));
 	                    oProduit.add(concret);
 					
 				} catch (Exception e) {

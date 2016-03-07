@@ -31,5 +31,9 @@ public interface IProduit {
 	 * @param prix the prix to set
 	 */
 	public abstract void setPrix(float prix);
+	
+	public abstract int getQuantites();
+	
+	public abstract void setQuantites(int quantites);
 
 }

@@ -30,10 +30,12 @@ public class AfficheurGraphique implements IAfficheur{
 		JLabel nom = new JLabel("Nom : " + p.getNom());
 		JLabel type = new JLabel("Type : " + p.getType());
 		JLabel prix = new JLabel("Prix : " + p.getPrix());
+		JLabel quantites = new JLabel("Quantites : " + p.getQuantites());
 		
 		nom.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
 		type.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
 		prix.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
+		quantites.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
 		
 		// insertion des boutons dans une gridLayout
 		Panel pan = new Panel();
@@ -42,6 +44,7 @@ public class AfficheurGraphique implements IAfficheur{
 		pan.add("nom", nom);
 		pan.add("type",type);
 		pan.add("Prix",prix);
+		pan.add("Quantites",quantites);
 		
 		return pan;
 	}
