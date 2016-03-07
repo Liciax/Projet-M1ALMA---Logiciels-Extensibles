@@ -2,3 +2,4 @@ class=afficheur.AfficheurConsole;descr=afficheur console;type=IAfficheur;load=no
 class=afficheur.AfficheurGraphique;descr=afficheur grapgique console;type=IAfficheur;load=now
 class=afficheur.AfficheurConsoleBeau;descr=afficheur console beau;type=IAfficheur;load=now
 class=donnees.ProducteurDefaut;descr=producteur de magasin;type=IProducteur;load=now
+class=actuateur.ActuateurConcret;descr=retir un produit du magasin pour l'ajouter au panier;type=IActuateur;load=now

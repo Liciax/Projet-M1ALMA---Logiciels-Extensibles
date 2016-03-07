@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.Vector;
 
 import donnees.ProducteurDefaut;
+import actuateur.IActuateur;
 import afficheur.IAfficheur;
 import plateforme.Plateforme;
 
@@ -42,6 +43,16 @@ public class Application {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println("Quel actuateur ?");
+		i = sc.nextInt();
+		IActuateur actu = null;
+		try {
+			actu = (IActuateur) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		System.out.println("--------------------------------");
 		System.out.println("Voici le magasin que IProducteur a choisi de creer :");
 		aff.afficheMagasin(prod.getMagasin());
