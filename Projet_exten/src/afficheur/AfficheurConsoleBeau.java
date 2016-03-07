@@ -2,13 +2,13 @@ package afficheur;
 
 import java.util.Iterator;
 
-import donnees.Magasin;
-import donnees.Produit;
+import donnees.IMagasin;
+import donnees.IProduit;
 
 public class AfficheurConsoleBeau implements IAfficheur{
 
 	@Override
-	public void afficheProduit(Produit p) {
+	public void afficheProduit(IProduit p) {
 		System.out.println("____________________________");
 		System.out.println("Nom : "+p.getNom());
 		System.out.println("Type : "+p.getType());
@@ -17,7 +17,7 @@ public class AfficheurConsoleBeau implements IAfficheur{
 	}
 
 	@Override
-	public void afficheMagasin(Magasin mag) {
+	public void afficheMagasin(IMagasin mag) {
 		for (int i = 0; i < mag.getProduits().size(); i++) {
 			afficheProduit(mag.getProduits().get(i));
 		}

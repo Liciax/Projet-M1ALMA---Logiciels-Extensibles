@@ -2,16 +2,16 @@ package donnees;
 
 import java.util.ArrayList;
 
-public class PanierSimple implements Panier {
-	private ArrayList<Produit> contenu;
+public class PanierSimple implements IPanier {
+	private ArrayList<IProduit> contenu;
 	
 	public PanierSimple() {
-		setContenu(new ArrayList<Produit>());
+		setContenu(new ArrayList<IProduit>());
 	}
 	
 	public void valider() {
 		float i = 0;
-		for(Produit p: contenu) {
+		for(IProduit p: contenu) {
 			i += p.getPrix();
 		}
 		System.out.println("ce panier va vous couter " + i + "€");
@@ -21,11 +21,11 @@ public class PanierSimple implements Panier {
 		contenu.clear();
 	}
 
-	public ArrayList<Produit> getContenu() {
+	public ArrayList<IProduit> getContenu() {
 		return contenu;
 	}
 
-	public void setContenu(ArrayList<Produit> contenu) {
+	public void setContenu(ArrayList<IProduit> contenu) {
 		this.contenu = contenu;
 	}
 

@@ -1,6 +1,6 @@
 package donnees;
 
-public class ProduitConcret implements Produit {
+public class ProduitConcret implements IProduit {
 
 	private String nom;
 	private String type;

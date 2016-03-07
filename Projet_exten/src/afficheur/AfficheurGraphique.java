@@ -16,16 +16,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import donnees.Magasin;
-import donnees.Produit;
+import donnees.IMagasin;
+import donnees.IProduit;
 
 public class AfficheurGraphique implements IAfficheur{
 
 	@Override
-	public void afficheProduit(Produit p) {
+	public void afficheProduit(IProduit p) {
 	}
 	
-	public Panel afficheProduitGraphique(Produit p) {
+	public Panel afficheProduitGraphique(IProduit p) {
 		//Creation de 3 labels
 		JLabel nom = new JLabel("Nom : " + p.getNom());
 		JLabel type = new JLabel("Type : " + p.getType());
@@ -46,12 +46,12 @@ public class AfficheurGraphique implements IAfficheur{
 		return pan;
 	}
 	
-	public void afficheProduit(Produit p, JFrame f){
+	public void afficheProduit(IProduit p, JFrame f){
 	
 	}
 
 	@Override
-	public void afficheMagasin(Magasin mag) {
+	public void afficheMagasin(IMagasin mag) {
 		JFrame frame = new JFrame("Aplication");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(300,600);

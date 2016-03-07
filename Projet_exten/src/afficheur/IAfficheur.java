@@ -1,11 +1,11 @@
 package afficheur;
 
-import donnees.Magasin;
-import donnees.Produit;
+import donnees.IMagasin;
+import donnees.IProduit;
 
 public interface IAfficheur {
 
-	public void afficheProduit(Produit p);
+	public void afficheProduit(IProduit p);
 	
-	public void afficheMagasin(Magasin mag);
+	public void afficheMagasin(IMagasin mag);
 }

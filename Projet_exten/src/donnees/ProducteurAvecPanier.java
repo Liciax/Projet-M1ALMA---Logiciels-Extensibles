@@ -24,16 +24,16 @@ private ArrayList<String> donnees;
 		}
 	}
 
-	public ArrayList<Produit> getProduits(){
+	public ArrayList<IProduit> getProduits(){
 		Class<?> produit = null;
-		Produit concret = null;
-		ArrayList<Produit> oProduit = new ArrayList<Produit>();
+		IProduit concret = null;
+		ArrayList<IProduit> oProduit = new ArrayList<IProduit>();
 		for (String s : donnees) {
 			if(s.contains("class=donnees.Produit")) {
 				try {
 					produit = Class.forName(s.split(";")[0].split("=")[1]);
 				
-						concret = (Produit) produit.newInstance();
+						concret = (IProduit) produit.newInstance();
 						concret.setNom(s.split(";")[1].split("=")[1]);
 						concret.setType(s.split(";")[2].split("=")[1]);
 	                    concret.setPrix(Float.parseFloat(s.split(";")[3].split("=")[1]));
@@ -47,16 +47,16 @@ private ArrayList<String> donnees;
 		return oProduit;
 	}
 	
-	public Panier getPanier(){
+	public IPanier getPanier(){
 		Class<?> produit = null;
-		Panier concret = null;
+		IPanier concret = null;
 		
 		for (String s : donnees) {
 			if(s.contains("class=donnees.Panier")) {
 				try {
 					produit = Class.forName(s.split(";")[0].split("=")[1]);
 				
-						concret = (Panier) produit.newInstance();
+						concret = (IPanier) produit.newInstance();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -65,16 +65,16 @@ private ArrayList<String> donnees;
 		return concret;
 	}
 	
-	public Magasin getMagasin() {
+	public IMagasin getMagasin() {
 		Class<?> magasin = null;
-		Magasin oMagasin = null;
-		ArrayList<Produit> stock = getProduits();
-		Panier p = getPanier();
+		IMagasin oMagasin = null;
+		ArrayList<IProduit> stock = getProduits();
+		IPanier p = getPanier();
 		for (String s : donnees) {
 			if(s.contains("donnees.Magasin")) {
 				try {
 					magasin = Class.forName(s.split(";")[0].split("=")[1]);
-					oMagasin = (Magasin) magasin.newInstance();
+					oMagasin = (IMagasin) magasin.newInstance();
 					oMagasin.setNomMag(s.split(";")[1].split("=")[1]);
 					
 				} catch (Exception e) {
@@ -84,6 +84,6 @@ private ArrayList<String> donnees;
 		}
 //		oMagasin.//attention: merde avec setpanier inexistant!
 		oMagasin.setProduits(stock);
-		return (Magasin)oMagasin;
+		return (IMagasin)oMagasin;
 	}
 }

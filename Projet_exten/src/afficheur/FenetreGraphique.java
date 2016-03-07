@@ -9,12 +9,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import donnees.Magasin;
+import donnees.IMagasin;
 import donnees.MagasinConcret;
 
 public class FenetreGraphique extends JFrame{
 
-	public FenetreGraphique(Magasin m) {
+	public FenetreGraphique(IMagasin m) {
 		super("Application");
 
 		WindowListener l = new WindowAdapter() {

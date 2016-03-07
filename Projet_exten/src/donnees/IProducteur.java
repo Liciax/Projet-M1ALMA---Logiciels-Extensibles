@@ -1,12 +1,12 @@
 package donnees;
 
 import java.util.ArrayList;
-import donnees.Magasin;
-import donnees.Produit;
+import donnees.IMagasin;
+import donnees.IProduit;
 
 public interface IProducteur {
 
-	public ArrayList<Produit> getProduits();
+	public ArrayList<IProduit> getProduits();
 	
-	public Magasin getMagasin();
+	public IMagasin getMagasin();
 }

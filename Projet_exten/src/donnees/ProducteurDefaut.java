@@ -24,16 +24,16 @@ public class ProducteurDefaut implements IProducteur {
 		}
 	}
 
-	public ArrayList<Produit> getProduits(){
+	public ArrayList<IProduit> getProduits(){
 		Class<?> produit = null;
-		Produit concret = null;
-		ArrayList<Produit> oProduit = new ArrayList<Produit>();
+		IProduit concret = null;
+		ArrayList<IProduit> oProduit = new ArrayList<IProduit>();
 		for (String s : donnees) {
 			if(s.contains("class=donnees.Produit")) {
 				try {
 					produit = Class.forName(s.split(";")[0].split("=")[1]);
 				
-						concret = (Produit) produit.newInstance();
+						concret = (IProduit) produit.newInstance();
 						concret.setNom(s.split(";")[1].split("=")[1]);
 						concret.setType(s.split(";")[2].split("=")[1]);
 	                    concret.setPrix(Float.parseFloat(s.split(";")[3].split("=")[1]));
@@ -47,15 +47,15 @@ public class ProducteurDefaut implements IProducteur {
 		return oProduit;
 	}
 	
-	public Magasin getMagasin() {
+	public IMagasin getMagasin() {
 		Class<?> magasin = null;
-		Magasin oMagasin = null;
-		ArrayList<Produit> stock = getProduits();
+		IMagasin oMagasin = null;
+		ArrayList<IProduit> stock = getProduits();
 		for (String s : donnees) {
 			if(s.contains("donnees.Magasin")) {
 				try {
 					magasin = Class.forName(s.split(";")[0].split("=")[1]);
-					oMagasin = (Magasin) magasin.newInstance();
+					oMagasin = (IMagasin) magasin.newInstance();
 					oMagasin.setNomMag(s.split(";")[1].split("=")[1]);
 					
 				} catch (Exception e) {
@@ -65,6 +65,6 @@ public class ProducteurDefaut implements IProducteur {
 		}
 		
 		oMagasin.setProduits(stock);
-		return (Magasin)oMagasin;
+		return (IMagasin)oMagasin;
 	}
 }

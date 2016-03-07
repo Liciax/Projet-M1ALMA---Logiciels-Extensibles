@@ -1,6 +1,6 @@
 package donnees;
 
-public interface Produit {
+public interface IProduit {
 
 	/**
 	 * @return the nom

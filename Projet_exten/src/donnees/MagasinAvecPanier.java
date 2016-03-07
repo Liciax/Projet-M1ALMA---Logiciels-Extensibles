@@ -3,11 +3,11 @@ package donnees;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class MagasinAvecPanier implements Magasin {
+public class MagasinAvecPanier implements IMagasin {
 	
 	private String nomMag;
-	private ArrayList<Produit> produits;
-	private Panier panier;
+	private ArrayList<IProduit> produits;
+	private IPanier panier;
 	
 	
 	public String getNomMag() {
@@ -16,20 +16,20 @@ public class MagasinAvecPanier implements Magasin {
 	public void setNomMag(String nomMag) {
 		this.nomMag = nomMag;
 	}
-	public ArrayList<Produit> getProduits() {
+	public ArrayList<IProduit> getProduits() {
 		return produits;
 	}
-	public void setProduits(ArrayList<Produit> produits) {
+	public void setProduits(ArrayList<IProduit> produits) {
 		this.produits = produits;
 	}
-	public Panier getPanier() {
+	public IPanier getPanier() {
 		return panier;
 	}
-	public void setPanier(Panier panier) {
+	public void setPanier(IPanier panier) {
 		this.panier = panier;
 	}
 	
-	public void ajouter(Produit p) {
+	public void ajouter(IProduit p) {
 		panier.getContenu().add(p);
 	}
 	

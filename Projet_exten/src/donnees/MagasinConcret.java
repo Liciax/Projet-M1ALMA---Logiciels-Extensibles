@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Vector;
 
-public class MagasinConcret implements Magasin {
+public class MagasinConcret implements IMagasin {
 
 	private String nomMag;
-	private ArrayList<Produit> produits;
+	private ArrayList<IProduit> produits;
 	
 	public MagasinConcret() {
 		super();
@@ -33,7 +33,7 @@ public class MagasinConcret implements Magasin {
 	 * @see donnees.Magasin#getProduits()
 	 */
 	@Override
-	public ArrayList<Produit> getProduits() {
+	public ArrayList<IProduit> getProduits() {
 		return produits;
 	}
 
@@ -41,7 +41,7 @@ public class MagasinConcret implements Magasin {
 	 * @see donnees.Magasin#setProduits(java.util.Vector)
 	 */
 	@Override
-	public void setProduits(ArrayList<Produit> stock) {
+	public void setProduits(ArrayList<IProduit> stock) {
 		this.produits = stock;
 	}
 	

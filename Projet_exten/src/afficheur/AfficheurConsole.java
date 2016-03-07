@@ -1,15 +1,15 @@
 package afficheur;
 
-import donnees.Magasin;
-import donnees.Produit;
+import donnees.IMagasin;
+import donnees.IProduit;
 
 public class AfficheurConsole implements IAfficheur{
 
-	public void afficheProduit(Produit p) {
+	public void afficheProduit(IProduit p) {
 		System.out.println(p.toString());
 	}
 	
-	public void afficheMagasin(Magasin mag) {
+	public void afficheMagasin(IMagasin mag) {
 		System.out.println(mag.toString());
 	}
 }
