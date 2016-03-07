@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-public class ProducteurAvecPanier {
+public class ProducteurAvecPanier implements IProducteur {
 
 private ArrayList<String> donnees;
 	
@@ -72,7 +72,7 @@ private ArrayList<String> donnees;
 		ArrayList<IProduit> stock = getProduits();
 		IPanier p = getPanier();
 		for (String s : donnees) {
-			if(s.contains("donnees.Magasin")) {
+			if(s.contains("class=donnees.Magasin")) {
 				try {
 					magasin = Class.forName(s.split(";")[0].split("=")[1]);
 					oMagasin = (IMagasin) magasin.newInstance();

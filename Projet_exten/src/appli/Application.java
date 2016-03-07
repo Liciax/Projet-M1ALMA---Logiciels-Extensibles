@@ -3,7 +3,7 @@ package appli;
 import java.util.Scanner;
 import java.util.Vector;
 
-import donnees.ProducteurDefaut;
+import donnees.IProducteur;
 import actuateur.IActuateur;
 import afficheur.IAfficheur;
 import plateforme.Plateforme;
@@ -37,24 +37,12 @@ public class Application {
 		
 		System.out.println("Quel producteur ? ");
 		i = sc.nextInt();
-		ProducteurDefaut prod = null;
+		IProducteur prod = null;
 		try {
-			prod = (ProducteurDefaut) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+			prod = (IProducteur) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
 		} catch (Exception e) {
 			e.printStackTrace();
-			//
-			//
-			//
-			//
-			//
-			
 		}
-		
-		
-		
-		
-		
-		
 		
 		
 		System.out.println("Quel actuateur ?");
@@ -68,7 +56,12 @@ public class Application {
 		
 		System.out.println("--------------------------------");
 		System.out.println("Voici le magasin que IProducteur a choisi de creer :");
+		//aff.afficheMagasin(prod.getMagasin());
+		System.out.println("1");
+		actu.Modifier(prod);
+		System.out.println("2");
 		aff.afficheMagasin(prod.getMagasin());
+		System.out.println("1");
 	}
 
 }

@@ -6,7 +6,7 @@ public class PanierSimple implements IPanier {
 	private ArrayList<IProduit> contenu;
 	
 	public PanierSimple() {
-		setContenu(new ArrayList<IProduit>());
+		contenu = new ArrayList<IProduit>();
 	}
 	
 	public void valider() {
