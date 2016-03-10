@@ -27,7 +27,7 @@ public class AfficheurConsoleBeau implements IAfficheur{
 	
 	@Override
 	public void affichePanier(IPanier pan) {
-		System.out.println("____________________________");
+		//System.out.println("____________________________");
 		for (IProduit p : pan.getContenu()) {
 			afficheProduit(p);
 		}
