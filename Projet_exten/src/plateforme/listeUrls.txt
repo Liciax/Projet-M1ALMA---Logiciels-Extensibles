@@ -1,0 +1,7 @@
+actuateur/IActuateur.java
+afficheur/IAfficheur.java
+appli/Application.java
+donnees/IProducteur.java
+donnees/IMagasin.java
+donnees/IProduit.java
+donnees/IPanier.java

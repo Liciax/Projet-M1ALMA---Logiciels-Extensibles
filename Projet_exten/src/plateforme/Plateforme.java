@@ -91,6 +91,7 @@ public class Plateforme {
 	}
 	
 	public Object CreaInstance(String nomClasse) throws Exception{
+		
 		return Class.forName(nomClasse).newInstance();
 	}	
 	
