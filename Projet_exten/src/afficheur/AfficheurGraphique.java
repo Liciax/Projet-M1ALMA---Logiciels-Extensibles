@@ -17,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import donnees.IMagasin;
+import donnees.IPanier;
 import donnees.IProduit;
 
 public class AfficheurGraphique implements IAfficheur{
@@ -77,13 +78,17 @@ public class AfficheurGraphique implements IAfficheur{
 		}
 		
 		//Container contentpane = frame.getContentPane();
-		//contentpane.add(hbox);
+		//contentpane.add(hbox);		
 		
-		
-		
-		frame.setVisible(true);
-		
-		
+		frame.setVisible(true);			
 	}
-
+	
+	@Override
+	public void affichePanier(IPanier pan) {
+		// a faire en graphique, vu que je sais pas comment on fait 
+		for (IProduit p : pan.getContenu()) {
+			Panel b = afficheProduitGraphique(p);
+		}
+	}
+	
 }

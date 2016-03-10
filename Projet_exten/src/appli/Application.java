@@ -62,6 +62,7 @@ public class Application {
         actu.Modifier(prod);
 		System.out.println("resultat: ");
 		aff.afficheMagasin(prod.getMagasin());
+		aff.affichePanier(prod.getMagasin().getPanier());
 	}
 
 }
