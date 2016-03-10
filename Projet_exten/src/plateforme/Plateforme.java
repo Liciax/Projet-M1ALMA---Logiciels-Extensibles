@@ -2,22 +2,24 @@ package plateforme;
 
 import java.awt.List;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Vector;
 
 public class Plateforme {
 	
-	private Vector<String> liste_extensions ;
+	private ArrayList<String> liste_extensions ;
 	private static Plateforme plateforme;
 	private static URLClassLoader urlLoader;
 	
 	private Plateforme(){
-		liste_extensions = new Vector<String>();
-		urlLoader = new URLClassLoader((URL[]) loadURL().toArray());
+		liste_extensions = new ArrayList<String>();
+		urlLoader = new URLClassLoader(loadURL());
 	}
 	
 	
@@ -92,11 +94,11 @@ public class Plateforme {
 		return Class.forName(nomClasse).newInstance();
 	}	
 	
-	public Vector<String> getListe_extensions() {
+	public ArrayList<String> getListe_extensions() {
 		return liste_extensions;
 	}
 
-	public void setListe_extensions(Vector<String> liste_extensions) {
+	public void setListe_extensions(ArrayList<String> liste_extensions) {
 		this.liste_extensions = liste_extensions;
 	}
 
@@ -121,7 +123,7 @@ public class Plateforme {
 	
 	
 	
-	public static ArrayList<URL> loadURL() {
+	public static URL[] loadURL() {
 		BufferedReader br;
 		int i;
 		String templigne;
@@ -131,16 +133,22 @@ public class Plateforme {
 			//lecture...
 			br = new BufferedReader(new FileReader("src/plateforme/listeUrls.txt"));
 			templigne= br.readLine();
+			String path = new File("").getAbsolutePath();
 			while(templigne != null) {
-				classLoaderUrls.add(new URL(templigne));
+				URL url = Paths.get(path,templigne).toUri().toURL();
+				System.out.println(url);
+				classLoaderUrls.add(url);
+				templigne= br.readLine();
 			}
-			
-			
+
 		} catch (Exception e) {
 		  e.printStackTrace();
 		}
+	
 		
-		return classLoaderUrls;
+		URL[] tab = new URL[classLoaderUrls.size()];
+		tab = classLoaderUrls.toArray(tab);
+		return tab;
 	}
 
 }
