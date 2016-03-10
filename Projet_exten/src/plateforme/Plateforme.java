@@ -1,17 +1,23 @@
 package plateforme;
 
+import java.awt.List;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.lang.reflect.Method;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class Plateforme {
 	
 	private Vector<String> liste_extensions ;
 	private static Plateforme plateforme;
+	private static URLClassLoader urlLoader;
 	
 	private Plateforme(){
 		liste_extensions = new Vector<String>();
+		urlLoader = new URLClassLoader((URL[]) loadURL().toArray());
 	}
 	
 	
@@ -111,6 +117,30 @@ public class Plateforme {
 			plateforme = new Plateforme();
 		}
 		return plateforme;
+	}
+	
+	
+	
+	public static ArrayList<URL> loadURL() {
+		BufferedReader br;
+		int i;
+		String templigne;
+		ArrayList<URL> classLoaderUrls = new ArrayList<URL>();
+		
+		try {
+			//lecture...
+			br = new BufferedReader(new FileReader("src/plateforme/listeUrls.txt"));
+			templigne= br.readLine();
+			while(templigne != null) {
+				classLoaderUrls.add(new URL(templigne));
+			}
+			
+			
+		} catch (Exception e) {
+		  e.printStackTrace();
+		}
+		
+		return classLoaderUrls;
 	}
 
 }
