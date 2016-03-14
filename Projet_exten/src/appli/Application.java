@@ -59,7 +59,7 @@ public class Application {
 		System.out.println("utilisation de l'actuateur sur les donnees...");
 //		System.out.println(prod.getMagasin().getPanier());
         actu.Modifier(prod);
-        actu.Modifier(prod);
+        //actu.Modifier(prod);
 		System.out.println("resultat: ");
 		aff.afficheMagasin(prod.getMagasin());
 		aff.affichePanier(prod.getMagasin().getPanier());

@@ -11,6 +11,15 @@ public class ProduitConcret implements IProduit {
 		super();
 	}
 
+	
+	public ProduitConcret(String nom, String type, float prix) {
+		super();
+		this.nom = nom;
+		this.type = type;
+		this.prix = prix;
+		this.quantites = 0;
+	}
+	
 	/**
 	 * @param nom
 	 * @param type
