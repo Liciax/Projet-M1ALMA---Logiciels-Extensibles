@@ -33,9 +33,7 @@ private IMagasin Magasin;
 		for (String s : donnees) {
 			if(s.contains("class=donnees.Produit")) {
 				try {
-					produit = Class.forName(s.split(";")[0].split("=")[1]);
-				
-						concret = (IProduit) produit.newInstance();
+					concret = newProduit(s);
 						concret.setNom(s.split(";")[1].split("=")[1]);
 						concret.setType(s.split(";")[2].split("=")[1]);
 	                    concret.setPrix(Float.parseFloat(s.split(";")[3].split("=")[1]));
@@ -49,6 +47,17 @@ private IMagasin Magasin;
 		}
 		return oProduit;
 	}
+
+	private IProduit newProduit(String s) throws ClassNotFoundException,
+			InstantiationException, IllegalAccessException {
+//		Class<?> produit;
+		IProduit concret;
+//		produit = Class.forName(s.split(";")[0].split("=")[1]);
+//
+//			concret = (IProduit) produit.newInstance();
+		concret = new ProduitConcret();
+		return concret;
+	}
 	
 	public IPanier getPanier(){
 		Class<?> produit = null;
@@ -57,8 +66,7 @@ private IMagasin Magasin;
 		for (String s : donnees) {
 			if(s.contains("class=donnees.Panier")) {
 				try {
-					produit = Class.forName(s.split(";")[0].split("=")[1]);
-					concret = (IPanier) produit.newInstance();
+					concret = newPanier(s);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -66,29 +74,16 @@ private IMagasin Magasin;
 		}
 		return concret;
 	}
-//	
-//	public IMagasin getMagasin() {
-//		Class<?> magasin = null;
-//		IMagasin oMagasin = null;
-//		ArrayList<IProduit> stock = getProduits();
-//		IPanier p = getPanier();
-//		for (String s : donnees) {
-//			if(s.contains("class=donnees.Magasin")) {
-//				try {
-//					magasin = Class.forName(s.split(";")[0].split("=")[1]);
-//					oMagasin = (IMagasin) magasin.newInstance();
-//					oMagasin.setNomMag(s.split(";")[1].split("=")[1]);
-//					
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		}
-////		oMagasin.//attention: merde avec setpanier inexistant!
-//		oMagasin.setProduits(stock);
-//		oMagasin.setPanier(getPanier());
-//		return (IMagasin)oMagasin;
-//	}
+
+	private IPanier newPanier(String s) throws ClassNotFoundException,
+			InstantiationException, IllegalAccessException {
+//		Class<?> produit;
+		IPanier concret;
+//		produit = Class.forName(s.split(";")[0].split("=")[1]);
+//		concret = (IPanier) produit.newInstance();
+		concret = new PanierSimple();
+		return concret;
+	}
 	
 	
 	   public ArrayList<IProduit> getProduits(IMagasin oMagasin){
@@ -99,9 +94,7 @@ private IMagasin Magasin;
 	            if(s.contains("class=donnees.Produit")) {//c'est un produit, on va maintenant verifier que c'est un produit du bon magasin.
 	                if(s.split(";")[5].split("=")[1].equals(oMagasin.getNomMag())) {//bon mag
 	                    try {
-	                        produit = Class.forName(s.split(";")[0].split("=")[1]);
-	                    
-	                            concret = (IProduit) produit.newInstance();
+	                        concret = newProduit(s);
 	                            concret.setNom(s.split(";")[1].split("=")[1]);
 	                            concret.setType(s.split(";")[2].split("=")[1]);
 	                            concret.setPrix(Float.parseFloat(s.split(";")[3].split("=")[1]));
@@ -129,8 +122,7 @@ private IMagasin Magasin;
                     if(s.split(";")[2].split("=")[1].equals("now")) {
                       System.out.println("load obligatoire, debut...");
                         try {
-                          magasin = Class.forName(s.split(";")[0].split("=")[1]);
-                          Magasin = (IMagasin) magasin.newInstance();
+                          Magasin = newMagasin(s);
                           Magasin.setNomMag(s.split(";")[1].split("=")[1]);
                           
                         } catch (Exception e) {
@@ -147,4 +139,13 @@ private IMagasin Magasin;
 	        
 	        return Magasin;
 	    }
+
+		private IMagasin newMagasin(String s) throws ClassNotFoundException,
+				InstantiationException, IllegalAccessException {
+//			Class<?> magasin;
+//			magasin = Class.forName(s.split(";")[0].split("=")[1]);
+			IMagasin magasin = new MagasinAvecPanier();
+//			  Magasin = (IMagasin) magasin.newInstance();
+			return magasin;
+		}
 }

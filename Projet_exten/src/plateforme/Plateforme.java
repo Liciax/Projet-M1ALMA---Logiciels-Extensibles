@@ -71,6 +71,7 @@ public class Plateforme {
 	}
 	
 	public Vector<String> getExtensions() {
+		//modif: on ajoute un champ classpath et on reduit class a son nom. on charge pareil mais newinstance fait le load url
 		BufferedReader br;
 		int i;
 		String templigne;
