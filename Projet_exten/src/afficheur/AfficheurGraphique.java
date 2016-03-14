@@ -1,5 +1,6 @@
 package afficheur;
 
+
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
@@ -16,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import donnees.FenetreGraphique;
 import donnees.IMagasin;
 import donnees.IPanier;
 import donnees.IProduit;
@@ -56,31 +58,11 @@ public class AfficheurGraphique implements IAfficheur{
 
 	@Override
 	public void afficheMagasin(IMagasin mag) {
-		JFrame frame = new JFrame("Aplication");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(300,600);
-		
-		
-		JLabel label = new JLabel("Bienvenue au magasin "+mag.getNomMag());
-		label.setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 0));
-		
-		GridLayout gl = new GridLayout(mag.getProduits().size()+1, 1);
-		gl.setVgap(10); 
-		frame.setLayout(gl);
-		
-		
-		//Box hbox = Box.createVerticalBox();
-		frame.getContentPane().add(label);
-		
-		for (int i = 0; i < mag.getProduits().size(); i++) {
-			Panel b = afficheProduitGraphique(mag.getProduits().get(i));
-			frame.getContentPane().add(b);
-		}
-		
-		//Container contentpane = frame.getContentPane();
-		//contentpane.add(hbox);		
-		
-		frame.setVisible(true);			
+		JFrame frame = new JFrame("Magasin "+ mag.getNomMag());
+	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    frame.setContentPane(new FenetreGraphique(mag));
+	    frame.setSize(260, 200);
+	    frame.setVisible(true);			
 	}
 	
 	@Override
