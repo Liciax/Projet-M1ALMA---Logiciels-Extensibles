@@ -18,7 +18,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import donnees.FenetreGraphique;
 import donnees.IMagasin;
 import donnees.IPanier;
 import donnees.IProduit;
@@ -61,7 +60,7 @@ public class AfficheurGraphique implements IAfficheur{
 	public void afficheMagasin(IMagasin mag) {
 		JFrame frame = new JFrame("Magasin "+ mag.getNomMag());
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    frame.setContentPane(new FenetreGraphique(mag));
+	    frame.setContentPane(new testInterface(mag));
 	    frame.setSize(260, 200);
 	    frame.setVisible(true);			
 	}
