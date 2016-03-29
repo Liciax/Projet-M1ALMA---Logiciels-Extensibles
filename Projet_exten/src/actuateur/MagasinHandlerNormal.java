@@ -35,9 +35,10 @@ public class MagasinHandlerNormal implements IMagasinHandler {
 	public void modifier(IProduit produit, IMagasin magasin, int quantite) {
 		for(IProduit p: magasin.getProduits()){
 			if(produit.getNom().equals(p.getNom())) {
-				p.setQuantites(produit.getQuantites() + quantite);
+				p.setQuantites(p.getQuantites() + quantite);
 			}
 		}
+	
 	}
 
 	

@@ -10,10 +10,27 @@ public class PanierHandlerFavoris implements IPanierHandler {
 	public void ajouter(IProduit produit, IMagasin magasin, int quantite) {
 		for(IProduit p: magasin.getProduits()){
 			if(produit.getNom().equals(p.getNom())) {
-				produit.setType(p.getType());
-//				produit.setQuantites(produit.getQuantites()+quantite);
-				produit.setQuantites(quantite);
-				magasin.getPanier().getContenu().add(produit);
+				IProduit prod = null;
+				try {
+					prod = produit.getClass().newInstance();
+					prod.setNom(produit.getNom());
+					prod.setPrix(produit.getPrix());
+					prod.setType(produit.getType());
+				} catch (InstantiationException | IllegalAccessException e) {
+					e.printStackTrace();
+				}
+				boolean trouve = false;
+				for(IProduit q: magasin.getPanier().getContenu()){
+					if(produit.getNom().equals(q.getNom())) {
+						modifier(prod, magasin, quantite);//existe deja dans panier
+						trouve = true;
+					}
+					
+				}
+				if(!trouve) {
+					prod.setQuantites(quantite);
+					magasin.getPanier().getContenu().add(prod);
+				}
 			}
 		}
 	}
@@ -22,9 +39,9 @@ public class PanierHandlerFavoris implements IPanierHandler {
 	public void modifier(IProduit produit, IMagasin magasin, int quantite) {
 		for(IProduit p: magasin.getPanier().getContenu()){
 			if(produit.getNom().equals(p.getNom())) {
-				p.setQuantites(produit.getQuantites() + quantite);
+				p.setQuantites(p.getQuantites() + quantite);
 			}
-		}        
+		}       
 	}
 	
 	//valide les favoris ajouté dans le panier
