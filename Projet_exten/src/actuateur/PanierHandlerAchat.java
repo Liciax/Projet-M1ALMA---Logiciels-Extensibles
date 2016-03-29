@@ -67,7 +67,7 @@ public class PanierHandlerAchat implements IPanierHandler {
 			}
 		}
 		magasin.getPanier().getContenu().clear();
-		aff.affichePhrase("Vous allez devoir payer : " + prix + " €", null);
+		aff.affichePhrase("Vous allez devoir payer : " + prix + " e", null);
 		return true;
 	}
 	
