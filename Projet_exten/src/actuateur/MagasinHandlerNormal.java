@@ -21,7 +21,7 @@ public class MagasinHandlerNormal implements IMagasinHandler {
 		}else {
 			modifier(produit, magasin, quantite);
 		}
-		
+	}
 //		for(IProduit p: magasin.getProduits()){
 //			if(produit.getNom().equals(p.getNom())) {
 //				IProduit nouvProd = null;
@@ -44,18 +44,19 @@ public class MagasinHandlerNormal implements IMagasinHandler {
 //				
 //			}
 //		}
-	}
-		
-	
 
+		
 	
 	public void modifier(IProduit p, IMagasin magasin, int quantite) {
 		
 	}
 
 	
-	public void supprimer(IProduit p, IMagasin magasin) {
-		
+	public void supprimer(IProduit produit, IMagasin magasin) {
+		if(magasin.getProduits().contains(produit)) {
+			magasin.getProduits().remove(produit);
+		}else {
+			System.out.println("Erreur : ce produit n'est pas dans le magasin.");
+		}
 	}
-
 }

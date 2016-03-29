@@ -34,7 +34,7 @@ public class MagasinAvecPanier implements IMagasin {
 	}
 	
 	public String toString() {
-		return "Magasin " + nomMag + "=" + Arrays.asList(produits).toString() + "/n et Panier Actuel:" + Arrays.asList(panier.getContenu()).toString();
+		return "Magasin " + nomMag + "=" + Arrays.asList(produits).toString();
 	}
 
 }
