@@ -182,25 +182,25 @@ public class Application {
 		float prix;
 		int quantites;
 		while(true) {
-			System.out.println("entrez un nom");
-			nom = sc.next();
-			System.out.println("entrez un type");
-			type = sc.next();
-			System.out.println("entrez un prix");
-			prix = sc.nextFloat();
-			System.out.println("entrez un quantites");
-			quantites = sc.nextInt();
-			IProduit p = null;
-			try {
-				p = prod.getMagasin().getProduits().get(0).getClass().newInstance();
-				p.setNom(nom);
-				p.setPrix(prix);
-				p.setType(type);
-			} catch (InstantiationException | IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			maghand.ajouter(p, prod.getMagasin(), quantites);
+//			System.out.println("entrez un nom");
+//			nom = sc.next();
+//			System.out.println("entrez un type");
+//			type = sc.next();
+//			System.out.println("entrez un prix");
+//			prix = sc.nextFloat();
+//			System.out.println("entrez un quantites");
+//			quantites = sc.nextInt();
+//			IProduit p = null;
+//			try {
+//				p = prod.getMagasin().getProduits().get(0).getClass().newInstance();
+//				p.setNom(nom);
+//				p.setPrix(prix);
+//				p.setType(type);
+//			} catch (InstantiationException | IllegalAccessException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			maghand.ajouter(p, prod.getMagasin(), quantites);
 			aff.afficheMagasin(prod.getMagasin());
 			aff.affichePanier(prod.getMagasin().getPanier());
 			System.out.println("quel produit prendre et en quelle quantité?");
