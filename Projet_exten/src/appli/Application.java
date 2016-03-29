@@ -22,6 +22,7 @@ public class Application {
 	public void doIt() {
 		ArrayList<String> listeExtention = Plateforme.getPlateforme().getExtensions();
 		int i;
+		int j;
 		boolean loadnow = false;
 		System.out.println("Liste des extensions proposees :");
 //		for (i = 0; i < listeExtention.size(); i++) {
@@ -173,10 +174,24 @@ public class Application {
 		
         //actu.Modifier(prod);
         //actu.Modifier(prod);
-		panhand.ajouter(prod.getMagasin().getProduits().get(0), prod.getMagasin(), 10);
-		System.out.println("resultat: ");
 		aff.afficheMagasin(prod.getMagasin());
 		aff.affichePanier(prod.getMagasin().getPanier());
+		while(true) {
+			System.out.println("quel produit prendre et en quelle quantité?");
+			i = sc.nextInt();
+			j = sc.nextInt();
+			panhand.ajouter(prod.getMagasin().getProduits().get(i), prod.getMagasin(), j);
+			aff.afficheMagasin(prod.getMagasin());
+			aff.affichePanier(prod.getMagasin().getPanier());
+			System.out.println("valider? (oui=1;non=0)");
+			i = sc.nextInt();
+			if(i == 1){
+				panhand.valider(prod.getMagasin());
+			}
+		}
+//		System.out.println("resultat: ");
+//		aff.afficheMagasin(prod.getMagasin());
+//		aff.affichePanier(prod.getMagasin().getPanier());
 	}
 
 }

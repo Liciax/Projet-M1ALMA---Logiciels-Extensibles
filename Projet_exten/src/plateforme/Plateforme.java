@@ -303,6 +303,9 @@ public class Plateforme {
   }
   
   public Object CreaInstance(String nomClasse) throws Exception{
+	  if(nomClasse.contains("proxy=true")){
+		  
+	  }
 	  return urlAppliLoader.loadClass((nomClasse.split(";")[0]).split("=")[1]).newInstance();
   }   
   

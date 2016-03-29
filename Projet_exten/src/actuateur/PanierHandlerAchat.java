@@ -13,12 +13,14 @@ public class PanierHandlerAchat implements IPanierHandler {
 				IProduit prod = null;
 				try {
 					prod = produit.getClass().newInstance();
+					prod.setNom(produit.getNom());
+					prod.setPrix(produit.getPrix());
+					prod.setType(produit.getType());
 				} catch (InstantiationException | IllegalAccessException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				if (!(magasin.getPanier().getContenu().contains(produit))) {	
-					System.out.println("lolololo");
+				if (!(magasin.getPanier().getContenu().contains(produit))) {
 				prod.setQuantites(quantite);
 				magasin.getPanier().getContenu().add(prod);
 				} else {
@@ -53,6 +55,7 @@ public class PanierHandlerAchat implements IPanierHandler {
 						prix += proPan.getPrix() * (proPan.getQuantites() - reste);	
 						proMag.setQuantites(0);
 						modifier(proPan, magasin, reste);
+						return false;
 					}
 				}
 			}
