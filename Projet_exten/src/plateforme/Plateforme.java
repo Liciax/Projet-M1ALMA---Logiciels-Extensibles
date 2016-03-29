@@ -237,12 +237,12 @@ public class Plateforme {
     System.out.println("Voici la liste des applications que vous pouvez charger :");
     for(i = 0; i < liste_extensions.size(); i++) {
         System.out.println(" - " + (liste_applis.get(i).split(";")[1]).split("=")[1]);
-        if((liste_extensions.get(i).split(";")[2]).split("=")[1].equals("now")){
+        if((liste_applis.get(i).split(";")[2]).split("=")[1].equals("now")){
             System.out.println("Cette application doit se charger automatiquement. Chargement...");
             System.out.println("--------------------------------");
             try {
 //                return Class.forName((liste_extensions.get(i).split(";")[0]).split("=")[1]).newInstance();//ne trouve pas la classe! 
-              Class<?> appli = urlAppliLoader.loadClass((liste_extensions.get(i).split(";")[0]).split("=")[1]);
+              Class<?> appli = urlAppliLoader.loadClass((liste_applis.get(i).split(";")[0]).split("=")[1]);
               Object app = appli.newInstance();
               return app;
             } catch (ClassNotFoundException | SecurityException | InstantiationException | IllegalAccessException e) {
@@ -304,8 +304,8 @@ public class Plateforme {
   }
   
   public Object CreaInstance(String nomClasse) throws Exception{
-      
-      return Class.forName(nomClasse).newInstance();
+	  return urlAppliLoader.loadClass((nomClasse.split(";")[0]).split("=")[1]).newInstance();
+      //return Class.forName(nomClasse).newInstance();
   }   
   
   public ArrayList<String> getListe_extensions() {
