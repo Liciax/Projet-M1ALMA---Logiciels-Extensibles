@@ -173,6 +173,7 @@ public class Application {
 		
         //actu.Modifier(prod);
         //actu.Modifier(prod);
+		panhand.ajouter(prod.getMagasin().getProduits().get(0), prod.getMagasin(), 10);
 		System.out.println("resultat: ");
 		aff.afficheMagasin(prod.getMagasin());
 		aff.affichePanier(prod.getMagasin().getPanier());

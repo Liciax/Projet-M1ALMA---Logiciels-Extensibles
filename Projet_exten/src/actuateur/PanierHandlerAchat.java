@@ -10,7 +10,7 @@ public class PanierHandlerAchat implements IPanierHandler {
 		for(IProduit p: magasin.getProduits()){
 			if(produit.getNom().equals(p.getNom())) {
 				produit.setType(p.getType());
-				produit.setQuantites(quantite);
+				//produit.setQuantites(quantite);
 				magasin.getPanier().getContenu().add(produit);
 			}
 		}
