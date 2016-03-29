@@ -34,11 +34,7 @@ public class ActuateurAjoutDirect implements IActuateur {
       prod.setQuantites(quantites);
       
       p.getMagasin().getProduits().add(prod);
-    } catch (InstantiationException e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    } catch (IllegalAccessException e) {
-      // TODO Auto-generated catch block
+    } catch (Exception e) {
       e.printStackTrace();
     }
     

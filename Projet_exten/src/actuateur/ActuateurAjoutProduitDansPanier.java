@@ -17,6 +17,7 @@ public class ActuateurAjoutProduitDansPanier implements IActuateur {
 			if(produit.getNom().equals(p.getNom())) {
 				existe = true;
 				p.setQuantites(p.getQuantites()-quantite);
+				produit.setType(p.getType());
 				produit.setQuantites(produit.getQuantites()+quantite);
 				panier.getContenu().add(produit);
 			}
