@@ -14,11 +14,9 @@ public class PanierHandlerAchat implements IPanierHandler {
 				try {
 					prod = produit.getClass().newInstance();
 				} catch (InstantiationException | IllegalAccessException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				if (!(magasin.getPanier().getContenu().contains(produit))) {	
-					System.out.println("lolololo");
 				prod.setQuantites(quantite);
 				magasin.getPanier().getContenu().add(prod);
 				} else {
