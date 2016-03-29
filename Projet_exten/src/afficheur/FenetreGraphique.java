@@ -1,8 +1,9 @@
-package donnees;
+package afficheur;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.Panel;
+import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,6 +14,11 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.ListModel;
+import javax.swing.text.TextAction;
+
+import donnees.IMagasin;
+import donnees.IProduit;
 
 public class FenetreGraphique extends JPanel{
 
@@ -21,10 +27,8 @@ public class FenetreGraphique extends JPanel{
 	JList list;
 	DefaultListModel model;
 	int counter;
+
 	
-	/**
-	 * @param mag
-	 */
 	public FenetreGraphique(final IMagasin mag) {
 		this.mag = mag;
 		counter = mag.getProduits().size();
@@ -37,9 +41,13 @@ public class FenetreGraphique extends JPanel{
 	    JButton addButton = new JButton("Add Element");
 	    JButton removeButton = new JButton("Refresh");
 	   
-	    for (int i = 0; i < mag.getProduits().size(); i++)
-	      model.addElement(mag.getProduits().get(i).getNom() + " " + mag.getProduits().get(i).getPrix()+"Euros");
+	    for (int i = 0; i < mag.getProduits().size(); i++){
+	    	TextArea text = new TextArea("test");
+	    	model.addElement(text);
+	    }
+	      //model.addElement(mag.getProduits().get(i).getNom() + " " + mag.getProduits().get(i).getPrix()+"Euros");
 
+	    
 	    
 	    addButton.addActionListener(new ActionListener() {
 	      public void actionPerformed(ActionEvent e) {
@@ -53,8 +61,11 @@ public class FenetreGraphique extends JPanel{
 	  	    JButton addButton = new JButton("Add Element");
 	  	    JButton removeButton = new JButton("Refresh");
 	  	   
-	  	    for (int i = 0; i < mag.getProduits().size(); i++)
-	  	      model.addElement(mag.getProduits().get(i).getNom() + " " + mag.getProduits().get(i).getPrix()+"Euros");
+	  	    for (int i = 0; i < mag.getProduits().size(); i++){
+	  	    	
+	  	    }
+	  	      //model.addElement(mag.getProduits().get(i).getNom() + " " + mag.getProduits().get(i).getPrix()+"Euros");
+	  	    	//model.addElement(afficheProduitGraphique(mag.getProduits().get(i)));
 	      }
 	    });
 
@@ -80,9 +91,9 @@ public class FenetreGraphique extends JPanel{
 		GridLayout gl = new GridLayout(3, 1);
 		pan.setLayout(gl);
 		pan.add("nom", nom);
-		pan.add("type",type);
-		pan.add("Prix",prix);
-		pan.add("Quantites",quantites);
+		//pan.add("type",type);
+		//pan.add("Prix",prix);
+		//pan.add("Quantites",quantites);
 		
 		return pan;
 	}
