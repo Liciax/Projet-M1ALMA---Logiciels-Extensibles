@@ -10,19 +10,10 @@ public class PanierHandlerFavoris implements IPanierHandler {
 	public void ajouter(IProduit produit, IMagasin magasin, int quantite) {
 		for(IProduit p: magasin.getProduits()){
 			if(produit.getNom().equals(p.getNom())) {
-
-				IProduit prod = null;
-				try {
-					prod = produit.getClass().newInstance();
-				} catch (InstantiationException | IllegalAccessException e) {
-					e.printStackTrace();
-				}
-				if (!(magasin.getPanier().getContenu().contains(produit))) {	
-				prod.setQuantites(quantite);
-				magasin.getPanier().getContenu().add(prod);
-				} else {
-					modifier(prod, magasin, quantite);
-				}
+				produit.setType(p.getType());
+//				produit.setQuantites(produit.getQuantites()+quantite);
+				produit.setQuantites(quantite);
+				magasin.getPanier().getContenu().add(produit);
 			}
 		}
 	}
