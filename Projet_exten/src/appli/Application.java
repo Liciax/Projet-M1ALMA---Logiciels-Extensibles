@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import donnees.IProducteur;
 import donnees.IProduit;
-import actuateur.IActuateur;
 import actuateur.IMagasinHandler;
 import actuateur.IPanierHandler;
 import afficheur.IAfficheur;
@@ -152,29 +151,9 @@ public class Application {
 			}
 		}
 		
-		
-		/*
-		System.out.println("liste des IActuateur : ");
-		for (i = 0; i < listeExtention.size(); i++) {
-			if(listeExtention.get(i).contains("type=IActuateur")) {
-				System.out.println(i + " - " + listeExtention.get(i));
-			}
-		}
-		System.out.println("Quel actuateur ?");
-		i = sc.nextInt();
-		IActuateur actu = null;
-		try {
-			actu = (IActuateur) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
-		} catch (Exception e) {
-			e.printStackTrace();
-		}*/
-		
 		System.out.println("--------------------------------");
 		System.out.println("utilisation de l'actuateur sur les donnees...");
 		
-		
-        //actu.Modifier(prod);
-        //actu.Modifier(prod);
 		aff.afficheMagasin(prod.getMagasin());
 		aff.affichePanier(prod.getMagasin().getPanier());
 		String nom;
