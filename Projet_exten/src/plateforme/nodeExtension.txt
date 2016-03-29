@@ -3,7 +3,7 @@ class=afficheur.AfficheurGraphique;descr=afficheur grapgique console;type=IAffic
 class=afficheur.AfficheurConsoleBeau;descr=afficheur console beau;type=IAfficheur;load=later
 class=donnees.ProducteurDefaut;descr=producteur de magasin;type=IProducteur;load=later
 class=donnees.ProducteurAvecPanier;descr=producteur de magasin avec panier;type=IProducteur;load=now
-class=actuateur.PanierHandlerAchat;descr=gestion de panier normale;type=IPanierHandler;load=now
+class=actuateur.PanierHandlerAchat;descr=gestion de panier normale;type=IPanierHandler;load=now;proxy=true
 class=actuateur.PanierHandlerFavoris;descr=gestion de panier de secours;type=IPanierHandler;load=later
 class=actuateur.MagasinHandlerNormal;descr=gestion de magasin normale;type=IMagasinHandler;load=now
 class=actuateur.ActuateurConcret;descr=retire un produit du magasin pour l'ajouter au panier;type=IActuateur;load=now

@@ -6,11 +6,16 @@ import java.io.File;
 import java.io.FileReader;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+
+import actuateur.IPanierHandler;
+
+import proxyHandler.PanierHandler;
 
 public class Plateforme {
 	/*
@@ -303,10 +308,17 @@ public class Plateforme {
   }
   
   public Object CreaInstance(String nomClasse) throws Exception{
+	  Object target = urlAppliLoader.loadClass((nomClasse.split(";")[0]).split("=")[1]).newInstance();
 	  if(nomClasse.contains("proxy=true")){
-		  
+		  if(nomClasse.contains("type=IPanierHandler")){
+			  Class[] interfaces = {IPanierHandler.class};
+		      Object inst = Proxy.newProxyInstance(urlAppliLoader, interfaces, new PanierHandler(target));
+		      return inst;
+		  } else {
+			  System.out.println("demande de proxy refusée");
+		  }
 	  }
-	  return urlAppliLoader.loadClass((nomClasse.split(";")[0]).split("=")[1]).newInstance();
+      return target;
   }   
   
   public ArrayList<String> getListe_extensions() {

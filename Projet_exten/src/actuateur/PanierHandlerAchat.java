@@ -44,6 +44,16 @@ public class PanierHandlerAchat implements IPanierHandler {
 		int prix = 0;
 		for(IProduit proPan: magasin.getPanier().getContenu()){
 			for (IProduit proMag : magasin.getProduits()) {
+				if(proMag.getNom().equals(proPan.getNom())) {
+					if(proMag.getQuantites() < proPan.getQuantites()) { // si pas assez de quantites en magasin
+						return false;
+					}
+				}
+			}
+		}
+		//quantité dans panier ok, on peut modif magasin
+		for(IProduit proPan: magasin.getPanier().getContenu()){
+			for (IProduit proMag : magasin.getProduits()) {
 				
 				if(proMag.getNom().equals(proPan.getNom())) {
 					if(proMag.getQuantites() >= proPan.getQuantites()) { // si assez de quantites en magasin
