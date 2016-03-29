@@ -9,9 +9,13 @@ public class PanierHandlerAchat implements IPanierHandler {
 	public void ajouter(IProduit produit, IMagasin magasin, int quantite) {
 		for(IProduit p: magasin.getProduits()){
 			if(produit.getNom().equals(p.getNom())) {
-				produit.setType(p.getType());
-				produit.setQuantites(quantite);
+				if (!(magasin.getPanier().getContenu().contains(produit))) {	
+				//produit.setType(p.getType());
+				//produit.setQuantites(quantite);
 				magasin.getPanier().getContenu().add(produit);
+				} else {
+					modifier(produit, magasin, quantite);
+				}
 			}
 		}
 	}
