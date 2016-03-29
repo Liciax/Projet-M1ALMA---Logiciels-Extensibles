@@ -165,7 +165,7 @@ public class Application {
 		while(true) {
 			
 		  
-		    i = Integer.parseInt(aff.affichePhrase("travailler avec quel données: 1-magasin, 2-panier :", sc));
+		    i = Integer.parseInt(aff.affichePhrase("travailler avec quel donnees: 1-magasin, 2-panier :", sc));
 		    switch(i){
 ///////////////////////////////////////////////////////////////////////////
   		      case 1:
@@ -193,7 +193,7 @@ public class Application {
   	              case 2:
     	            j = Integer.parseInt(aff.affichePhrase("quel produit? :", sc));
                     IProduit q = prod.getMagasin().getProduits().get(j);
-                    j = Integer.parseInt(aff.affichePhrase("quel quantité ajouter/retirer? (retirer en negatif :", sc));
+                    j = Integer.parseInt(aff.affichePhrase("quel quantite ajouter/retirer? (retirer en negatif :", sc));
                     maghand.modifier(q, prod.getMagasin(), j);
                     break;
                     
@@ -211,14 +211,14 @@ public class Application {
               switch(i){
                 case 1:
                   j = Integer.parseInt(aff.affichePhrase("quel produit? :", sc));
-                  i = Integer.parseInt(aff.affichePhrase("quel quantité ajouter?", sc));
+                  i = Integer.parseInt(aff.affichePhrase("quel quantite ajouter?", sc));
                   panhand.ajouter(prod.getMagasin().getProduits().get(j), prod.getMagasin(), i);
                   break;
                   
                 case 2:
                   j = Integer.parseInt(aff.affichePhrase("quel produit? :", sc));
                   IProduit q = prod.getMagasin().getPanier().getContenu().get(j);
-                  j = Integer.parseInt(aff.affichePhrase("quel quantité ajouter/retirer? (retirer en negatif :", sc));
+                  j = Integer.parseInt(aff.affichePhrase("quel quantite ajouter/retirer? (retirer en negatif :", sc));
                   panhand.modifier(q, prod.getMagasin(), j);
                   break;
               
