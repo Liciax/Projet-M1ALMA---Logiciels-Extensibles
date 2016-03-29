@@ -29,5 +29,10 @@ public class PanierSimple implements IPanier {
 		this.contenu = contenu;
 	}
 
+	@Override
+	public String toString() {
+		return "PanierSimple [contenu=" + contenu + "]";
+	}
+
 	
 }

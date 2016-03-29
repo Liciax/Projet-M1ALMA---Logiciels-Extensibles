@@ -1,5 +1,6 @@
 package appli;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -18,7 +19,7 @@ public class Application {
 	}
 
 	public void doIt() {
-		Vector<String> listeExtention = Plateforme.getPlateforme().getExtensions();
+		ArrayList<String> listeExtention = Plateforme.getPlateforme().getExtensions();
 		int i;
 		System.out.println("Liste des extensions proposees :");
 		for (i = 0; i < listeExtention.size(); i++) {
