@@ -2,7 +2,6 @@ package appli;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.Vector;
 
 import donnees.IProducteur;
 import actuateur.IActuateur;
