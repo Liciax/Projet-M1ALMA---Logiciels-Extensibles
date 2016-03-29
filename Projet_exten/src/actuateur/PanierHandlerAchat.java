@@ -7,9 +7,25 @@ public class PanierHandlerAchat implements IPanierHandler {
 
 	// ajoute au panier un nombre de produits disponible dans le magasin
 	public void ajouter(IProduit produit, IMagasin magasin, int quantite) {
+		
+//		if(!(magasin.getPanier().getContenu().contains(produit))) {
+//			IProduit nouvProd = null;
+//			try {
+//				nouvProd = produit.getClass().newInstance();
+//				nouvProd.setNom(produit.getNom());
+//				nouvProd.setPrix(produit.getPrix());
+//				nouvProd.setType(produit.getType());
+//				nouvProd.setQuantites(quantite);
+//			} catch (InstantiationException | IllegalAccessException e) {
+//				e.printStackTrace();
+//			}
+//			magasin.getPanier().getContenu().add(nouvProd);
+//		}else {
+//			modifier(produit, magasin, quantite);
+//		}
+		
 		for(IProduit p: magasin.getProduits()){
 			if(produit.getNom().equals(p.getNom())) {
-
 				IProduit prod = null;
 				try {
 					prod = produit.getClass().newInstance();
@@ -19,22 +35,29 @@ public class PanierHandlerAchat implements IPanierHandler {
 				} catch (InstantiationException | IllegalAccessException e) {
 					e.printStackTrace();
 				}
-				
-				if (!(magasin.getPanier().getContenu().contains(produit))) {	
-				prod.setQuantites(quantite);
-				magasin.getPanier().getContenu().add(prod);
-				} else {
-					modifier(prod, magasin, quantite);
+				boolean trouve = false;
+				for(IProduit q: magasin.getPanier().getContenu()){
+					if(produit.getNom().equals(q.getNom())) {
+						System.out.println("passé par la");
+						modifier(prod, magasin, quantite);//existe deja dans panier
+						trouve = true;
+					}
+					
+				}
+				if(!trouve) {
+					prod.setQuantites(quantite);
+					magasin.getPanier().getContenu().add(prod);
 				}
 			}
 		}
+		
 	}
 
 	// modifie le nombre de produits ajoute dans un panier
 	public void modifier(IProduit produit, IMagasin magasin, int quantite) {
 		for(IProduit p: magasin.getPanier().getContenu()){
 			if(produit.getNom().equals(p.getNom())) {
-				p.setQuantites(produit.getQuantites() + quantite);
+				p.setQuantites(p.getQuantites() + quantite);
 			}
 		}
 	}
