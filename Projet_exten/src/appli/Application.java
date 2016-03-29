@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import donnees.IProducteur;
+import donnees.IProduit;
 import actuateur.IActuateur;
 import actuateur.IMagasinHandler;
 import actuateur.IPanierHandler;
@@ -176,7 +177,32 @@ public class Application {
         //actu.Modifier(prod);
 		aff.afficheMagasin(prod.getMagasin());
 		aff.affichePanier(prod.getMagasin().getPanier());
+		String nom;
+		String type;
+		float prix;
+		int quantites;
 		while(true) {
+			System.out.println("entrez un nom");
+			nom = sc.next();
+			System.out.println("entrez un type");
+			type = sc.next();
+			System.out.println("entrez un prix");
+			prix = sc.nextFloat();
+			System.out.println("entrez un quantites");
+			quantites = sc.nextInt();
+			IProduit p = null;
+			try {
+				p = prod.getMagasin().getProduits().get(0).getClass().newInstance();
+				p.setNom(nom);
+				p.setPrix(prix);
+				p.setType(type);
+			} catch (InstantiationException | IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			maghand.ajouter(p, prod.getMagasin(), quantites);
+			aff.afficheMagasin(prod.getMagasin());
+			aff.affichePanier(prod.getMagasin().getPanier());
 			System.out.println("quel produit prendre et en quelle quantité?");
 			i = sc.nextInt();
 			j = sc.nextInt();
