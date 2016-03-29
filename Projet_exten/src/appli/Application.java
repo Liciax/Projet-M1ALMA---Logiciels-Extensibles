@@ -194,9 +194,35 @@ public class Application {
   	            i = Integer.parseInt(aff.affichePhrase("vous voulez 1- ajouter un produit, 2- modifier un produit, 3-supprimer un produit? :", sc));
   		        switch(i){
   	              case 1:
-  	                aff.afficheMagasin(prod.getMagasin());
-  	                i = Integer.parseInt(aff.affichePhrase("vous voulez 1- ajouter un produit, 2- modifier un produit, 3-supprimer un produit? :", sc));
+  	                nom = aff.affichePhrase("entrez un nom", sc);
+                    type = aff.affichePhrase("entrez un type",sc);
+                    prix = Float.parseFloat(aff.affichePhrase("entrez un prix",sc));
+                    quantites = Integer.parseInt(aff.affichePhrase("entrez un quantites",sc));
+                    IProduit p = null;
+                    try {
+                        p = prod.getMagasin().getProduits().get(0).getClass().newInstance();
+                        p.setNom(nom);
+                        p.setPrix(prix);
+                        p.setType(type);
+                    } catch (InstantiationException | IllegalAccessException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                    maghand.ajouter(p, prod.getMagasin(), quantites);
   	                break;
+  	                
+  	              case 2:
+    	            j = Integer.parseInt(aff.affichePhrase("quel produit? :", sc));
+                    IProduit q = prod.getMagasin().getProduits().get(j);
+                    j = Integer.parseInt(aff.affichePhrase("quel quantité ajouter/retirer? (retirer en negatif :", sc));
+                    maghand.modifier(q, prod.getMagasin(), j);
+                    break;
+                    
+  	              case 3:
+  	                j = Integer.parseInt(aff.affichePhrase("quel produit? :", sc));
+                    IProduit r = prod.getMagasin().getProduits().get(j);
+                    maghand.supprimer(r, prod.getMagasin());
+                    break;
 	            }
 		        break;
 ////////////////////////////////////////////////////////////////////////////
