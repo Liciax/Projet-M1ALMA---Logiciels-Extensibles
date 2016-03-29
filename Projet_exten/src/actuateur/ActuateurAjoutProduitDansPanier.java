@@ -6,6 +6,7 @@ import donnees.IMagasin;
 import donnees.IPanier;
 import donnees.IProducteur;
 import donnees.IProduit;
+import donnees.ProduitConcret;
 
 public class ActuateurAjoutProduitDansPanier implements IActuateur {
 
@@ -30,12 +31,15 @@ public class ActuateurAjoutProduitDansPanier implements IActuateur {
 		 	String choixProd;
 		 	int nbProd;
 		    try {
-		    	System.out.println("Quel produit voulez-vous ajouter au panier (nom): ");
+		    	System.out.println("Quel produit voulez-vous ajouter au panier (nom) : ");
 		    	choixProd = sc.next();
-		    	System.out.println("Quel produit voulez-vous ajouter au panier (nom): ");
-		    	choixProd = sc.next();
-		    	//TODO ALICIA
-		    	//ajouter(p.getMagasin());
+		    	IProduit nouvProd = new ProduitConcret();
+		    	nouvProd.setNom(choixProd);
+		    	System.out.println("Combien de produits voulez vous ajouter (quantites) : ");
+		    	nbProd = sc.nextInt();
+
+		    	ajouter(p.getMagasin().getPanier(), p.getMagasin(), nouvProd, nbProd);
+		  
 		      
 		    } catch (Exception e) {
 		      e.printStackTrace();
