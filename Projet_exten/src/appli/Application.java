@@ -181,39 +181,63 @@ public class Application {
 		String type;
 		float prix;
 		int quantites;
+		aff.afficheMagasin(prod.getMagasin());
+        aff.affichePanier(prod.getMagasin().getPanier());
 		while(true) {
-			System.out.println("entrez un nom");
-			nom = sc.next();
-			System.out.println("entrez un type");
-			type = sc.next();
-			System.out.println("entrez un prix");
-			prix = sc.nextFloat();
-			System.out.println("entrez un quantites");
-			quantites = sc.nextInt();
-			IProduit p = null;
-			try {
-				p = prod.getMagasin().getProduits().get(0).getClass().newInstance();
-				p.setNom(nom);
-				p.setPrix(prix);
-				p.setType(type);
-			} catch (InstantiationException | IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			maghand.ajouter(p, prod.getMagasin(), quantites);
-			aff.afficheMagasin(prod.getMagasin());
-			aff.affichePanier(prod.getMagasin().getPanier());
-			System.out.println("quel produit prendre et en quelle quantitÃ©?");
-			i = sc.nextInt();
-			j = sc.nextInt();
-			panhand.ajouter(prod.getMagasin().getProduits().get(i), prod.getMagasin(), j);
-			aff.afficheMagasin(prod.getMagasin());
-			aff.affichePanier(prod.getMagasin().getPanier());
-			System.out.println("valider? (oui=1;non=0)");
-			i = sc.nextInt();
-			if(i == 1){
-				panhand.valider(prod.getMagasin());
-			}
+			
+		  
+		    i = Integer.parseInt(aff.affichePhrase("travailler avec quel données: 1-magasin, 2-panier :", sc));
+		    switch(i){
+///////////////////////////////////////////////////////////////////////////
+  		      case 1:
+  	            aff.afficheMagasin(prod.getMagasin());
+  	            i = Integer.parseInt(aff.affichePhrase("vous voulez 1- ajouter un produit, 2- modifier un produit, 3-supprimer un produit? :", sc));
+  		        switch(i){
+  	              case 1:
+  	                aff.afficheMagasin(prod.getMagasin());
+  	                i = Integer.parseInt(aff.affichePhrase("vous voulez 1- ajouter un produit, 2- modifier un produit, 3-supprimer un produit? :", sc));
+  	                break;
+	            }
+		        break;
+////////////////////////////////////////////////////////////////////////////
+  		      default:
+              //System.out.println("vous voulez 1- ajouter un produit, 2- modifier un produit, 3-valider le panier? :");
+  		      i = Integer.parseInt(aff.affichePhrase("vous voulez 1- ajouter un produit, 2- modifier un produit, 3-valider le panier? :", sc));
+              switch(i){
+                case 1:
+                  j = Integer.parseInt(aff.affichePhrase("quel produit? :", sc));
+                  i = Integer.parseInt(aff.affichePhrase("quel quantité ajouter?", sc));
+                  panhand.ajouter(prod.getMagasin().getProduits().get(j), prod.getMagasin(), i);
+                  break;
+                  
+                case 2:
+                  j = Integer.parseInt(aff.affichePhrase("quel produit? :", sc));
+                  IProduit q = prod.getMagasin().getPanier().getContenu().get(j);
+                  j = Integer.parseInt(aff.affichePhrase("quel quantité ajouter/retirer? (retirer en negatif :", sc));
+                  panhand.modifier(q, prod.getMagasin(), j);
+                  break;
+              
+                case 3:
+                  panhand.valider(prod.getMagasin(), aff);
+                  break;
+		        
+		    }
+              break;
+		    }
+            aff.afficheMagasin(prod.getMagasin());
+            aff.affichePanier(prod.getMagasin().getPanier());
+            
+//			aff.afficheMagasin(prod.getMagasin());
+//			aff.affichePanier(prod.getMagasin().getPanier());
+//			i = Integer.parseInt(aff.affichePhrase("quel produit prendre?"));
+//			j = Integer.parseInt(aff.affichePhrase("et en quelle quantite?"));
+//			panhand.ajouter(prod.getMagasin().getProduits().get(i), prod.getMagasin(), j);
+//			aff.afficheMagasin(prod.getMagasin());
+//			aff.affichePanier(prod.getMagasin().getPanier());
+//			i = Integer.parseInt(aff.affichePhrase("valider? (oui=1;non=0)"));
+//			if(i == 1){
+//				panhand.valider(prod.getMagasin());
+//			}
 		}
 //		System.out.println("resultat: ");
 //		aff.afficheMagasin(prod.getMagasin());

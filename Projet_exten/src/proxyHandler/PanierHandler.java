@@ -32,24 +32,29 @@ public class PanierHandler implements InvocationHandler {
 	    	boolean val = (boolean)res;
 	    	if(val == false) {
 	    		ArrayList<String> listeExtention = Plateforme.getPlateforme().getExtensions();
-	    		System.out.println("erreur lors de la validation, veuillez choisir une extension de secours");
-	    		System.out.println("--------------------------------");
-	    		Scanner sc = new Scanner(System.in);
-	    		System.out.println("liste des gestionnaire de panier: ");
+//	    		System.out.println("erreur lors de la validation, veuillez choisir une extension de secours");
+//	    		Scanner sc = new Scanner(System.in);
+//	    		System.out.println("liste des gestionnaire de panier: ");
 	    		int i;
 	    		for (i = 0; i < listeExtention.size(); i++) {
 	    			if(listeExtention.get(i).contains("IPanierHandler")) {
-	    				System.out.println(i + " - " + listeExtention.get(i));
+//	    			  System.out.println(objet.getClass().toString());
+	    			  if(listeExtention.get(i).contains("proxy=" +objet.getClass().getName())) {
+	    			    this.setObjet(Plateforme.getPlateforme().CreaInstance(listeExtention.get(i)));
+	                    res = this.invoke(proxy, method, args);
+	                    return res;
+	    			  }
+//	    				System.out.println(i + " - " + listeExtention.get(i));
 	    			}
 	    		}
-	    		System.out.println("Quel gestionnaire ? ");
-	    		i = sc.nextInt();
-	    		try {
-	    			this.setObjet(Plateforme.getPlateforme().CreaInstance(listeExtention.get(i)));
-	    			res = this.invoke(proxy, method, args);
-	    		} catch (Exception e) {
-	    			e.printStackTrace();
-	    		}
+//	    		System.out.println("Quel gestionnaire ? ");
+//	    		i = sc.nextInt();
+//	    		try {
+//	    			this.setObjet(Plateforme.getPlateforme().CreaInstance(listeExtention.get(i)));
+//	    			res = this.invoke(proxy, method, args);
+//	    		} catch (Exception e) {
+//	    			e.printStackTrace();
+//	    		}
 	    		
 	    	}
 	    }

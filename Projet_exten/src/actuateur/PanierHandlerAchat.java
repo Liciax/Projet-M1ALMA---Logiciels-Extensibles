@@ -1,4 +1,5 @@
 package actuateur;
+import afficheur.IAfficheur;
 import donnees.IMagasin;
 import donnees.IProduit;
 
@@ -45,7 +46,7 @@ public class PanierHandlerAchat implements IPanierHandler {
 	}
 	
 	// valide simule un achat, donc vidage du contenu du panier
-	public boolean valider(IMagasin magasin) {
+	public boolean valider(IMagasin magasin, IAfficheur aff) {
 		float prix = 0;
 		for(IProduit proPan: magasin.getPanier().getContenu()){
 			for (IProduit proMag : magasin.getProduits()) {
@@ -66,7 +67,7 @@ public class PanierHandlerAchat implements IPanierHandler {
 			}
 		}
 		magasin.getPanier().getContenu().clear();
-		System.out.println("Vous allez devoir payer : " + prix + " â‚¬.");
+		aff.affichePhrase("Vous allez devoir payer : " + prix + " €", null);
 		return true;
 	}
 	

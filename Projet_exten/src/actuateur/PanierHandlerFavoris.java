@@ -1,5 +1,8 @@
 package actuateur;
 
+import java.util.Scanner;
+
+import afficheur.IAfficheur;
 import donnees.IMagasin;
 import donnees.IProduit;
 
@@ -45,12 +48,18 @@ public class PanierHandlerFavoris implements IPanierHandler {
 	}
 	
 	//valide les favoris ajouté dans le panier
-	public boolean valider(IMagasin magasin) {
-		System.out.println("Voici la liste de vos favoris : ");
+	public boolean valider(IMagasin magasin, IAfficheur aff) {
+	  aff.affichePhrase("Voici la liste de vos favoris : ",null);
 		for(IProduit p: magasin.getPanier().getContenu()){
-			System.out.println(p.toString());
+		  aff.affichePhrase(p.toString(),null);
 		}
-		return true;
+		Scanner sc = new Scanner(System.in);
+		String rep = aff.affichePhrase("voulez-vous tenter d'acheter ce panier? [o/n]:",sc);
+		if(rep.startsWith("o")){
+		  return false;
+		} else {
+	        return true;
+		}
 	}
 
 }

@@ -1,6 +1,7 @@
 package afficheur;
 
 import java.util.Iterator;
+import java.util.Scanner;
 
 import donnees.IMagasin;
 import donnees.IPanier;
@@ -32,5 +33,14 @@ public class AfficheurConsoleBeau implements IAfficheur{
 			afficheProduit(p);
 		}
 	}
+	
+	   public String affichePhrase(String s, Scanner sc) {
+	      System.out.println(s);
+	      String obj = null;
+	      if(sc != null) {
+	          obj = sc.next();
+	      }
+	      return obj;
+	    }
 
 }

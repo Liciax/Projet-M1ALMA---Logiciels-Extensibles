@@ -9,6 +9,7 @@ import java.awt.Panel;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.Scanner;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -72,5 +73,14 @@ public class AfficheurGraphique implements IAfficheur{
 			Panel b = afficheProduitGraphique(p);
 		}
 	}
+	
+	   public String affichePhrase(String s, Scanner sc) {
+	      System.out.println(s);
+	      String obj =null;
+	      if(sc != null) {
+	        obj = sc.next();
+	      }
+	      return obj;
+	    }
 	
 }

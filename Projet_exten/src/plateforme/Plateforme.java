@@ -309,13 +309,13 @@ public class Plateforme {
   
   public Object CreaInstance(String nomClasse) throws Exception{
 	  Object target = urlAppliLoader.loadClass((nomClasse.split(";")[0]).split("=")[1]).newInstance();
-	  if(nomClasse.contains("proxy=true")){
+	  if(nomClasse.contains("proxy=")){
 		  if(nomClasse.contains("type=IPanierHandler")){
 			  Class[] interfaces = {IPanierHandler.class};
 		      Object inst = Proxy.newProxyInstance(urlAppliLoader, interfaces, new PanierHandler(target));
 		      return inst;
 		  } else {
-			  System.out.println("demande de proxy refusée");
+			  System.out.println("demande de proxy refusee");
 		  }
 	  }
       return target;
