@@ -22,11 +22,17 @@ public class Application {
 		ArrayList<String> listeExtention = Plateforme.getPlateforme().getExtensions();
 		int i;
 		System.out.println("Liste des extensions proposees :");
-		for (i = 0; i < listeExtention.size(); i++) {
-			System.out.println(i + " - " + listeExtention.get(i));
-		}
+//		for (i = 0; i < listeExtention.size(); i++) {
+//			System.out.println(i + " - " + listeExtention.get(i));
+//		}
 		System.out.println("--------------------------------");
 		Scanner sc = new Scanner(System.in);
+		System.out.println("liste des affichages : ");
+		for (i = 0; i < listeExtention.size(); i++) {
+			if(listeExtention.get(i).contains("IAfficheur")) {
+				System.out.println(i + " - " + listeExtention.get(i));
+			}
+		}
 		System.out.println("Quel affichage ? ");
 		i = sc.nextInt();
 		IAfficheur aff = null;
@@ -36,6 +42,12 @@ public class Application {
 			e.printStackTrace();
 		}
 		
+		System.out.println("liste des Producteurs : ");
+		for (i = 0; i < listeExtention.size(); i++) {
+			if(listeExtention.get(i).contains("IProducteur")) {
+				System.out.println(i + " - " + listeExtention.get(i));
+			}
+		}
 		System.out.println("Quel producteur ? ");
 		i = sc.nextInt();
 		IProducteur prod = null;
@@ -46,7 +58,12 @@ public class Application {
 			e.printStackTrace();
 		}
 		
-		
+		System.out.println("liste des IActuateur : ");
+		for (i = 0; i < listeExtention.size(); i++) {
+			if(listeExtention.get(i).contains("IActuateur")) {
+				System.out.println(i + " - " + listeExtention.get(i));
+			}
+		}
 		System.out.println("Quel actuateur ?");
 		i = sc.nextInt();
 		IActuateur actu = null;
@@ -58,7 +75,7 @@ public class Application {
 		
 		System.out.println("--------------------------------");
 		System.out.println("utilisation de l'actuateur sur les donnees...");
-//		System.out.println(prod.getMagasin().getPanier());
+		
         actu.Modifier(prod);
         //actu.Modifier(prod);
 		System.out.println("resultat: ");

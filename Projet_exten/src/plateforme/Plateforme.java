@@ -305,7 +305,6 @@ public class Plateforme {
   
   public Object CreaInstance(String nomClasse) throws Exception{
 	  return urlAppliLoader.loadClass((nomClasse.split(";")[0]).split("=")[1]).newInstance();
-      //return Class.forName(nomClasse).newInstance();
   }   
   
   public ArrayList<String> getListe_extensions() {
