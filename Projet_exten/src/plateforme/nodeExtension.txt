@@ -6,5 +6,3 @@ class=donnees.ProducteurAvecPanier;descr=producteur de magasin avec panier;type=
 class=actuateur.PanierHandlerAchat;descr=gestion de panier normale;type=IPanierHandler;load=now;proxy=actuateur.PanierHandlerFavoris
 class=actuateur.PanierHandlerFavoris;descr=gestion de panier de secours;type=IPanierHandler;load=later;proxy=actuateur.PanierHandlerAchat
 class=actuateur.MagasinHandlerNormal;descr=gestion de magasin normale;type=IMagasinHandler;load=now
-class=actuateur.ActuateurConcret;descr=retire un produit du magasin pour l'ajouter au panier;type=IActuateur;load=now
-class=actuateur.ActuateurAjoutDirect;descr=ajoute un produit au magasin;type=IActuateur;load=now
