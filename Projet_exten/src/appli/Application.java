@@ -10,60 +10,99 @@ import actuateur.IPanierHandler;
 import afficheur.IAfficheur;
 import plateforme.Plateforme;
 
-public class Application {
+public class Application implements IApplication {
 	
 	private IProducteur iProduc;
 	private IMagasinHandler iMagHandler;
 	private IPanierHandler iPanHandler;
 	private IAfficheur iAffich;
 	
-	private static Application INSTANCE = null;
+	private static IApplication INSTANCE = null;
 	
-	public Application() {
-		super();
-		
+	protected Application() {
+		System.out.println("YYYYYYYYYYYYYYYYYYYYYYYY");
+		iProduc = null;
+		iMagHandler = null;
+		iPanHandler = null;
+		iAffich = null;
 	}
 	
-	public static Application getInstance() {			
+	public static IApplication getAppli() {			
 		if (INSTANCE == null) {
 			INSTANCE = new Application();	
 		}
 		return INSTANCE;
 	}
 	
+	/* (non-Javadoc)
+	 * @see appli.IApplication#getiProducteur()
+	 */
+	@Override
 	public IProducteur getiProducteur() {
 		return iProduc;
 	}
 
+	/* (non-Javadoc)
+	 * @see appli.IApplication#setiProducteur(donnees.IProducteur)
+	 */
+	@Override
 	public void setiProducteur(IProducteur iProducteur) {
 		this.iProduc = iProducteur;
 	}
 
+	/* (non-Javadoc)
+	 * @see appli.IApplication#getiMagHandler()
+	 */
+	@Override
 	public IMagasinHandler getiMagHandler() {
 		return iMagHandler;
 	}
 
+	/* (non-Javadoc)
+	 * @see appli.IApplication#setiMagHandler(actuateur.IMagasinHandler)
+	 */
+	@Override
 	public void setiMagHandler(IMagasinHandler iMagHandler) {
 		this.iMagHandler = iMagHandler;
 	}
 
+	/* (non-Javadoc)
+	 * @see appli.IApplication#getiPanHandler()
+	 */
+	@Override
 	public IPanierHandler getiPanHandler() {
 		return iPanHandler;
 	}
 
+	/* (non-Javadoc)
+	 * @see appli.IApplication#setiPanHandler(actuateur.IPanierHandler)
+	 */
+	@Override
 	public void setiPanHandler(IPanierHandler iPanHandler) {
 		this.iPanHandler = iPanHandler;
 	}
 
+	/* (non-Javadoc)
+	 * @see appli.IApplication#getiAffich()
+	 */
+	@Override
 	public IAfficheur getiAffich() {
 		return iAffich;
 	}
 
+	/* (non-Javadoc)
+	 * @see appli.IApplication#setiAffich(afficheur.IAfficheur)
+	 */
+	@Override
 	public void setiAffich(IAfficheur iAffich) {
 		this.iAffich = iAffich;
 	}
 
 
+	/* (non-Javadoc)
+	 * @see appli.IApplication#doIt()
+	 */
+	@Override
 	public void doIt() {
 		ArrayList<String> listeExtention = Plateforme.getPlateforme().getExtensions();
 		int i;
@@ -213,8 +252,8 @@ public class Application {
 		String type;
 		float prix;
 		int quantites;
-		iAffich.afficheMagasin(iProduc.getMagasin());
-        iAffich.affichePanier(iProduc.getMagasin().getPanier());
+		//iAffich.afficheMagasin(iProduc.getMagasin());
+        //iAffich.affichePanier(iProduc.getMagasin().getPanier());
 //		aff.afficheMagasin(prod.getMagasin());
 //      aff.affichePanier(prod.getMagasin().getPanier());
 		while(true) {
