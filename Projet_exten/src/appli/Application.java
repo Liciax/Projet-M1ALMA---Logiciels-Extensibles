@@ -20,7 +20,6 @@ public class Application implements IApplication{
     private static IApplication INSTANCE = null;
     
     protected Application() {
-        System.out.println("YYYYYYYYYYYYYYYYYYYYYYYY");
         iProduc = null;
         iMagHandler = null;
         iPanHandler = null;

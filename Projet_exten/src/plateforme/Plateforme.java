@@ -56,21 +56,35 @@ public class Plateforme {
   }
   
   public URL[] loadAppURL() {//genere l'URLClassloader pour les applis
-    URL[] listeURL = new URL[liste_applis.size()];
+    // URL[] listeURL = new URL[liste_applis.size()];
+    // String path = new File("").getAbsolutePath();
+    // String templigne = "";
+    // for(int i = 0; i < liste_applis.size(); i++) {
+    //   templigne = liste_applis.get(i).split(";")[0].split("=")[1];
+    //   URL url ;
+    //   try {
+    //     url = Paths.get(path,templigne).toUri().toURL();
+    //     System.out.println(url);
+    //     listeURL[i] = url;
+    //   } catch (MalformedURLException e) {
+    //     // TODO Auto-generated catch block
+    //     e.printStackTrace();
+    //   }
+    //   templigne= "";
+    // }
+    // return listeURL;
+
+    URL[] listeURL = new URL[1];
     String path = new File("").getAbsolutePath();
-    String templigne = "";
-    for(int i = 0; i < liste_applis.size(); i++) {
-      templigne = liste_applis.get(i).split(";")[0].split("=")[1];
-      URL url ;
-      try {
-        url = Paths.get(path,templigne).toUri().toURL();
-        System.out.println(url);
-        listeURL[i] = url;
-      } catch (MalformedURLException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      }
-      templigne= "";
+    String templigne = "appli.jar";
+    URL url ;
+    try {
+      url = Paths.get(path,templigne).toUri().toURL();
+      System.out.println(url);
+      listeURL[0] = url;
+    } catch (MalformedURLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
     }
     return listeURL;
   }
@@ -90,7 +104,7 @@ public class Plateforme {
               
               Object app = m.invoke(null, null);
               return app;
-            } catch (ClassNotFoundException | SecurityException | IllegalAccessException e) {
+            } catch (ClassNotFoundException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             } catch (NoSuchMethodException e) {
@@ -100,9 +114,12 @@ public class Plateforme {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      } catch (IllegalAccessException e) {
+        // TODO Auto-generated catch block
+        e.printStackTrace();
+      }
         }
         
     }
@@ -131,22 +148,38 @@ public class Plateforme {
   }
   
   public URL[] loadExtURL() {//genere l'URLClassloader pour les extensions
-    URL[] listeURL = new URL[liste_extensions.size()];
+    // URL[] listeURL = new URL[liste_extensions.size()];
+    // String path = new File("").getAbsolutePath();
+    // String templigne = "";
+    // for(int i = 0; i < liste_extensions.size(); i++) {
+    //   templigne = liste_extensions.get(i).split(";")[0].split("=")[1];
+    //   URL url ;
+    //   try {
+    //     url = Paths.get(path,templigne).toUri().toURL();
+    //     System.out.println(url);
+    //     listeURL[i] = url;
+    //   } catch (MalformedURLException e) {
+    //     // TODO Auto-generated catch block
+    //     e.printStackTrace();
+    //   }
+    //   templigne= "";
+    // }
+    // return listeURL;
+
+    URL[] listeURL = new URL[1];
     String path = new File("").getAbsolutePath();
-    String templigne = "";
-    for(int i = 0; i < liste_extensions.size(); i++) {
-      templigne = liste_extensions.get(i).split(";")[0].split("=")[1];
-      URL url ;
-      try {
-        url = Paths.get(path,templigne).toUri().toURL();
-        System.out.println(url);
-        listeURL[i] = url;
-      } catch (MalformedURLException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      }
-      templigne= "";
+    String templigne = "extension.jar";
+    URL url ;
+    try {
+      url = Paths.get(path,templigne).toUri().toURL();
+      System.out.println(url);
+      listeURL[0] = url;
+    } catch (MalformedURLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
     }
+    templigne= "";
+          
     return listeURL;
   }
   
