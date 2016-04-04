@@ -12,12 +12,57 @@ import plateforme.Plateforme;
 
 public class Application {
 	
-	/**
-	 * 
-	 */
+	private IProducteur iProduc;
+	private IMagasinHandler iMagHandler;
+	private IPanierHandler iPanHandler;
+	private IAfficheur iAffich;
+	
+	private static Application INSTANCE = null;
+	
 	public Application() {
 		super();
+		
 	}
+	
+	public static Application getInstance() {			
+		if (INSTANCE == null) {
+			INSTANCE = new Application();	
+		}
+		return INSTANCE;
+	}
+	
+	public IProducteur getiProducteur() {
+		return iProduc;
+	}
+
+	public void setiProducteur(IProducteur iProducteur) {
+		this.iProduc = iProducteur;
+	}
+
+	public IMagasinHandler getiMagHandler() {
+		return iMagHandler;
+	}
+
+	public void setiMagHandler(IMagasinHandler iMagHandler) {
+		this.iMagHandler = iMagHandler;
+	}
+
+	public IPanierHandler getiPanHandler() {
+		return iPanHandler;
+	}
+
+	public void setiPanHandler(IPanierHandler iPanHandler) {
+		this.iPanHandler = iPanHandler;
+	}
+
+	public IAfficheur getiAffich() {
+		return iAffich;
+	}
+
+	public void setiAffich(IAfficheur iAffich) {
+		this.iAffich = iAffich;
+	}
+
 
 	public void doIt() {
 		ArrayList<String> listeExtention = Plateforme.getPlateforme().getExtensions();
@@ -41,6 +86,7 @@ public class Application {
 					System.out.println("Load immediat...");
 					try {
 						aff = (IAfficheur) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+						setiAffich(aff);
 						loadnow = true;
 						i = listeExtention.size();
 					} catch (Exception e) {
@@ -55,6 +101,7 @@ public class Application {
 			i = sc.nextInt();
 			try {
 				aff = (IAfficheur) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+				setiAffich(aff);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -71,6 +118,7 @@ public class Application {
 					System.out.println("Load immediat...");
 					try {
 						prod = (IProducteur) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+						setiProducteur(prod);
 						loadnow = true;
 						i = listeExtention.size();
 					} catch (Exception e) {
@@ -85,7 +133,7 @@ public class Application {
 			i = sc.nextInt();
 			try {
 				prod = (IProducteur) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
-				
+				setiProducteur(prod);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -102,6 +150,7 @@ public class Application {
 					System.out.println("Load immediat...");
 					try {
 						maghand = (IMagasinHandler) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+						setiMagHandler(maghand);
 						loadnow = true;
 						i = listeExtention.size();
 					} catch (Exception e) {
@@ -116,6 +165,7 @@ public class Application {
 			i = sc.nextInt();
 			try {
 				maghand = (IMagasinHandler) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+				setiMagHandler(maghand);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -132,6 +182,7 @@ public class Application {
 					System.out.println("Load immediat...");
 					try {
 						panhand = (IPanierHandler) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+						setiPanHandler(panhand);
 						loadnow = true;
 						i = listeExtention.size();
 					} catch (Exception e) {
@@ -146,6 +197,7 @@ public class Application {
 			i = sc.nextInt();
 			try {
 				panhand = (IPanierHandler) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+				setiPanHandler(panhand);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -153,33 +205,38 @@ public class Application {
 		
 		System.out.println("--------------------------------");
 		System.out.println("utilisation de l'actuateur sur les donnees...");
-		
-		aff.afficheMagasin(prod.getMagasin());
-		aff.affichePanier(prod.getMagasin().getPanier());
+		iAffich.afficheMagasin(iProduc.getMagasin());
+		iAffich.affichePanier(iProduc.getMagasin().getPanier());
+//		aff.afficheMagasin(prod.getMagasin());
+//		aff.affichePanier(prod.getMagasin().getPanier());
 		String nom;
 		String type;
 		float prix;
 		int quantites;
-		aff.afficheMagasin(prod.getMagasin());
-        aff.affichePanier(prod.getMagasin().getPanier());
+		iAffich.afficheMagasin(iProduc.getMagasin());
+        iAffich.affichePanier(iProduc.getMagasin().getPanier());
+//		aff.afficheMagasin(prod.getMagasin());
+//      aff.affichePanier(prod.getMagasin().getPanier());
 		while(true) {
 			
-		  
-		    i = Integer.parseInt(aff.affichePhrase("travailler avec quel donnees: 1-magasin, 2-panier :", sc));
+			i = Integer.parseInt(iAffich.affichePhrase("travailler avec quel donnees: 1-magasin, 2-panier :", sc));
+//		    i = Integer.parseInt(aff.affichePhrase("travailler avec quel donnees: 1-magasin, 2-panier :", sc));
 		    switch(i){
 ///////////////////////////////////////////////////////////////////////////
   		      case 1:
-  	            aff.afficheMagasin(prod.getMagasin());
-  	            i = Integer.parseInt(aff.affichePhrase("vous voulez 1- ajouter un produit, 2- modifier un produit, 3-supprimer un produit? :", sc));
+  		    	iAffich.afficheMagasin(iProduc.getMagasin());
+//  	        aff.afficheMagasin(prod.getMagasin());
+  		    	i = Integer.parseInt(iAffich.affichePhrase("vous voulez 1- ajouter un produit, 2- modifier un produit, 3-supprimer un produit? :", sc));
+//  	        i = Integer.parseInt(aff.affichePhrase("vous voulez 1- ajouter un produit, 2- modifier un produit, 3-supprimer un produit? :", sc));
   		        switch(i){
   	              case 1:
-  	                nom = aff.affichePhrase("entrez un nom", sc);
-                    type = aff.affichePhrase("entrez un type",sc);
-                    prix = Float.parseFloat(aff.affichePhrase("entrez un prix",sc));
-                    quantites = Integer.parseInt(aff.affichePhrase("entrez un quantites",sc));
+  	                nom = iAffich.affichePhrase("entrez un nom", sc);
+                    type = iAffich.affichePhrase("entrez un type",sc);
+                    prix = Float.parseFloat(iAffich.affichePhrase("entrez un prix",sc));
+                    quantites = Integer.parseInt(iAffich.affichePhrase("entrez un quantites",sc));
                     IProduit p = null;
                     try {
-                        p = prod.getMagasin().getProduits().get(0).getClass().newInstance();
+                        p = iProduc.getMagasin().getProduits().get(0).getClass().newInstance();
                         p.setNom(nom);
                         p.setPrix(prix);
                         p.setType(type);
@@ -187,50 +244,50 @@ public class Application {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
-                    maghand.ajouter(p, prod.getMagasin(), quantites);
+                    iMagHandler.ajouter(p, iProduc.getMagasin(), quantites);
   	                break;
   	                
   	              case 2:
-    	            j = Integer.parseInt(aff.affichePhrase("quel produit? :", sc));
-                    IProduit q = prod.getMagasin().getProduits().get(j);
-                    j = Integer.parseInt(aff.affichePhrase("quel quantite ajouter/retirer? (retirer en negatif :", sc));
-                    maghand.modifier(q, prod.getMagasin(), j);
+    	            j = Integer.parseInt(iAffich.affichePhrase("quel produit? :", sc));
+                    IProduit q = iProduc.getMagasin().getProduits().get(j);
+                    j = Integer.parseInt(iAffich.affichePhrase("quel quantite ajouter/retirer? (retirer en negatif :", sc));
+                    iMagHandler.modifier(q, iProduc.getMagasin(), j);
                     break;
                     
   	              case 3:
-  	                j = Integer.parseInt(aff.affichePhrase("quel produit? :", sc));
-                    IProduit r = prod.getMagasin().getProduits().get(j);
-                    maghand.supprimer(r, prod.getMagasin());
+  	                j = Integer.parseInt(iAffich.affichePhrase("quel produit? :", sc));
+                    IProduit r = iProduc.getMagasin().getProduits().get(j);
+                    iMagHandler.supprimer(r, iProduc.getMagasin());
                     break;
 	            }
 		        break;
 ////////////////////////////////////////////////////////////////////////////
   		      default:
               //System.out.println("vous voulez 1- ajouter un produit, 2- modifier un produit, 3-valider le panier? :");
-  		      i = Integer.parseInt(aff.affichePhrase("vous voulez 1- ajouter un produit, 2- modifier un produit, 3-valider le panier? :", sc));
+  		      i = Integer.parseInt(iAffich.affichePhrase("vous voulez 1- ajouter un produit, 2- modifier un produit, 3-valider le panier? :", sc));
               switch(i){
                 case 1:
-                  j = Integer.parseInt(aff.affichePhrase("quel produit? :", sc));
-                  i = Integer.parseInt(aff.affichePhrase("quel quantite ajouter?", sc));
-                  panhand.ajouter(prod.getMagasin().getProduits().get(j), prod.getMagasin(), i);
+                  j = Integer.parseInt(iAffich.affichePhrase("quel produit? :", sc));
+                  i = Integer.parseInt(iAffich.affichePhrase("quel quantite ajouter?", sc));
+                  iPanHandler.ajouter(iProduc.getMagasin().getProduits().get(j), iProduc.getMagasin(), i);
                   break;
                   
                 case 2:
-                  j = Integer.parseInt(aff.affichePhrase("quel produit? :", sc));
-                  IProduit q = prod.getMagasin().getPanier().getContenu().get(j);
-                  j = Integer.parseInt(aff.affichePhrase("quel quantite ajouter/retirer? (retirer en negatif :", sc));
-                  panhand.modifier(q, prod.getMagasin(), j);
+                  j = Integer.parseInt(iAffich.affichePhrase("quel produit? :", sc));
+                  IProduit q = iProduc.getMagasin().getPanier().getContenu().get(j);
+                  j = Integer.parseInt(iAffich.affichePhrase("quel quantite ajouter/retirer? (retirer en negatif :", sc));
+                  iPanHandler.modifier(q, iProduc.getMagasin(), j);
                   break;
               
                 case 3:
-                  panhand.valider(prod.getMagasin(), aff);
+                	iPanHandler.valider(iProduc.getMagasin(), iAffich);
                   break;
 		        
 		    }
               break;
 		    }
-            aff.afficheMagasin(prod.getMagasin());
-            aff.affichePanier(prod.getMagasin().getPanier());
+            aff.afficheMagasin(iProduc.getMagasin());
+            aff.affichePanier(iProduc.getMagasin().getPanier());
             
 //			aff.afficheMagasin(prod.getMagasin());
 //			aff.affichePanier(prod.getMagasin().getPanier());

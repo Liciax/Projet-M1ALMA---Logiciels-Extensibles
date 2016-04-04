@@ -60,7 +60,7 @@ public class AfficheurGraphique implements IAfficheur{
 	public void afficheMagasin(IMagasin mag) {
 		JFrame frame = new JFrame("Magasin "+ mag.getNomMag());
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    frame.setContentPane(new testInterface(mag));
+	    frame.setContentPane(new InterfaceInitiale(mag));
 	    frame.setSize(260, 200);
 	    frame.setVisible(true);			
 	}

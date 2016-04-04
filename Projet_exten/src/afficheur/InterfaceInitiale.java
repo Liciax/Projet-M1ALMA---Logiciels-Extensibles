@@ -10,17 +10,21 @@ import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import appli.Application;
+
 import donnees.IMagasin;
 import donnees.IProduit;
 
-public class testInterface extends JFrame{
+public class InterfaceInitiale extends JFrame{
 
 	
 	private JTextArea textPane = new JTextArea();
@@ -33,7 +37,7 @@ public class testInterface extends JFrame{
 	
 	
 	
-	public testInterface(final IMagasin mag) {
+	public InterfaceInitiale(final IMagasin mag) {
 		
 		this.setLocationRelativeTo(null);
 	    this.setTitle("Magasin");
@@ -49,13 +53,23 @@ public class testInterface extends JFrame{
 			layout.add(lab);
 		}
 
-	    JButton bouton =  new JButton("Bouton");
+	    JButton bouton =  new JButton("Nouveau produit");
 	    
 	    bouton.addActionListener(new ActionListener(){
-	      public void actionPerformed(ActionEvent e){
-	        System.out.println("Texte écrit dans le JTextArea : ");
-	        System.out.println("--------------------------------");
-	        System.out.println(textPane.getText());            
+	      public void actionPerformed(ActionEvent e){  
+	    	  
+	    	  DialogueAjout zd = new DialogueAjout(null, "Ajouter un produit", true);
+	          IProduit zInfo = zd.showZDialog(); 
+	          //JOptionPane jop = new JOptionPane();
+	          //jop.showMessageDialog(null, zInfo.toString(), "Informations produit", JOptionPane.INFORMATION_MESSAGE);
+	          
+	          //TODO
+	          // Ajouter le produit dans le magasin avec l'actuateur 
+	          
+	          //TODO 
+	          // Recharger le magasin dans la fenêtre
+	        
+	        
 	      }
 	    });
 	    

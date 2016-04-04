@@ -1,5 +1,5 @@
-class=afficheur.AfficheurConsole;descr=afficheur console;type=IAfficheur;load=now
-class=afficheur.AfficheurGraphique;descr=afficheur grapgique console;type=IAfficheur;load=later
+class=afficheur.AfficheurConsole;descr=afficheur console;type=IAfficheur;load=later
+class=afficheur.AfficheurGraphique;descr=afficheur grapgique console;type=IAfficheur;load=now
 class=afficheur.AfficheurConsoleBeau;descr=afficheur console beau;type=IAfficheur;load=later
 class=donnees.ProducteurDefaut;descr=producteur de magasin;type=IProducteur;load=later
 class=donnees.ProducteurAvecPanier;descr=producteur de magasin avec panier;type=IProducteur;load=now
