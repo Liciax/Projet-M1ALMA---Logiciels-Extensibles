@@ -12,12 +12,48 @@ import plateforme.Plateforme;
 
 public class Application {
 	
-	/**
-	 * 
-	 */
+	private IProducteur iProduc;
+	private IMagasinHandler iMagHandler;
+	private IPanierHandler iPanHandler;
+	private IAfficheur iAffich;
+	
 	public Application() {
 		super();
+		
 	}
+	
+	public IProducteur getiProducteur() {
+		return iProduc;
+	}
+
+	public void setiProducteur(IProducteur iProducteur) {
+		this.iProduc = iProducteur;
+	}
+
+	public IMagasinHandler getiMagHandler() {
+		return iMagHandler;
+	}
+
+	public void setiMagHandler(IMagasinHandler iMagHandler) {
+		this.iMagHandler = iMagHandler;
+	}
+
+	public IPanierHandler getiPanHandler() {
+		return iPanHandler;
+	}
+
+	public void setiPanHandler(IPanierHandler iPanHandler) {
+		this.iPanHandler = iPanHandler;
+	}
+
+	public IAfficheur getiAffich() {
+		return iAffich;
+	}
+
+	public void setiAffich(IAfficheur iAffich) {
+		this.iAffich = iAffich;
+	}
+
 
 	public void doIt() {
 		ArrayList<String> listeExtention = Plateforme.getPlateforme().getExtensions();
@@ -41,6 +77,7 @@ public class Application {
 					System.out.println("Load immediat...");
 					try {
 						aff = (IAfficheur) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+						setiAffich(aff);
 						loadnow = true;
 						i = listeExtention.size();
 					} catch (Exception e) {
@@ -55,6 +92,7 @@ public class Application {
 			i = sc.nextInt();
 			try {
 				aff = (IAfficheur) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+				setiAffich(aff);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -71,6 +109,7 @@ public class Application {
 					System.out.println("Load immediat...");
 					try {
 						prod = (IProducteur) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+						setiProducteur(prod);
 						loadnow = true;
 						i = listeExtention.size();
 					} catch (Exception e) {
@@ -85,7 +124,7 @@ public class Application {
 			i = sc.nextInt();
 			try {
 				prod = (IProducteur) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
-				
+				setiProducteur(prod);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -102,6 +141,7 @@ public class Application {
 					System.out.println("Load immediat...");
 					try {
 						maghand = (IMagasinHandler) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+						setiMagHandler(maghand);
 						loadnow = true;
 						i = listeExtention.size();
 					} catch (Exception e) {
@@ -116,6 +156,7 @@ public class Application {
 			i = sc.nextInt();
 			try {
 				maghand = (IMagasinHandler) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+				setiMagHandler(maghand);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -132,6 +173,7 @@ public class Application {
 					System.out.println("Load immediat...");
 					try {
 						panhand = (IPanierHandler) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+						setiPanHandler(panhand);
 						loadnow = true;
 						i = listeExtention.size();
 					} catch (Exception e) {
@@ -146,6 +188,7 @@ public class Application {
 			i = sc.nextInt();
 			try {
 				panhand = (IPanierHandler) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+				setiPanHandler(panhand);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
