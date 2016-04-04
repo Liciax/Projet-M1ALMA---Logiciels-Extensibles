@@ -1,9 +1,12 @@
 #!/bin/sh
 
+PROJECT_PATH=`pwd`
+
 THE_CLASSPATH=
-PROGRAM_NAME=plateforme/Plateforme.java
-cd src
-jar cf appli.jar -C appli/* ./appli
+PROGRAM_NAME="${PROJECT_PATH}/plateforme/Plateforme.java"
+
+jar cf appli.jar -C ${PROJECT_PATH}/appli/* .
+
 
 for i in `ls ./*.jar`
   do
