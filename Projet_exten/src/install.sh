@@ -3,10 +3,12 @@
 PROJECT_PATH=`pwd`
 
 THE_CLASSPATH=
-PROGRAM_NAME="${PROJECT_PATH}/plateforme/Plateforme.java"
+PROGRAM_NAME=plateforme/Plateforme.java
+#PROGRAM_NAME="${PROJECT_PATH}/plateforme/Plateforme.java"
 
-jar cf appli.jar -C ${PROJECT_PATH}/appli/* .
-
+jar cf appli.jar appli/*
+jar cf plateforme.jar plateforme/*
+jar cf extension.jar actuateur/* afficheur/* donnees/* proxyHandler/*
 
 for i in `ls ./*.jar`
   do
@@ -25,6 +27,6 @@ javac -classpath ".:${THE_CLASSPATH}" proxyHandler/*.java
 
 if [ $? -eq 0 ]
 then
-  echo "compile worked!"
+  echo "compilation reussie !"
 fi
 

@@ -3,6 +3,7 @@ package plateforme;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.net.MalformedURLException;
@@ -85,12 +86,23 @@ public class Plateforme {
             System.out.println("--------------------------------");
             try {
               Class<?> appli = urlAppliLoader.loadClass((liste_applis.get(i).split(";")[0]).split("=")[1]);
-              Object app = appli.newInstance();
+              Method m = appli.getDeclaredMethod("getAppli", null);
+              
+              Object app = m.invoke(null, null);
               return app;
-            } catch (ClassNotFoundException | SecurityException | InstantiationException | IllegalAccessException e) {
+            } catch (ClassNotFoundException | SecurityException | IllegalAccessException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
-            }
+            } catch (NoSuchMethodException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalArgumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }
         
     }
