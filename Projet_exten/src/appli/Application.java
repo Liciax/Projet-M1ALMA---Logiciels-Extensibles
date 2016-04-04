@@ -19,11 +19,10 @@ public class Application {
 	
 	private static Application INSTANCE = null;
 	
-	private Application() {}
-//	public Application() {
-//		super();
-//		
-//	}
+	public Application() {
+		super();
+		
+	}
 	
 	public static Application getInstance() {			
 		if (INSTANCE == null) {
