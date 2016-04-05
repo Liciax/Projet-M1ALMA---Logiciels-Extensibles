@@ -18,23 +18,29 @@ public class PanierProxy implements InvocationHandler {
 		this.objet = objet;
 	}
 
+	/*
+	 * constructeur prenant en charge le changement d'extension en cas de non chargement vers une extension de secours
+	 * 
+	 */
 	public PanierProxy(String nomClasse, URLClassLoader urlExtLoader) {
 	  Object o = null;
     try {
-//      o = urlExtLoader.loadClass((nomClasse.split(";")[0]).split("=")[1]).newInstance();
       o = Plateforme.getPlateforme().creaInstance(nomClasse.split(";")[0]);
     } catch (Exception e) {
       try {
         o = Plateforme.getPlateforme().creaInstance((nomClasse.split(";")[4]));
-//        o = urlExtLoader.loadClass((nomClasse.split(";")[4]).split("=")[1]).newInstance();
       } catch (Exception e1) {
-        // TODO Auto-generated catch block
         e1.printStackTrace();
       }
     }
 	    objet = o;
 	}
 	
+	
+	/*
+	 * permet d'intercepter les appels de methodes pour modifier le comportement. Ici on interceptre les appels de la methode valider() pour hotswap la classe s'il s'agit d'un IPanierHandler et qu'il y a eu un probleme 
+	 * 
+	 */
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 	    Object res = null;
@@ -48,7 +54,6 @@ public class PanierProxy implements InvocationHandler {
 	    			if(listeExtention.get(i).contains("IPanierHandler")) {
 	    			  if(listeExtention.get(i).contains("proxy=" +objet.getClass().getName())) {
 	    			    this.setObjet(Plateforme.getPlateforme().creaInstance(listeExtention.get(i)));
-	                    //res = this.invoke(proxy, method, args);
 	                    return val;
 	    			  }
 	    			}
