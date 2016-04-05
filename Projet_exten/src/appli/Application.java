@@ -17,7 +17,7 @@ public class Application implements IApplication{
     private IPanierHandler iPanHandler;
     private IAfficheur iAffich;
     
-    private static IApplication INSTANCE = null;
+    private static Application INSTANCE = null;
     
     protected Application() {
         iProduc = null;
@@ -26,7 +26,7 @@ public class Application implements IApplication{
         iAffich = null;
     }
     
-    public static IApplication getAppli() {         
+    public static Application getAppli() {         
         if (INSTANCE == null) {
             INSTANCE = new Application();   
         }
@@ -39,7 +39,6 @@ public class Application implements IApplication{
     /* (non-Javadoc)
 	 * @see appli.IApp#getiProducteur()
 	 */
-    @Override
 	public IProducteur getiProducteur() {
         return iProduc;
     }
@@ -50,7 +49,6 @@ public class Application implements IApplication{
     /* (non-Javadoc)
 	 * @see appli.IApp#setiProducteur(donnees.IProducteur)
 	 */
-    @Override
 	public void setiProducteur(IProducteur iProducteur) {
         this.iProduc = iProducteur;
     }
@@ -61,7 +59,6 @@ public class Application implements IApplication{
     /* (non-Javadoc)
 	 * @see appli.IApp#getiMagHandler()
 	 */
-    @Override
 	public IMagasinHandler getiMagHandler() {
         return iMagHandler;
     }
@@ -72,7 +69,6 @@ public class Application implements IApplication{
     /* (non-Javadoc)
 	 * @see appli.IApp#setiMagHandler(actuateur.IMagasinHandler)
 	 */
-    @Override
 	public void setiMagHandler(IMagasinHandler iMagHandler) {
         this.iMagHandler = iMagHandler;
     }
@@ -83,7 +79,6 @@ public class Application implements IApplication{
     /* (non-Javadoc)
 	 * @see appli.IApp#getiPanHandler()
 	 */
-    @Override
 	public IPanierHandler getiPanHandler() {
         return iPanHandler;
     }
@@ -94,7 +89,6 @@ public class Application implements IApplication{
     /* (non-Javadoc)
 	 * @see appli.IApp#setiPanHandler(actuateur.IPanierHandler)
 	 */
-    @Override
 	public void setiPanHandler(IPanierHandler iPanHandler) {
         this.iPanHandler = iPanHandler;
     }
@@ -105,7 +99,6 @@ public class Application implements IApplication{
     /* (non-Javadoc)
 	 * @see appli.IApp#getiAffich()
 	 */
-    @Override
 	public IAfficheur getiAffich() {
         return iAffich;
     }
@@ -116,7 +109,6 @@ public class Application implements IApplication{
     /* (non-Javadoc)
 	 * @see appli.IApp#setiAffich(afficheur.IAfficheur)
 	 */
-    @Override
 	public void setiAffich(IAfficheur iAffich) {
         this.iAffich = iAffich;
     }
