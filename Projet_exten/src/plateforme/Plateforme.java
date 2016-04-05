@@ -32,7 +32,7 @@ public class Plateforme {
   }
   
   /*
-   * lis la liste des applications disponibles et la sauvegarde (à condition que le fichier n'ait pas déjà été lu et que le fichier contienne au moins 1 application)  
+   * lis la liste des applications disponibles et la sauvegarde (a condition que le fichier n'ait pas deja ete lu et que le fichier contienne au moins 1 application)  
    * 
    */
   public void readApplicationsAvailable() {
@@ -57,7 +57,7 @@ public class Plateforme {
   }
   
   /*
-   * génère l'URLClassloader pour les applications a partir d'appli.jar
+   * genere l'URLClassloader pour les applications a partir d'appli.jar
    * 
    */
   public URL[] loadAppURL() {
@@ -79,7 +79,7 @@ public class Plateforme {
 
   /*
    * affiche toutes les applications disponibles puis demande a l'utilisateur de choisir laquelle lancer. 
-   * Ce choix peut etre outrepassé si une application est specifiée comme devant etre chargée immediatement.
+   * Ce choix peut etre outrepasse si une application est specifiee comme devant etre chargee immediatement.
    * 
    */
   public Object loadAppli(){
@@ -119,7 +119,7 @@ public class Plateforme {
   }
   
   /*
-   * lis la liste des extensions disponibles et la sauvegarde (à condition que le fichier n'ait pas déjà été lu et que le fichier contienne au moins 1 extension)  
+   * lis la liste des extensions disponibles et la sauvegarde (a condition que le fichier n'ait pas deja ete lu et que le fichier contienne au moins 1 extension)  
    * 
    */
   public void readExtensionsAvailable() {
@@ -144,7 +144,7 @@ public class Plateforme {
   }
   
   /*
-   * génère l'URLClassloader pour les extensions a partir d'extension.jar
+   * genere l'URLClassloader pour les extensions a partir d'extension.jar
    * 
    */
   public URL[] loadExtURL() {
@@ -174,7 +174,7 @@ public class Plateforme {
   }
   
   /*
-   * genere une instance a partir de nomClasse qui est la ligne dans le fichier listant les Extensions decrivant l'extension souhaitée (avec possibilité de proxy)
+   * genere une instance a partir de nomClasse qui est la ligne dans le fichier listant les Extensions decrivant l'extension souhaitee (avec possibilité de proxy)
    * 
    */
   public Object creaInstance(String nomClasse) throws Exception{
