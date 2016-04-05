@@ -22,6 +22,7 @@
 * Si vous n'avez pas les droits pour lancer le script tapez :
 
     `chmod +x install.sh`
+    
     `./install.sh`
 
 ## Lancer l'application
@@ -32,6 +33,7 @@
 * Si vous n'avez pas les droits pour lancer le script tapez :
 
     `chmod +x execute.sh`
+    
     `./execute.sh`
 
 ## Pour développer
