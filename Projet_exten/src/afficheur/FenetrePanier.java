@@ -70,6 +70,7 @@ public class FenetrePanier extends JFrame {
 		prixPanier = 0;
 		this.pan = lePan;
 		this.setLocationRelativeTo(null);
+		this.setLocation(550, 50);
 	    this.setTitle("Panier");
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setSize(500, 400);
@@ -113,6 +114,7 @@ public class FenetrePanier extends JFrame {
 	  			}
 	    	    	
 	    	    	rechargerPanier();
+	    	    	frameMagasin.rechargerMagasin();
 	  	      }
 	        });
 	      
@@ -148,7 +150,9 @@ public JPanel afficheProduitGraphique(final IProduit p, final JPanel panelProdui
         
         JPanel panelBouton = new JPanel();
         JButton boutonSupp = new JButton("Supprimer");
-        panelBouton.setLayout(new GridLayout(1,1));
+        JButton boutonModif = new JButton("Modifier");
+        panelBouton.setLayout(new GridLayout(2,1));
+        panelBouton.add(boutonModif);
         panelBouton.add(boutonSupp);
 
         
@@ -166,6 +170,35 @@ public JPanel afficheProduitGraphique(final IProduit p, final JPanel panelProdui
   	        	  Application.getAppli().getiPanHandler().supprimer(p, pan);
   			} catch (Exception e2) {
   				System.out.println("Erreur lors de la suppression");
+  				System.out.println(Application.getAppli().getiMagHandler());
+  			}
+    	    	
+    	    	rechargerPanier();
+  	      }
+        });
+        
+        
+        boutonModif.addActionListener(new ActionListener(){
+  	      public void actionPerformed(ActionEvent e){
+  	    	  
+  	    	String s = (String)JOptionPane.showInputDialog(
+   	    		   null,
+   	    		   "Modifier la quantité ?",
+   	    		   "Ajout au panier",
+   	    		   JOptionPane.QUESTION_MESSAGE,
+   	    		   null,
+   	    		   null,
+   	    		   p.getQuantites());
+  	    	
+  	    	  try {
+  	    		  
+  	    		if ((s != null) && (s.length() > 0) ){
+  	    			Application.getAppli().getiPanHandler().modifier(p, frameMagasin.getMag(), Integer.parseInt(s));
+  	    			rechargerPanier();
+  	    		}
+  	        	  
+  			} catch (Exception e2) {
+  				System.out.println("Erreur lors de la modification");
   				System.out.println(Application.getAppli().getiMagHandler());
   			}
     	    	
