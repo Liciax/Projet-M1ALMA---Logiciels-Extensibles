@@ -17,16 +17,20 @@
 ## Installation
 * Dans un terminal, allez dans le dossier /src du projet.
 * Tapez la commande suivante qui va servir à compiler le projet :
+
     ./install.sh
 * Si vous n'avez pas les droits pour lancer le script tapez :
+
     chmod +x install.sh
     ./install.sh
 
 ## Lancer l'application
 * Toujours dans un terminal, dans le dossier /src du projet.
 * Pour exécuter l'application, tapez la commande suivante :
+
     ./execute.sh
 * Si vous n'avez pas les droits pour lancer le script tapez :
+
     chmod +x execute.sh
     ./execute.sh
 
