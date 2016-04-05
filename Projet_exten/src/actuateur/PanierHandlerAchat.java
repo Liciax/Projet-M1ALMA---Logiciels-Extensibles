@@ -54,8 +54,17 @@ public class PanierHandlerAchat implements IPanierHandler {
 		}
 	}
 	
+	@Override
+	public String calculePrix(IMagasin magasin) {
+		int prix = 0;
+		for(IProduit proPan2: magasin.getPanier().getContenu()){
+			prix += proPan2.getPrix() * proPan2.getQuantites();
+		}
+		return "Vous allez devoir payer : " + prix + " €";
+	}
+	
 	// valide simule un achat, donc vidage du contenu du panier
-	public boolean valider(IMagasin magasin, IAfficheur aff) {
+	public boolean valider(IMagasin magasin) {
 		float prix = 0;
 		for(IProduit proPan: magasin.getPanier().getContenu()){
 			for (IProduit proMag : magasin.getProduits()) {
@@ -76,7 +85,6 @@ public class PanierHandlerAchat implements IPanierHandler {
 			}
 		}
 		magasin.getPanier().getContenu().clear();
-		aff.affichePhrase("Vous allez devoir payer : " + prix + " e", null);
 		return true;
 	}
 	

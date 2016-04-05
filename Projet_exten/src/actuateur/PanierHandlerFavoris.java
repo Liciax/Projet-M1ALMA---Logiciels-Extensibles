@@ -56,19 +56,18 @@ public class PanierHandlerFavoris implements IPanierHandler {
 		}
 	}
 	
+	@Override
+	public String calculePrix(IMagasin magasin) {
+		int prix = 0;
+		for(IProduit proPan2: magasin.getPanier().getContenu()){
+			prix += proPan2.getPrix() * proPan2.getQuantites();
+		}
+		return "Vos favoris couteraient " + prix + " €:";
+	}
+	
 	//valide les favoris ajouté dans le panier
-	public boolean valider(IMagasin magasin, IAfficheur aff) {
-	  aff.affichePhrase("Voici la liste de vos favoris : ",null);
-		for(IProduit p: magasin.getPanier().getContenu()){
-		  aff.affichePhrase(p.toString(),null);
-		}
-		Scanner sc = new Scanner(System.in);
-		String rep = aff.affichePhrase("voulez-vous tenter d'acheter ce panier? [o/n]:",sc);
-		if(rep.startsWith("o")){
-		  return false;
-		} else {
-	        return true;
-		}
+	public boolean valider(IMagasin magasin) {
+	   return true;
 	}
 
 }

@@ -12,5 +12,7 @@ public interface IPanierHandler {
 	
 	public void supprimer(IProduit p, IMagasin magasin);
 	
-	public boolean valider(IMagasin magasin, IAfficheur aff);
+	public String calculePrix(IMagasin magasin);
+	
+	public boolean valider(IMagasin magasin);
 }

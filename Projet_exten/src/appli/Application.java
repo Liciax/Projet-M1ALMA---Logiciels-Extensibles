@@ -36,7 +36,6 @@ public class Application implements IApplication{
     /* (non-Javadoc)
      * @see appli.IApplication#getiProducteur()
      */
-    @Override
     public IProducteur getiProducteur() {
         return iProduc;
     }
@@ -44,7 +43,6 @@ public class Application implements IApplication{
     /* (non-Javadoc)
      * @see appli.IApplication#getiProducteur()
      */
-    @Override
     public void setiProducteur(IProducteur iProducteur) {
         this.iProduc = iProducteur;
     }
@@ -52,7 +50,6 @@ public class Application implements IApplication{
     /* (non-Javadoc)
      * @see appli.IApplication#getiProducteur()
      */
-    @Override
     public IMagasinHandler getiMagHandler() {
         return iMagHandler;
     }
@@ -60,7 +57,6 @@ public class Application implements IApplication{
     /* (non-Javadoc)
      * @see appli.IApplication#getiProducteur()
      */
-    @Override
     public void setiMagHandler(IMagasinHandler iMagHandler) {
         this.iMagHandler = iMagHandler;
     }
@@ -68,7 +64,6 @@ public class Application implements IApplication{
     /* (non-Javadoc)
      * @see appli.IApplication#getiProducteur()
      */
-    @Override
     public IPanierHandler getiPanHandler() {
         return iPanHandler;
     }
@@ -76,7 +71,6 @@ public class Application implements IApplication{
     /* (non-Javadoc)
      * @see appli.IApplication#getiProducteur()
      */
-    @Override
     public void setiPanHandler(IPanierHandler iPanHandler) {
         this.iPanHandler = iPanHandler;
     }
@@ -84,7 +78,6 @@ public class Application implements IApplication{
     /* (non-Javadoc)
      * @see appli.IApplication#getiProducteur()
      */
-    @Override
     public IAfficheur getiAffich() {
         return iAffich;
     }
@@ -92,7 +85,6 @@ public class Application implements IApplication{
     /* (non-Javadoc)
      * @see appli.IApplication#getiProducteur()
      */
-    @Override
     public void setiAffich(IAfficheur iAffich) {
         this.iAffich = iAffich;
     }
@@ -303,7 +295,8 @@ public class Application implements IApplication{
                   break;
               
                 case 3:
-                    iPanHandler.valider(iProduc.getMagasin(), iAffich);
+                	System.out.println(iPanHandler.calculePrix(iProduc.getMagasin()));
+                    iPanHandler.valider(iProduc.getMagasin());
                   break;
                 
             }

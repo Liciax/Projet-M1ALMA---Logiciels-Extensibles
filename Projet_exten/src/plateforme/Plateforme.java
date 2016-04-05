@@ -12,7 +12,7 @@ import java.net.URLClassLoader;
 import java.nio.file.*;
 import java.util.ArrayList;
 
-import proxyHandler.PanierHandler;
+import proxyHandler.PanierProxy;
 
 public class Plateforme {
   
@@ -193,7 +193,7 @@ public class Plateforme {
 	  if(nomClasse.contains("proxy=")){
 //		  if(nomClasse.contains("type=actuateur.IPanierHandler")){
 			  Class<?>[] interfaces = {urlExtLoader.loadClass((nomClasse.split(";")[2]).split("=")[1])};//IPanierHandler.class};
-		      Object inst = Proxy.newProxyInstance(urlExtLoader, interfaces, new PanierHandler(target));
+		      Object inst = Proxy.newProxyInstance(urlExtLoader, interfaces, new PanierProxy(target));
 		      return inst;
 //		  } else {
 //			  System.out.println("demande de proxy refusee");
