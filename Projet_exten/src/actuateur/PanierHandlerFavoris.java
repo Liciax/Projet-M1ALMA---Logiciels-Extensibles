@@ -47,6 +47,15 @@ public class PanierHandlerFavoris implements IPanierHandler {
 		}       
 	}
 	
+	// supprime le produit du panier
+	public void supprimer(IProduit produit, IMagasin magasin) {
+		if(magasin.getProduits().contains(produit)) {
+			magasin.getProduits().remove(produit);
+		}else {
+			System.out.println("Erreur : ce produit n'est pas dans le magasin.");
+		}
+	}
+	
 	//valide les favoris ajouté dans le panier
 	public boolean valider(IMagasin magasin, IAfficheur aff) {
 	  aff.affichePhrase("Voici la liste de vos favoris : ",null);

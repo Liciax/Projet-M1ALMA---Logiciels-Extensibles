@@ -27,13 +27,13 @@ import appli.Application;
 import donnees.IMagasin;
 import donnees.IProduit;
 
-public class InterfaceInitiale extends JFrame{
+public class FenetreInitiale extends JFrame{
 
 	
 	private JPanel layout = new JPanel();
 	
 	
-	public InterfaceInitiale(final IMagasin mag) {
+	public FenetreInitiale(final IMagasin mag) {
 		
 		this.setLocationRelativeTo(null);
 	    this.setTitle("Magasin");
@@ -169,6 +169,7 @@ public class InterfaceInitiale extends JFrame{
       	    	rechargerMagasin(panelProduit, mag);
     	      }
           });
+        
         
         boutonPanier.addActionListener(new ActionListener(){
   	      public void actionPerformed(ActionEvent e){

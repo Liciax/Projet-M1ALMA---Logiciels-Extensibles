@@ -45,6 +45,15 @@ public class PanierHandlerAchat implements IPanierHandler {
 		}
 	}
 	
+	// supprime le produit du panier
+	public void supprimer(IProduit produit, IMagasin magasin) {
+		if(magasin.getProduits().contains(produit)) {
+			magasin.getProduits().remove(produit);
+		}else {
+			System.out.println("Erreur : ce produit n'est pas dans le magasin.");
+		}
+	}
+	
 	// valide simule un achat, donc vidage du contenu du panier
 	public boolean valider(IMagasin magasin, IAfficheur aff) {
 		float prix = 0;
