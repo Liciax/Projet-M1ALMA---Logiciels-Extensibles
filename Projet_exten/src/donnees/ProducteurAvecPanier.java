@@ -3,6 +3,7 @@ package donnees;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class ProducteurAvecPanier implements IProducteur {
 
@@ -113,17 +114,24 @@ private IMagasin Magasin;
 	    public IMagasin getMagasin() {
 	      if(Magasin == null) {
 	        Class<?> magasin = null;
+	        int i = 0;
+	        ArrayList<IProduit> stock = null;
             ArrayList<String> magPos = new ArrayList<String>();
             System.out.println("liste des magasins: ");
             for (String s : donnees) {
                 if(s.contains("donnees.Magasin")) {
                     magPos.add(s.split(";")[0].split("=")[1]);
-                    System.out.println(s.split(";")[1].split("=")[1]);
+                    System.out.println(i + " : " + s.split(";")[1].split("=")[1]);
+                    i++;
                     if(s.split(";")[2].split("=")[1].equals("now")) {
                       System.out.println("load obligatoire, debut...");
                         try {
                           Magasin = newMagasin(s);
                           Magasin.setNomMag(s.split(";")[1].split("=")[1]);
+                          stock = getProduits(Magasin);
+                          Magasin.setProduits(stock);
+                          Magasin.setPanier(getPanier());
+                          return Magasin;
                           
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -131,8 +139,17 @@ private IMagasin Magasin;
                     }
                 }
             }
-
-            ArrayList<IProduit> stock = getProduits(Magasin);
+            System.out.println("quel magasin ouvrir? ");
+            Scanner sc = new Scanner(System.in);
+            i = sc.nextInt();
+            try {
+				Magasin = newMagasin(magPos.get(i));
+			} catch (ClassNotFoundException | InstantiationException
+					| IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            stock = getProduits(Magasin);
             Magasin.setProduits(stock);
             Magasin.setPanier(getPanier());
 	      }

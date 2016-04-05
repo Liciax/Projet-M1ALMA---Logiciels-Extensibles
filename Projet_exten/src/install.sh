@@ -7,8 +7,8 @@ PROGRAM_NAME=plateforme/Plateforme.java
 #PROGRAM_NAME="${PROJECT_PATH}/plateforme/Plateforme.java"
 
 jar cf appli.jar appli/*
-jar cf plateforme.jar plateforme/*
-jar cf extension.jar actuateur/* afficheur/* donnees/* proxyHandler/*
+jar cf plateforme.jar plateforme/* proxyHandler/*
+jar cf extension.jar actuateur/* afficheur/* donnees/* 
 
 for i in `ls ./*.jar`
   do

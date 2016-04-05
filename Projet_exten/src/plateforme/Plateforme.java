@@ -12,8 +12,6 @@ import java.net.URLClassLoader;
 import java.nio.file.*;
 import java.util.ArrayList;
 
-import actuateur.IPanierHandler;
-
 import proxyHandler.PanierHandler;
 
 public class Plateforme {
@@ -100,9 +98,9 @@ public class Plateforme {
             System.out.println("--------------------------------");
             try {
               Class<?> appli = urlAppliLoader.loadClass((liste_applis.get(i).split(";")[0]).split("=")[1]);
-              Method m = appli.getDeclaredMethod("getAppli", null);
+              Method m = appli.getDeclaredMethod("getAppli");
               
-              Object app = m.invoke(null, null);
+              Object app = m.invoke(null);
               return app;
             } catch (ClassNotFoundException e) {
                 // TODO Auto-generated catch block
@@ -191,15 +189,15 @@ public class Plateforme {
   }
   
   public Object CreaInstance(String nomClasse) throws Exception{
-	  Object target = urlAppliLoader.loadClass((nomClasse.split(";")[0]).split("=")[1]).newInstance();
+	  Object target = urlExtLoader.loadClass((nomClasse.split(";")[0]).split("=")[1]).newInstance();
 	  if(nomClasse.contains("proxy=")){
-		  if(nomClasse.contains("type=IPanierHandler")){
-			  Class<?>[] interfaces = {IPanierHandler.class};
-		      Object inst = Proxy.newProxyInstance(urlAppliLoader, interfaces, new PanierHandler(target));
+//		  if(nomClasse.contains("type=actuateur.IPanierHandler")){
+			  Class<?>[] interfaces = {urlExtLoader.loadClass((nomClasse.split(";")[2]).split("=")[1])};//IPanierHandler.class};
+		      Object inst = Proxy.newProxyInstance(urlExtLoader, interfaces, new PanierHandler(target));
 		      return inst;
-		  } else {
-			  System.out.println("demande de proxy refusee");
-		  }
+//		  } else {
+//			  System.out.println("demande de proxy refusee");
+//		  }
 	  }
       return target;
   }   
@@ -214,8 +212,8 @@ public class Plateforme {
   
   public static void makeClassDoIt(Object obj) throws Exception {
     String temp = "doIt";
-    Method m1 = obj.getClass().getMethod(temp, null);
-    m1.invoke(obj, null);
+    Method m1 = obj.getClass().getMethod(temp);
+    m1.invoke(obj);
 }
   
   public static void main(String args[]) {

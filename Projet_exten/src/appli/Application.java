@@ -113,7 +113,7 @@ public class Application implements IApplication{
         IAfficheur aff = null;
         System.out.println("liste des affichages : ");
         for (i = 0; i < listeExtention.size(); i++) {
-            if(listeExtention.get(i).contains("type=IAfficheur")) {
+            if(listeExtention.get(i).contains("type=afficheur.IAfficheur")) {
                 System.out.println(i + " - " + listeExtention.get(i));
                 if(listeExtention.get(i).contains("load=now")){
                     System.out.println("Load immediat...");
@@ -145,7 +145,7 @@ public class Application implements IApplication{
         IProducteur prod = null;
         System.out.println("liste des Producteurs : ");
         for (i = 0; i < listeExtention.size(); i++) {
-            if(listeExtention.get(i).contains("type=IProducteur")) {
+            if(listeExtention.get(i).contains("type=donnees.IProducteur")) {
                 System.out.println(i + " - " + listeExtention.get(i));
                 if(listeExtention.get(i).contains("load=now")){
                     System.out.println("Load immediat...");
@@ -177,7 +177,7 @@ public class Application implements IApplication{
         IMagasinHandler maghand = null;
         System.out.println("liste des managers de Magasins : ");
         for (i = 0; i < listeExtention.size(); i++) {
-            if(listeExtention.get(i).contains("type=IMagasinHandler")) {
+            if(listeExtention.get(i).contains("type=actuateur.IMagasinHandler")) {
                 System.out.println(i + " - " + listeExtention.get(i));
                 if(listeExtention.get(i).contains("load=now")){
                     System.out.println("Load immediat...");
@@ -209,7 +209,7 @@ public class Application implements IApplication{
         IPanierHandler panhand = null;
         System.out.println("liste des managers de Panier : ");
         for (i = 0; i < listeExtention.size(); i++) {
-            if(listeExtention.get(i).contains("type=IPanierHandler")) {
+            if(listeExtention.get(i).contains("type=actuateur.IPanierHandler")) {
                 System.out.println(i + " - " + listeExtention.get(i));
                 if(listeExtention.get(i).contains("load=now")){
                     System.out.println("Load immediat...");
