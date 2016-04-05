@@ -28,8 +28,24 @@ public class FenetrePanier extends JFrame {
 	private IPanier pan;
 	private JPanel panelProduit;
 	
-	private JLabel titre;
+	private String titre;
 	
+	private JLabel labelTitre;
+	
+	/**
+	 * @return the titre
+	 */
+	public String getTitre() {
+		return titre;
+	}
+
+	/**
+	 * @param titre the titre to set
+	 */
+	public void setTitre(String titre) {
+		this.titre = titre;
+	}
+
 	private float prixPanier;
 	private String titrePanier;
 	
@@ -83,10 +99,9 @@ public class FenetrePanier extends JFrame {
 
 	    JButton bouton =  new JButton("Valider");
 	    
-	    titrePanier = "Votre panier : " + prixPanier + "€";
-	    titre = new JLabel(titrePanier);
+	    labelTitre = new JLabel(titre);
 	    
-	    this.getContentPane().add(titre, BorderLayout.NORTH);
+	    this.getContentPane().add(labelTitre, BorderLayout.NORTH);
 	    
 	    bouton.addActionListener(new ActionListener(){
 	  	      public void actionPerformed(ActionEvent e){
@@ -172,8 +187,7 @@ public JPanel afficheProduitGraphique(final IProduit p, final JPanel panelProdui
 			panier.setBorder(BorderFactory.createLineBorder(Color.black));
 			prixPanier = prixPanier + (pan.getContenu().get(i).getPrix() * pan.getContenu().get(i).getQuantites());
 		}
-		titrePanier = "Votre panier : " + prixPanier + "€";
-	    titre.setText(titrePanier);
+	    labelTitre.setText(Application.getAppli().getiPanHandler().calculePrix(frameMagasin.getMag()));
 		panelProduit.updateUI();
 }
 

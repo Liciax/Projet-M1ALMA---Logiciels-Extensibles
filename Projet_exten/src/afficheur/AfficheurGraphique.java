@@ -18,6 +18,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import appli.Application;
+
 import donnees.IMagasin;
 import donnees.IPanier;
 import donnees.IProduit;
@@ -73,6 +75,7 @@ public class AfficheurGraphique implements IAfficheur{
 		framePanier.setSize(500,400);
 		frameMagasin.setFramePanier(framePanier);
 		framePanier.setFrameMagasin(frameMagasin);
+		framePanier.setTitre(Application.getAppli().getiPanHandler().calculePrix(frameMagasin.getMag()));
 	}
 	
 	   public String affichePhrase(String s, Scanner sc) {
