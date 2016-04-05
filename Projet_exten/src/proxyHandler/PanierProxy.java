@@ -21,10 +21,12 @@ public class PanierProxy implements InvocationHandler {
 	public PanierProxy(String nomClasse, URLClassLoader urlExtLoader) {
 	  Object o = null;
     try {
-      o = urlExtLoader.loadClass((nomClasse.split(";")[0]).split("=")[1]).newInstance();
-    } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+//      o = urlExtLoader.loadClass((nomClasse.split(";")[0]).split("=")[1]).newInstance();
+      o = Plateforme.getPlateforme().creaInstance(nomClasse.split(";")[0]);
+    } catch (Exception e) {
       try {
-        o = urlExtLoader.loadClass((nomClasse.split(";")[4]).split("=")[1]).newInstance();
+        Plateforme.getPlateforme().creaInstance((nomClasse.split(";")[4]));
+//        o = urlExtLoader.loadClass((nomClasse.split(";")[4]).split("=")[1]).newInstance();
       } catch (Exception e1) {
         // TODO Auto-generated catch block
         e1.printStackTrace();

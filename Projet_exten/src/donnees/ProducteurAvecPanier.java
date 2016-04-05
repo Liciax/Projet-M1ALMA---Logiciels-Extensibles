@@ -16,7 +16,7 @@ private IMagasin Magasin;
 		Magasin = null;
 		
 		try {
-			BufferedReader br = new BufferedReader(new FileReader("donnees/donnees.txt"));
+			BufferedReader br = new BufferedReader(new FileReader("src/donnees/donnees.txt"));
 			String ligne;
 			while((ligne = br.readLine())!=null) {
 				donnees.add(ligne);
