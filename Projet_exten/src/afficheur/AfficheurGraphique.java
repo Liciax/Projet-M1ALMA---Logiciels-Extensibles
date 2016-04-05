@@ -19,7 +19,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import appli.Application;
-
 import donnees.IMagasin;
 import donnees.IPanier;
 import donnees.IProduit;
@@ -78,13 +77,14 @@ public class AfficheurGraphique implements IAfficheur{
 		framePanier.setTitre(Application.getAppli().getiPanHandler().calculePrix(frameMagasin.getMag()));
 	}
 	
-	   public String affichePhrase(String s, Scanner sc) {
-	      System.out.println(s);
-	      String obj =null;
-	      if(sc != null) {
-	        obj = sc.next();
-	      }
-	      return obj;
-	    }
+    public String affichePhrase(String s , boolean estQuestion) {
+      System.out.println(s);
+      String obj = null;
+      if(estQuestion){
+        Scanner sc = new Scanner(System.in);
+        obj = sc.next();
+      }
+      return obj;
+    }
 	
 }

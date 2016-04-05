@@ -20,10 +20,11 @@ public class AfficheurConsole implements IAfficheur{
 		System.out.println(pan.toString());
 	}
 	
-	public String affichePhrase(String s , Scanner sc) {
+	public String affichePhrase(String s , boolean estQuestion) {
 	  System.out.println(s);
 	  String obj = null;
-	  if(sc != null){
+	  if(estQuestion){
+	    Scanner sc = new Scanner(System.in);
 	    obj = sc.next();
 	  }
 	  return obj;

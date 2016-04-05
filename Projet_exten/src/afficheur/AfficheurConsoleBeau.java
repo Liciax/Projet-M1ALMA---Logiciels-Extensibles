@@ -34,13 +34,13 @@ public class AfficheurConsoleBeau implements IAfficheur{
 		}
 	}
 	
-	   public String affichePhrase(String s, Scanner sc) {
-	      System.out.println(s);
-	      String obj = null;
-	      if(sc != null) {
-	          obj = sc.next();
-	      }
-	      return obj;
-	    }
-
+    public String affichePhrase(String s , boolean estQuestion) {
+      System.out.println(s);
+      String obj = null;
+      if(estQuestion){
+        Scanner sc = new Scanner(System.in);
+        obj = sc.next();
+      }
+      return obj;
+    }
 }

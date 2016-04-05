@@ -14,6 +14,6 @@ public interface IAfficheur {
 	
 	public void affichePanier(IPanier pan);
 	
-	public String affichePhrase(String s, Scanner sc);
+	public String affichePhrase(String s, boolean estQuestion);
 	
 }

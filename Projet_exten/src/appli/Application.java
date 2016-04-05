@@ -210,18 +210,18 @@ public class Application implements IApplication{
         int quantites;
         while(true) {
             
-            i = Integer.parseInt(iAffich.affichePhrase("travailler avec quel donnees: 1-magasin, 2-panier :", sc));
+            i = Integer.parseInt(iAffich.affichePhrase("travailler avec quel donnees: 1-magasin, 2-panier :", true));
             switch(i){
 ///////////////////////////////////////////////////////////////////////////
               case 1:
                 iAffich.afficheMagasin(iProduc.getMagasin());
-                i = Integer.parseInt(iAffich.affichePhrase("vous voulez 1- ajouter un produit, 2- modifier un produit, 3-supprimer un produit? :", sc));
+                i = Integer.parseInt(iAffich.affichePhrase("vous voulez 1- ajouter un produit, 2- modifier un produit, 3-supprimer un produit? :", true));
                 switch(i){
                   case 1:
-                    nom = iAffich.affichePhrase("entrez un nom", sc);
-                    type = iAffich.affichePhrase("entrez un type",sc);
-                    prix = Float.parseFloat(iAffich.affichePhrase("entrez un prix",sc));
-                    quantites = Integer.parseInt(iAffich.affichePhrase("entrez un quantites",sc));
+                    nom = iAffich.affichePhrase("entrez un nom", true);
+                    type = iAffich.affichePhrase("entrez un type",true);
+                    prix = Float.parseFloat(iAffich.affichePhrase("entrez un prix",true));
+                    quantites = Integer.parseInt(iAffich.affichePhrase("entrez un quantites",true));
                     IProduit p = null;
                     try {
                         p = iProduc.getMagasin().getProduits().get(0).getClass().newInstance();
@@ -236,14 +236,16 @@ public class Application implements IApplication{
                     break;
                     
                   case 2:
-                    j = Integer.parseInt(iAffich.affichePhrase("quel produit? :", sc));
+                    j = Integer.parseInt(iAffich.affichePhrase("quel produit? :", true));
                     IProduit q = iProduc.getMagasin().getProduits().get(j);
-                    j = Integer.parseInt(iAffich.affichePhrase("quel quantite ajouter/retirer? (retirer en negatif :", sc));
-                    //iMagHandler.modifier(q, iProduc.getMagasin(), j);
+                    j = Integer.parseInt(iAffich.affichePhrase("quel quantite ajouter/retirer? (retirer en negatif :", true));
+                    IProduit q2 = q;
+                    q2.setQuantites(j);
+                    iMagHandler.modifier(q, iProduc.getMagasin(), q2);
                     break;
                     
                   case 3:
-                    j = Integer.parseInt(iAffich.affichePhrase("quel produit? :", sc));
+                    j = Integer.parseInt(iAffich.affichePhrase("quel produit? :", true));
                     IProduit r = iProduc.getMagasin().getProduits().get(j);
                     iMagHandler.supprimer(r, iProduc.getMagasin());
                     break;
@@ -251,33 +253,33 @@ public class Application implements IApplication{
                 break;
 ////////////////////////////////////////////////////////////////////////////
               default:
-              i = Integer.parseInt(iAffich.affichePhrase("vous voulez 1- ajouter un produit, 2- modifier un produit, 3-supprimer un produit, 4-connaitre le prix du panier, 5-valider le panier? :", sc));
+              i = Integer.parseInt(iAffich.affichePhrase("vous voulez 1- ajouter un produit, 2- modifier un produit, 3-supprimer un produit, 4-connaitre le prix du panier, 5-valider le panier? :", true));
               switch(i){
                 case 1:
-                  j = Integer.parseInt(iAffich.affichePhrase("quel produit? :", sc));
-                  i = Integer.parseInt(iAffich.affichePhrase("quel quantite ajouter?", sc));
+                  j = Integer.parseInt(iAffich.affichePhrase("quel produit? :", true));
+                  i = Integer.parseInt(iAffich.affichePhrase("quel quantite ajouter?", true));
                   iPanHandler.ajouter(iProduc.getMagasin().getProduits().get(j), iProduc.getMagasin(), i);
                   break;
                   
                 case 2:
-                  j = Integer.parseInt(iAffich.affichePhrase("quel produit? :", sc));
+                  j = Integer.parseInt(iAffich.affichePhrase("quel produit? :", true));
                   IProduit q = iProduc.getMagasin().getPanier().getContenu().get(j);
-                  j = Integer.parseInt(iAffich.affichePhrase("quel quantite ajouter/retirer? (retirer en negatif :", sc));
+                  j = Integer.parseInt(iAffich.affichePhrase("quel quantite ajouter/retirer? (retirer en negatif :", true));
                   iPanHandler.modifier(q, iProduc.getMagasin(), j);
                   break;
               
                 case 3:
-                	j = Integer.parseInt(iAffich.affichePhrase("quel produit? :", sc));
+                	j = Integer.parseInt(iAffich.affichePhrase("quel produit? :", true));
                 	IProduit r = iProduc.getMagasin().getPanier().getContenu().get(j);
                 	iPanHandler.supprimer(r, iProduc.getMagasin().getPanier());
                   break;
                   
                 case 4:
-                	iAffich.affichePhrase(iPanHandler.calculePrix(iProduc.getMagasin()), null);
+                	iAffich.affichePhrase(iPanHandler.calculePrix(iProduc.getMagasin()), false);
                   break;
                   
                 case 5:
-                	iAffich.affichePhrase(iPanHandler.calculePrix(iProduc.getMagasin()),null);
+                	iAffich.affichePhrase(iPanHandler.calculePrix(iProduc.getMagasin()), false);
                     iPanHandler.valider(iProduc.getMagasin());
                   break;
                 
