@@ -2,6 +2,7 @@ package actuateur;
 
 import afficheur.IAfficheur;
 import donnees.IMagasin;
+import donnees.IPanier;
 import donnees.IProduit;
 
 public interface IPanierHandler {
@@ -10,7 +11,7 @@ public interface IPanierHandler {
 
 	public void modifier(IProduit p, IMagasin magasin, int quantite);
 	
-	public void supprimer(IProduit p, IMagasin magasin);
+	public void supprimer(IProduit p, IPanier panier);
 	
 	public boolean valider(IMagasin magasin, IAfficheur aff);
 }

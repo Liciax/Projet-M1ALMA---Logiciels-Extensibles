@@ -32,9 +32,43 @@ public class FenetreInitiale extends JFrame{
 	
 	private JPanel layout = new JPanel();
 	
+	private FenetrePanier framePanier;
+	private IMagasin mag;
 	
-	public FenetreInitiale(final IMagasin mag) {
-		
+	/**
+	 * @return the mag
+	 */
+	public IMagasin getMag() {
+		return mag;
+	}
+
+
+	/**
+	 * @param mag the mag to set
+	 */
+	public void setMag(IMagasin mag) {
+		this.mag = mag;
+	}
+
+
+	/**
+	 * @return the framePanier
+	 */
+	public JFrame getFramePanier() {
+		return framePanier;
+	}
+
+
+	/**
+	 * @param framePanier the framePanier to set
+	 */
+	public void setFramePanier(FenetrePanier framePanier) {
+		this.framePanier = framePanier;
+	}
+
+
+	public FenetreInitiale(final IMagasin magasin) {
+		this.mag = magasin;
 		this.setLocationRelativeTo(null);
 	    this.setTitle("Magasin");
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -179,12 +213,21 @@ public class FenetreInitiale extends JFrame{
   	    		   "Quelle quantité voulez-vous ajouter au panier ?",
   	    		   "Ajout au panier",
   	    		   JOptionPane.QUESTION_MESSAGE,
-  	    		   new ImageIcon( 
-  	    		         getClass().getResource("arbre.gif")),
+  	    		   null,
   	    		   null,
   	    		   p.getQuantites());
   	    	
 	    	  try {
+	    		  //if ((s != null) && (s.length() > 0) && Integer.parseInt(s)<=p.getQuantites() && Integer.parseInt(s)>0 ){
+	    		  if ((s != null) && (s.length() > 0) && Integer.parseInt(s)>0 ){
+	    			  System.out.println("Produit ajouté au panier");
+	    			  Application.getAppli().getiPanHandler().ajouter(p, mag, Integer.parseInt(s));
+	    			  framePanier.rechargerPanier();
+	    			  
+	    		  }
+	    		  else{
+	    			  System.out.println("Produit non ajouté");
+	    		  }
 	        	  //Application.getAppli().getiPanHandler().ajouter(p, magasin, quantite);
 			} catch (Exception e2) {
 				System.out.println("Erreur lors de la suppression");
