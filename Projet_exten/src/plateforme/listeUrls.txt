@@ -6,6 +6,5 @@ actuateur/MagasinHandlerNormal.java
 afficheur/AfficheurConsole.java
 afficheur/AfficheurConsoleBeau.java
 afficheur/AfficheurGraphique.java
-appli/Application.java
 donnees/ProducteurAvecPanier.java
 donnees/ProducteurDefault.java

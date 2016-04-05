@@ -9,7 +9,7 @@ import java.lang.reflect.Proxy;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.nio.file.Paths;
+import java.nio.file.*;
 import java.util.ArrayList;
 
 import actuateur.IPanierHandler;
