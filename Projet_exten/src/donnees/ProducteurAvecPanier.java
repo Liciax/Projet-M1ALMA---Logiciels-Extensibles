@@ -120,7 +120,7 @@ private IMagasin Magasin;
             System.out.println("liste des magasins: ");
             for (String s : donnees) {
                 if(s.contains("donnees.Magasin")) {
-                    magPos.add(s.split(";")[0].split("=")[1]);
+                    magPos.add(s);
                     System.out.println(i + " : " + s.split(";")[1].split("=")[1]);
                     i++;
                     if(s.split(";")[2].split("=")[1].equals("now")) {
@@ -143,12 +143,13 @@ private IMagasin Magasin;
             Scanner sc = new Scanner(System.in);
             i = sc.nextInt();
             try {
-				Magasin = newMagasin(magPos.get(i));
+				Magasin = newMagasin(magPos.get(i).split(";")[0].split("=")[1]);
 			} catch (ClassNotFoundException | InstantiationException
 					| IllegalAccessException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+            Magasin.setNomMag(magPos.get(i).split(";")[1].split("=")[1]);
             stock = getProduits(Magasin);
             Magasin.setProduits(stock);
             Magasin.setPanier(getPanier());
