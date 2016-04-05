@@ -31,8 +31,11 @@ public class Plateforme {
     urlAppliLoader = new URLClassLoader(loadAppURL());
   }
   
-
-  public void readApplicationsAvailable() {//recupere la liste des applications et la sauvegarde
+  /*
+   * lis la liste des applications disponibles et la sauvegarde (à condition que le fichier n'ait pas déjà été lu et que le fichier contienne au moins 1 application)  
+   * 
+   */
+  public void readApplicationsAvailable() {
     if(liste_applis.size() <1) {
       BufferedReader br;
       int i;
@@ -53,24 +56,11 @@ public class Plateforme {
     } 
   }
   
-  public URL[] loadAppURL() {//genere l'URLClassloader pour les applis
-    // URL[] listeURL = new URL[liste_applis.size()];
-    // String path = new File("").getAbsolutePath();
-    // String templigne = "";
-    // for(int i = 0; i < liste_applis.size(); i++) {
-    //   templigne = liste_applis.get(i).split(";")[0].split("=")[1];
-    //   URL url ;
-    //   try {
-    //     url = Paths.get(path,templigne).toUri().toURL();
-    //     System.out.println(url);
-    //     listeURL[i] = url;
-    //   } catch (MalformedURLException e) {
-    //     // TODO Auto-generated catch block
-    //     e.printStackTrace();
-    //   }
-    //   templigne= "";
-    // }
-    // return listeURL;
+  /*
+   * génère l'URLClassloader pour les applications a partir d'appli.jar
+   * 
+   */
+  public URL[] loadAppURL() {
 
     URL[] listeURL = new URL[1];
     String path = new File("").getAbsolutePath();
@@ -87,7 +77,11 @@ public class Plateforme {
     return listeURL;
   }
 
-  
+  /*
+   * affiche toutes les applications disponibles puis demande a l'utilisateur de choisir laquelle lancer. 
+   * Ce choix peut etre outrepassé si une application est specifiée comme devant etre chargée immediatement.
+   * 
+   */
   public Object loadAppli(){
     int i;
     System.out.println("Voici la liste des applications que vous pouvez charger :");
@@ -124,7 +118,11 @@ public class Plateforme {
     return null;
   }
   
-  public void readExtensionsAvailable() {//recupere la liste des applications et la sauvegarde
+  /*
+   * lis la liste des extensions disponibles et la sauvegarde (à condition que le fichier n'ait pas déjà été lu et que le fichier contienne au moins 1 extension)  
+   * 
+   */
+  public void readExtensionsAvailable() {
     if(liste_extensions.size() <1) {
       BufferedReader br;
       int i;
@@ -145,24 +143,11 @@ public class Plateforme {
     } 
   }
   
-  public URL[] loadExtURL() {//genere l'URLClassloader pour les extensions
-    // URL[] listeURL = new URL[liste_extensions.size()];
-    // String path = new File("").getAbsolutePath();
-    // String templigne = "";
-    // for(int i = 0; i < liste_extensions.size(); i++) {
-    //   templigne = liste_extensions.get(i).split(";")[0].split("=")[1];
-    //   URL url ;
-    //   try {
-    //     url = Paths.get(path,templigne).toUri().toURL();
-    //     System.out.println(url);
-    //     listeURL[i] = url;
-    //   } catch (MalformedURLException e) {
-    //     // TODO Auto-generated catch block
-    //     e.printStackTrace();
-    //   }
-    //   templigne= "";
-    // }
-    // return listeURL;
+  /*
+   * génère l'URLClassloader pour les extensions a partir d'extension.jar
+   * 
+   */
+  public URL[] loadExtURL() {
 
     URL[] listeURL = new URL[1];
     String path = new File("").getAbsolutePath();
@@ -181,13 +166,17 @@ public class Plateforme {
     return listeURL;
   }
   
-  public ArrayList<String> getExtensions() {
+  public ArrayList<String> getListe_extensions() {
     if(liste_extensions.size() <1) {
       readExtensionsAvailable();
     }
     return liste_extensions;
   }
   
+  /*
+   * genere une instance a partir de nomClasse qui est la ligne dans le fichier listant les Extensions decrivant l'extension souhaitée (avec possibilité de proxy)
+   * 
+   */
   public Object creaInstance(String nomClasse) throws Exception{
 	  Object target = null;
 	  if(nomClasse.contains("proxy=")){
@@ -200,14 +189,15 @@ public class Plateforme {
       return target;
   }   
   
-  public ArrayList<String> getListe_extensions() {
-      return liste_extensions;
-  }
   
   public void setListe_extensions(ArrayList<String> liste_extensions) {
       this.liste_extensions = liste_extensions;
   }
   
+  /*
+   * demande a l'application de commencer son execution
+   * 
+   */
   public static void makeClassDoIt(Object obj) throws Exception {
     String temp = "doIt";
     Method m1 = obj.getClass().getMethod(temp);

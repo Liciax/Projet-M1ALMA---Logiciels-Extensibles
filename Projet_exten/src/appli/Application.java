@@ -67,7 +67,7 @@ public class Application implements IApplication{
 
     @Override
     public void doIt() {
-        ArrayList<String> listeExtention = Plateforme.getPlateforme().getExtensions();
+        ArrayList<String> listeExtention = Plateforme.getPlateforme().getListe_extensions();
         int i;
         int j;
         boolean loadnow = false;

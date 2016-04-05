@@ -3,7 +3,7 @@ class=donnees.ProduitConcret;Nom=Banana d'Afrique;Type=Aliment;Prix=1.5;Quantite
 class=donnees.ProduitConcret;Nom=Boeuf;Type=Aliment;Prix=18.5;Quantites=5;NomMag=Auchan;
 class=donnees.ProduitConcret;Nom=Toto au zoo;Type=Livre;Prix=8.9;Quantites=2;NomMag=Auchan;
 class=donnees.ProduitConcret;Nom=TShirt HellFest;Type=Vetements;Prix=20;Quantites=10;NomMag=Auchan;
-class=donnees.MagasinAvecPanier;NomMag=Auchan2;load=later;
+class=donnees.MagasinAvecPanier;NomMag=Auchan2;load=now;
 class=donnees.ProduitConcret;Nom=Banana d'Afrique;Type=Aliment;Prix=1.5;Quantites=50;NomMag=Auchan2;
 class=donnees.ProduitConcret;Nom=Boeuf;Type=Aliment;Prix=18.5;Quantites=5;NomMag=Auchan2;
 class=donnees.ProduitConcret;Nom=Toto au zoo;Type=Livre;Prix=8.9;Quantites=2;NomMag=Auchan2;
@@ -14,4 +14,3 @@ class=donnees.ProduitConcret;Nom=test2;Type=test;Prix=10;Quantites=10;NomMag=Auc
 class=donnees.ProduitConcret;Nom=test3;Type=test;Prix=100;Quantites=1;NomMag=Auchan2;
 class=donnees.ProduitConcret;Nom=test4;Type=test;Prix=1000;Quantites=10;NomMag=Auchan2;
 class=donnees.ProduitConcret;Nom=test5;Type=test;Prix=10000;Quantites=1;NomMag=Auchan2;
-class=donnees.PanierSimple;

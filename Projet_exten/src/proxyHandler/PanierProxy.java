@@ -25,7 +25,7 @@ public class PanierProxy implements InvocationHandler {
       o = Plateforme.getPlateforme().creaInstance(nomClasse.split(";")[0]);
     } catch (Exception e) {
       try {
-        Plateforme.getPlateforme().creaInstance((nomClasse.split(";")[4]));
+        o = Plateforme.getPlateforme().creaInstance((nomClasse.split(";")[4]));
 //        o = urlExtLoader.loadClass((nomClasse.split(";")[4]).split("=")[1]).newInstance();
       } catch (Exception e1) {
         // TODO Auto-generated catch block
@@ -42,7 +42,7 @@ public class PanierProxy implements InvocationHandler {
 	    if(method.getName().equals("valider")) {
 	    	boolean val = (boolean)res;
 	    	if(val == false) {
-	    		ArrayList<String> listeExtention = Plateforme.getPlateforme().getExtensions();
+	    		ArrayList<String> listeExtention = Plateforme.getPlateforme().getListe_extensions();
 	    		int i;
 	    		for (i = 0; i < listeExtention.size(); i++) {
 	    			if(listeExtention.get(i).contains("IPanierHandler")) {

@@ -60,28 +60,24 @@ private IMagasin Magasin;
 		return concret;
 	}
 	
-	public IPanier getPanier(){
-		Class<?> produit = null;
-		IPanier concret = null;
-		
-		for (String s : donnees) {
-			if(s.contains("class=donnees.Panier")) {
-				try {
-					concret = newPanier(s);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		return concret;
-	}
+//	public IPanier getPanier(){
+//		Class<?> produit = null;
+//		IPanier concret = null;
+//		
+//		for (String s : donnees) {
+//			if(s.contains("class=donnees.Panier")) {
+//				try {
+//					concret = newPanier(s);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		}
+//		return concret;
+//	}
 
-	private IPanier newPanier(String s) throws ClassNotFoundException,
-			InstantiationException, IllegalAccessException {
-//		Class<?> produit;
+	private IPanier newPanier() {
 		IPanier concret;
-//		produit = Class.forName(s.split(";")[0].split("=")[1]);
-//		concret = (IPanier) produit.newInstance();
 		concret = new PanierSimple();
 		return concret;
 	}
@@ -130,7 +126,7 @@ private IMagasin Magasin;
                           Magasin.setNomMag(s.split(";")[1].split("=")[1]);
                           stock = getProduits(Magasin);
                           Magasin.setProduits(stock);
-                          Magasin.setPanier(getPanier());
+                          Magasin.setPanier(newPanier());
                           return Magasin;
                           
                         } catch (Exception e) {
@@ -152,7 +148,7 @@ private IMagasin Magasin;
             Magasin.setNomMag(magPos.get(i).split(";")[1].split("=")[1]);
             stock = getProduits(Magasin);
             Magasin.setProduits(stock);
-            Magasin.setPanier(getPanier());
+            Magasin.setPanier(newPanier());
 	      }
 	        
 	        return Magasin;
