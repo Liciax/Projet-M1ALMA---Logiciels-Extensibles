@@ -74,7 +74,7 @@ public class AfficheurGraphique implements IAfficheur{
 		framePanier.setSize(500,400);
 		frameMagasin.setFramePanier(framePanier);
 		framePanier.setFrameMagasin(frameMagasin);
-		framePanier.setTitre(Application.getAppli().getiPanHandler().calculePrix(frameMagasin.getMag()));
+		framePanier.setTitre(Application.getAppli().getiPanHandler().calcule(frameMagasin.getMag()));
 	}
 	
     public String affichePhrase(String s , boolean estQuestion) {

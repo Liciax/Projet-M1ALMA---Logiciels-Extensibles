@@ -41,7 +41,11 @@ public class PanierHandlerAchat implements IPanierHandler {
 	public void modifier(IProduit produit, IMagasin magasin, int quantite) {
 		for(IProduit p: magasin.getPanier().getContenu()){
 			if(produit.getNom().equals(p.getNom())) {
-				p.setQuantites(p.getQuantites() + quantite);
+			    if(p.getQuantites()+quantite >=0) {
+	                p.setQuantites(p.getQuantites() + quantite);
+			    } else {
+			        p.setQuantites(0);
+			    }
 			}
 		}
 	}
@@ -56,7 +60,7 @@ public class PanierHandlerAchat implements IPanierHandler {
 	}
 	
 	@Override
-	public String calculePrix(IMagasin magasin) {
+	public String calcule(IMagasin magasin) {
 		int prix = 0;
 		for(IProduit proPan2: magasin.getPanier().getContenu()){
 			prix += proPan2.getPrix() * proPan2.getQuantites();

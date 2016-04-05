@@ -13,7 +13,7 @@ public interface IPanierHandler {
 	
 	public void supprimer(IProduit p, IPanier panier);
 	
-	public String calculePrix(IMagasin magasin);
+	public String calcule(IMagasin magasin);
 	
 	public boolean valider(IMagasin magasin);
 }

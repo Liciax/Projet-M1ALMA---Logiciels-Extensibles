@@ -220,7 +220,7 @@ public JPanel afficheProduitGraphique(final IProduit p, final JPanel panelProdui
 			panier.setBorder(BorderFactory.createLineBorder(Color.black));
 			prixPanier = prixPanier + (pan.getContenu().get(i).getPrix() * pan.getContenu().get(i).getQuantites());
 		}
-	    labelTitre.setText(Application.getAppli().getiPanHandler().calculePrix(frameMagasin.getMag()));
+	    labelTitre.setText(Application.getAppli().getiPanHandler().calcule(frameMagasin.getMag()));
 		panelProduit.updateUI();
 }
 

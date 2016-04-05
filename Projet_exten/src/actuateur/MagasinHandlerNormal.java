@@ -26,7 +26,11 @@ public class MagasinHandlerNormal implements IMagasinHandler {
 		produit.setNom(p2.getNom());
 		produit.setType(p2.getType());
 		produit.setPrix(p2.getPrix());
-		produit.setQuantites(p2.getQuantites());
+		if(p2.getQuantites() < 0) {
+		  produit.setQuantites(0);
+		} else {
+		  produit.setQuantites(p2.getQuantites());
+		}
 	
 	}
 

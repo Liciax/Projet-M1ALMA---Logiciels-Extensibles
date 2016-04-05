@@ -275,11 +275,11 @@ public class Application implements IApplication{
                   break;
                   
                 case 4:
-                	iAffich.affichePhrase(iPanHandler.calculePrix(iProduc.getMagasin()), false);
+                	iAffich.affichePhrase(iPanHandler.calcule(iProduc.getMagasin()), false);
                   break;
                   
                 case 5:
-                	iAffich.affichePhrase(iPanHandler.calculePrix(iProduc.getMagasin()), false);
+                	iAffich.affichePhrase(iPanHandler.calcule(iProduc.getMagasin()), false);
                     iPanHandler.valider(iProduc.getMagasin());
                   break;
                 
