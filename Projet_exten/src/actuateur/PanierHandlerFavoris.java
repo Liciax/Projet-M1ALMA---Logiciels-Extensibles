@@ -63,11 +63,20 @@ public class PanierHandlerFavoris implements IPanierHandler {
 		for(IProduit proPan2: magasin.getPanier().getContenu()){
 			prix += proPan2.getPrix() * proPan2.getQuantites();
 		}
-		return "Vos favoris couteraient " + prix + " €:";
+		return "Vos favoris couteraient " + prix + " €";
 	}
 	
 	//valide les favoris ajouté dans le panier
 	public boolean valider(IMagasin magasin) {
+		for(IProduit proPan: magasin.getPanier().getContenu()){
+			for (IProduit proMag : magasin.getProduits()) {
+				if(proMag.getNom().equals(proPan.getNom())) {
+					if(proMag.getQuantites() < proPan.getQuantites()) { // si pas assez de quantites en magasin
+						return true;
+					}
+				}
+			}
+		}
 	   return false;
 	}
 

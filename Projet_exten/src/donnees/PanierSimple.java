@@ -17,9 +17,9 @@ public class PanierSimple implements IPanier {
 		System.out.println("ce panier va vous couter " + i + "€");
 	}
 	
-	public void vider() {
-		contenu.clear();
-	}
+//	public void vider() {
+//		contenu.clear();
+//	}
 
 	public ArrayList<IProduit> getContenu() {
 		return contenu;

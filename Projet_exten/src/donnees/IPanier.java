@@ -10,6 +10,6 @@ public interface IPanier {
 	
 	public void valider();
 	
-	public void vider();
+//	public void vider();
 
 }
