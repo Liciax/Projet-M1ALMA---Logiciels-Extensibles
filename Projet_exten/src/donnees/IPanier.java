@@ -8,8 +8,5 @@ public interface IPanier {
 	
 	public void setContenu(ArrayList<IProduit> contenu);
 	
-	public void valider();
-	
-//	public void vider();
 
 }
