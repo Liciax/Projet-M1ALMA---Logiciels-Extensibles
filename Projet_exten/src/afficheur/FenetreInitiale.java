@@ -35,6 +35,8 @@ public class FenetreInitiale extends JFrame{
 	private FenetrePanier framePanier;
 	private IMagasin mag;
 	
+	private JPanel panelProduit;
+	
 	/**
 	 * @return the mag
 	 */
@@ -70,12 +72,13 @@ public class FenetreInitiale extends JFrame{
 	public FenetreInitiale(final IMagasin magasin) {
 		this.mag = magasin;
 		this.setLocationRelativeTo(null);
+		this.setLocation(50, 50);
 	    this.setTitle("Magasin");
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    this.setSize(500, 400);
 	    
 	    
-	    final JPanel panelProduit = new JPanel();
+	    panelProduit = new JPanel();
 	    panelProduit.setLayout(new GridLayout(mag.getProduits().size(),1));
 	    for (int i = 0; i < mag.getProduits().size(); i++) {
 	    	JPanel pan = afficheProduitGraphique(mag.getProduits().get(i), panelProduit, mag);
@@ -117,7 +120,7 @@ public class FenetreInitiale extends JFrame{
 	          
 	          
 	          // Recharger le magasin dans la fenêtre
-	          rechargerMagasin(panelProduit, mag);
+	          rechargerMagasin();
 
 	        
 	      }
@@ -186,7 +189,7 @@ public class FenetreInitiale extends JFrame{
 				System.out.println(Application.getAppli().getiMagHandler());
 			}
   	    	
-  	    	rechargerMagasin(panelProduit, mag);
+  	    	rechargerMagasin();
   	    	  
   	      }
         });
@@ -200,7 +203,7 @@ public class FenetreInitiale extends JFrame{
     				System.out.println(Application.getAppli().getiMagHandler());
     			}
       	    	
-      	    	rechargerMagasin(panelProduit, mag);
+      	    	rechargerMagasin();
     	      }
           });
         
@@ -234,7 +237,7 @@ public class FenetreInitiale extends JFrame{
 				System.out.println(Application.getAppli().getiMagHandler());
 			}
   	    	
-  	    	rechargerMagasin(panelProduit, mag);
+  	    	rechargerMagasin();
 	      }
       });
         
@@ -243,7 +246,7 @@ public class FenetreInitiale extends JFrame{
 	}
 	
 	
-	public void rechargerMagasin(JPanel panelProduit, IMagasin mag){
+	public void rechargerMagasin(){
 		panelProduit.removeAll();
         panelProduit.setLayout(new GridLayout(mag.getProduits().size(),1));
 	    for (int i = 0; i < mag.getProduits().size(); i++) {
