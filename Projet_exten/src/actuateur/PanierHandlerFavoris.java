@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import afficheur.IAfficheur;
 import donnees.IMagasin;
+import donnees.IPanier;
 import donnees.IProduit;
 
 
@@ -48,9 +49,9 @@ public class PanierHandlerFavoris implements IPanierHandler {
 	}
 	
 	// supprime le produit du panier
-	public void supprimer(IProduit produit, IMagasin magasin) {
-		if(magasin.getProduits().contains(produit)) {
-			magasin.getProduits().remove(produit);
+	public void supprimer(IProduit produit, IPanier panier) {
+		if(panier.getContenu().contains(produit)) {
+			panier.getContenu().remove(produit);
 		}else {
 			System.out.println("Erreur : ce produit n'est pas dans le magasin.");
 		}

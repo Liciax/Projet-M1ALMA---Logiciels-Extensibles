@@ -24,6 +24,10 @@ import donnees.IProduit;
 
 public class AfficheurGraphique implements IAfficheur{
 
+	
+	private FenetreInitiale frameMagasin;
+	private FenetrePanier framePanier;
+	
 	@Override
 	public void afficheProduit(IProduit p) {
 	}
@@ -58,19 +62,17 @@ public class AfficheurGraphique implements IAfficheur{
 
 	@Override
 	public void afficheMagasin(IMagasin mag) {
-		//JFrame frame = new JFrame("Magasin "+ mag.getNomMag());
-		JFrame frame = new FenetreInitiale(mag);
-	    //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    //frame.setContentPane(new InterfaceInitiale(mag));
-	    frame.setSize(500, 400);
-	    //frame.setVisible(true);			
+		frameMagasin = new FenetreInitiale(mag);
+		frameMagasin.setSize(500, 400);		
 	}
 	
 	@Override
 	public void affichePanier(IPanier pan) {
 		
-		//JFrame frame = new InterfacePanier(pan);
-		//frame.setSize(500,400);
+		framePanier = new FenetrePanier(pan);
+		framePanier.setSize(500,400);
+		frameMagasin.setFramePanier(framePanier);
+		framePanier.setFrameMagasin(frameMagasin);
 	}
 	
 	   public String affichePhrase(String s, Scanner sc) {
