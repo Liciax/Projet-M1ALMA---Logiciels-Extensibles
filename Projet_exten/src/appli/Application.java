@@ -268,14 +268,14 @@ public class Application implements IApplication{
                         // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
-                    iMagHandler.ajouter(p, iProduc.getMagasin(), quantites);
+                    iMagHandler.ajouter(p, iProduc.getMagasin());
                     break;
                     
                   case 2:
                     j = Integer.parseInt(iAffich.affichePhrase("quel produit? :", sc));
                     IProduit q = iProduc.getMagasin().getProduits().get(j);
                     j = Integer.parseInt(iAffich.affichePhrase("quel quantite ajouter/retirer? (retirer en negatif :", sc));
-                    iMagHandler.modifier(q, iProduc.getMagasin(), j);
+                    //iMagHandler.modifier(q, iProduc.getMagasin(), j);
                     break;
                     
                   case 3:

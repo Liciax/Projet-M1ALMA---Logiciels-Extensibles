@@ -68,10 +68,9 @@ public class AfficheurGraphique implements IAfficheur{
 	
 	@Override
 	public void affichePanier(IPanier pan) {
-		// a faire en graphique, vu que je sais pas comment on fait 
-		for (IProduit p : pan.getContenu()) {
-			Panel b = afficheProduitGraphique(p);
-		}
+		
+		//JFrame frame = new InterfacePanier(pan);
+		//frame.setSize(500,400);
 	}
 	
 	   public String affichePhrase(String s, Scanner sc) {

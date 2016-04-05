@@ -5,36 +5,28 @@ import donnees.IProduit;
 
 public class MagasinHandlerNormal implements IMagasinHandler {
 
-	public void ajouter(IProduit produit, IMagasin magasin, int quantite) {
-		boolean existant = false;
+	public void ajouter(IProduit produit, IMagasin magasin) {
 		IProduit prod = null;
 		try {
 			prod = produit.getClass().newInstance();
 			prod.setNom(produit.getNom());
 			prod.setPrix(produit.getPrix());
 			prod.setType(produit.getType());
+			prod.setQuantites(produit.getQuantites());
+			
+			magasin.getProduits().add(prod);
 		} catch (InstantiationException | IllegalAccessException e) {
 			e.printStackTrace();
 		}
-		for(IProduit p: magasin.getProduits()){
-			if(produit.getNom().equals(p.getNom())) {
-				modifier(prod, magasin, quantite);//existe deja dans panier
-				existant = true;
-			}
-		}
-		if(!existant){
-			prod.setQuantites(quantite);
-			magasin.getProduits().add(prod);
-		}
+
 	}
 		
 	
-	public void modifier(IProduit produit, IMagasin magasin, int quantite) {
-		for(IProduit p: magasin.getProduits()){
-			if(produit.getNom().equals(p.getNom())) {
-				p.setQuantites(p.getQuantites() + quantite);
-			}
-		}
+	public void modifier(IProduit produit, IMagasin magasin, IProduit p2) {
+		produit.setNom(p2.getNom());
+		produit.setType(p2.getType());
+		produit.setPrix(p2.getPrix());
+		produit.setQuantites(p2.getQuantites());
 	
 	}
 
