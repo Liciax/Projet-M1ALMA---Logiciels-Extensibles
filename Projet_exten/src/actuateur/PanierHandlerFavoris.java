@@ -68,7 +68,7 @@ public class PanierHandlerFavoris implements IPanierHandler {
 	
 	//valide les favoris ajouté dans le panier
 	public boolean valider(IMagasin magasin) {
-	   return true;
+	   return false;
 	}
 
 }

@@ -36,56 +36,88 @@ public class Application implements IApplication{
     /* (non-Javadoc)
      * @see appli.IApplication#getiProducteur()
      */
-    public IProducteur getiProducteur() {
+    /* (non-Javadoc)
+	 * @see appli.IApp#getiProducteur()
+	 */
+    @Override
+	public IProducteur getiProducteur() {
         return iProduc;
     }
 
     /* (non-Javadoc)
      * @see appli.IApplication#getiProducteur()
      */
-    public void setiProducteur(IProducteur iProducteur) {
+    /* (non-Javadoc)
+	 * @see appli.IApp#setiProducteur(donnees.IProducteur)
+	 */
+    @Override
+	public void setiProducteur(IProducteur iProducteur) {
         this.iProduc = iProducteur;
     }
 
     /* (non-Javadoc)
      * @see appli.IApplication#getiProducteur()
      */
-    public IMagasinHandler getiMagHandler() {
+    /* (non-Javadoc)
+	 * @see appli.IApp#getiMagHandler()
+	 */
+    @Override
+	public IMagasinHandler getiMagHandler() {
         return iMagHandler;
     }
 
     /* (non-Javadoc)
      * @see appli.IApplication#getiProducteur()
      */
-    public void setiMagHandler(IMagasinHandler iMagHandler) {
+    /* (non-Javadoc)
+	 * @see appli.IApp#setiMagHandler(actuateur.IMagasinHandler)
+	 */
+    @Override
+	public void setiMagHandler(IMagasinHandler iMagHandler) {
         this.iMagHandler = iMagHandler;
     }
 
     /* (non-Javadoc)
      * @see appli.IApplication#getiProducteur()
      */
-    public IPanierHandler getiPanHandler() {
+    /* (non-Javadoc)
+	 * @see appli.IApp#getiPanHandler()
+	 */
+    @Override
+	public IPanierHandler getiPanHandler() {
         return iPanHandler;
     }
 
     /* (non-Javadoc)
      * @see appli.IApplication#getiProducteur()
      */
-    public void setiPanHandler(IPanierHandler iPanHandler) {
+    /* (non-Javadoc)
+	 * @see appli.IApp#setiPanHandler(actuateur.IPanierHandler)
+	 */
+    @Override
+	public void setiPanHandler(IPanierHandler iPanHandler) {
         this.iPanHandler = iPanHandler;
     }
 
     /* (non-Javadoc)
      * @see appli.IApplication#getiProducteur()
      */
-    public IAfficheur getiAffich() {
+    /* (non-Javadoc)
+	 * @see appli.IApp#getiAffich()
+	 */
+    @Override
+	public IAfficheur getiAffich() {
         return iAffich;
     }
 
     /* (non-Javadoc)
      * @see appli.IApplication#getiProducteur()
      */
-    public void setiAffich(IAfficheur iAffich) {
+    /* (non-Javadoc)
+	 * @see appli.IApp#setiAffich(afficheur.IAfficheur)
+	 */
+    @Override
+	public void setiAffich(IAfficheur iAffich) {
         this.iAffich = iAffich;
     }
 
@@ -93,6 +125,9 @@ public class Application implements IApplication{
     /* (non-Javadoc)
      * @see appli.IApplication#getiProducteur()
      */
+    /* (non-Javadoc)
+	 * @see appli.IApp#doIt()
+	 */
     @Override
     public void doIt() {
         ArrayList<String> listeExtention = Plateforme.getPlateforme().getExtensions();
