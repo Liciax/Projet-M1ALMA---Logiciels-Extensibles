@@ -28,7 +28,7 @@
 * Toujours dans un terminal, dans le dossier /src du projet.
 * Pour exécuter l'application, tapez la commande suivante :
 
-    ./execute.sh
+     ./execute.sh
 * Si vous n'avez pas les droits pour lancer le script tapez :
 
     chmod +x execute.sh
