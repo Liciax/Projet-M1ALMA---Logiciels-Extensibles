@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 
 public class DialogueAjout extends JDialog{
 	
-	private IProduit zInfo = new ProduitConcret();
+	private IProduit newProduit = new ProduitConcret();
 	
 	private boolean sendData;
 	
@@ -48,7 +48,7 @@ public class DialogueAjout extends JDialog{
 	public IProduit showZDialog(){
 	    this.sendData = false;
 	    this.setVisible(true);      
-	    return this.zInfo;      
+	    return this.newProduit;      
 	  }
 	
 	private void initComponent(){
@@ -119,7 +119,7 @@ public class DialogueAjout extends JDialog{
 	        	else{
 	        		
 	        		try {
-	        			zInfo = new ProduitConcret(nom.getText(), type.getText(), Integer.parseInt(quantite.getText()), Integer.parseInt(prix.getText()));
+	        			newProduit = new ProduitConcret(nom.getText(), type.getText(), Float.parseFloat(prix.getText()), Integer.parseInt(quantite.getText()));
 	        			setVisible(false);
 	        			}
 	        			catch (Exception e) {
