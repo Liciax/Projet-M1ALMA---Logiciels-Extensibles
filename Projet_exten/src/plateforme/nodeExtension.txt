@@ -1,8 +1,7 @@
-class=afficheur.AfficheurConsole;descr=afficheur console;type=afficheur.IAfficheur;load=now
-class=afficheur.AfficheurGraphique;descr=afficheur grapgique console;type=afficheur.IAfficheur;load=later
+class=afficheur.AfficheurConsole;descr=afficheur console;type=afficheur.IAfficheur;load=later
+class=afficheur.AfficheurGraphique;descr=afficheur grapgique console;type=afficheur.IAfficheur;load=now;proxy=afficheur.AfficheurConsole
 class=afficheur.AfficheurConsoleBeau;descr=afficheur console beau;type=afficheur.IAfficheur;load=later
 class=donnees.ProducteurDefaut;descr=producteur de magasin;type=donnees.IProducteur;load=later
-
 class=donnees.ProducteurAvecPanier;descr=producteur de magasin avec panier;type=donnees.IProducteur;load=now
 class=actuateur.PanierHandlerAchat;descr=gestion de panier normale;type=actuateur.IPanierHandler;load=now;proxy=actuateur.PanierHandlerFavoris
 class=actuateur.PanierHandlerFavoris;descr=gestion de panier de secours;type=actuateur.IPanierHandler;load=later;proxy=actuateur.PanierHandlerAchat

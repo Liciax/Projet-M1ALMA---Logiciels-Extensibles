@@ -40,7 +40,7 @@ public class Plateforme {
       //on va lire le fichier
       try {
           //lecture...
-          br = new BufferedReader(new FileReader("plateforme/node.txt"));
+          br = new BufferedReader(new FileReader("src/plateforme/node.txt"));
           templigne= br.readLine();
           while(templigne != null) {
               liste_applis.add(templigne);
@@ -132,7 +132,7 @@ public class Plateforme {
       //on va lire le fichier
       try {
           //lecture...
-          br = new BufferedReader(new FileReader("plateforme/nodeExtension.txt"));
+          br = new BufferedReader(new FileReader("src/plateforme/nodeExtension.txt"));
           templigne= br.readLine();
           while(templigne != null) {
             liste_extensions.add(templigne);
@@ -189,15 +189,13 @@ public class Plateforme {
   }
   
   public Object creaInstance(String nomClasse) throws Exception{
-	  Object target = urlExtLoader.loadClass((nomClasse.split(";")[0]).split("=")[1]).newInstance();
+	  Object target = null;
 	  if(nomClasse.contains("proxy=")){
-//		  if(nomClasse.contains("type=actuateur.IPanierHandler")){
-			  Class<?>[] interfaces = {urlExtLoader.loadClass((nomClasse.split(";")[2]).split("=")[1])};//IPanierHandler.class};
-		      Object inst = Proxy.newProxyInstance(urlExtLoader, interfaces, new PanierProxy(target));
-		      return inst;
-//		  } else {
-//			  System.out.println("demande de proxy refusee");
-//		  }
+	    Class<?>[] interfaces = {urlExtLoader.loadClass((nomClasse.split(";")[2]).split("=")[1])};
+	    target = Proxy.newProxyInstance(urlExtLoader, interfaces, new PanierProxy(nomClasse, urlExtLoader ));
+	    return target;
+	  } else {
+	    target = urlExtLoader.loadClass((nomClasse.split(";")[0]).split("=")[1]).newInstance();
 	  }
       return target;
   }   

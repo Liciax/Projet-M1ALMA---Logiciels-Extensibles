@@ -2,6 +2,7 @@ package proxyHandler;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.net.URLClassLoader;
 import java.util.ArrayList;
 
 import plateforme.Plateforme;
@@ -17,7 +18,18 @@ public class PanierProxy implements InvocationHandler {
 		this.objet = objet;
 	}
 
-	public PanierProxy(Object o) {
+	public PanierProxy(String nomClasse, URLClassLoader urlExtLoader) {
+	  Object o = null;
+    try {
+      o = urlExtLoader.loadClass((nomClasse.split(";")[0]).split("=")[1]).newInstance();
+    } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+      try {
+        o = urlExtLoader.loadClass((nomClasse.split(";")[4]).split("=")[1]).newInstance();
+      } catch (Exception e1) {
+        // TODO Auto-generated catch block
+        e1.printStackTrace();
+      }
+    }
 	    objet = o;
 	}
 	
