@@ -174,7 +174,7 @@ public class Plateforme {
   }
   
   /*
-   * genere une instance a partir de nomClasse qui est la ligne dans le fichier listant les Extensions decrivant l'extension souhaitee (avec possibilité de proxy)
+   * genere une instance a partir de nomClasse qui est la ligne dans le fichier listant les Extensions decrivant l'extension souhaitee (avec possibilite de proxy)
    * 
    */
   public Object creaInstance(String nomClasse) throws Exception{
