@@ -21,8 +21,8 @@
     ./install.sh
 * Si vous n'avez pas les droits pour lancer le script tapez :
 
-    chmod +x install.sh
-    ./install.sh
+     chmod +x install.sh
+     ./install.sh
 
 ## Lancer l'application
 * Toujours dans un terminal, dans le dossier /src du projet.
@@ -31,8 +31,8 @@
      ./execute.sh
 * Si vous n'avez pas les droits pour lancer le script tapez :
 
-    chmod +x execute.sh
-    ./execute.sh
+     chmod +x execute.sh
+     ./execute.sh
 
 ## Pour développer
 * Pour les développements de plugins supplémentaires, veuillez vous référer au manuel développeur.
