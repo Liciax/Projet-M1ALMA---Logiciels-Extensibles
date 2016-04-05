@@ -40,7 +40,7 @@ public class Plateforme {
       //on va lire le fichier
       try {
           //lecture...
-          br = new BufferedReader(new FileReader("src/plateforme/node.txt"));
+          br = new BufferedReader(new FileReader("plateforme/node.txt"));
           templigne= br.readLine();
           while(templigne != null) {
               liste_applis.add(templigne);
@@ -132,7 +132,7 @@ public class Plateforme {
       //on va lire le fichier
       try {
           //lecture...
-          br = new BufferedReader(new FileReader("src/plateforme/nodeExtension.txt"));
+          br = new BufferedReader(new FileReader("plateforme/nodeExtension.txt"));
           templigne= br.readLine();
           while(templigne != null) {
             liste_extensions.add(templigne);
