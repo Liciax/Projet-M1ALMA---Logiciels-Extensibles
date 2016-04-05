@@ -33,7 +33,7 @@ public class PanierProxy implements InvocationHandler {
 	    		for (i = 0; i < listeExtention.size(); i++) {
 	    			if(listeExtention.get(i).contains("IPanierHandler")) {
 	    			  if(listeExtention.get(i).contains("proxy=" +objet.getClass().getName())) {
-	    			    this.setObjet(Plateforme.getPlateforme().CreaInstance(listeExtention.get(i)));
+	    			    this.setObjet(Plateforme.getPlateforme().creaInstance(listeExtention.get(i)));
 	                    //res = this.invoke(proxy, method, args);
 	                    return val;
 	    			  }

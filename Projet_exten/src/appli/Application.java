@@ -33,93 +33,38 @@ public class Application implements IApplication{
         return INSTANCE;
     }
     
-    /* (non-Javadoc)
-     * @see appli.IApplication#getiProducteur()
-     */
-    /* (non-Javadoc)
-	 * @see appli.IApp#getiProducteur()
-	 */
 	public IProducteur getiProducteur() {
         return iProduc;
     }
 
-    /* (non-Javadoc)
-     * @see appli.IApplication#getiProducteur()
-     */
-    /* (non-Javadoc)
-	 * @see appli.IApp#setiProducteur(donnees.IProducteur)
-	 */
 	public void setiProducteur(IProducteur iProducteur) {
         this.iProduc = iProducteur;
     }
 
-    /* (non-Javadoc)
-     * @see appli.IApplication#getiProducteur()
-     */
-    /* (non-Javadoc)
-	 * @see appli.IApp#getiMagHandler()
-	 */
 	public IMagasinHandler getiMagHandler() {
         return iMagHandler;
     }
 
-    /* (non-Javadoc)
-     * @see appli.IApplication#getiProducteur()
-     */
-    /* (non-Javadoc)
-	 * @see appli.IApp#setiMagHandler(actuateur.IMagasinHandler)
-	 */
 	public void setiMagHandler(IMagasinHandler iMagHandler) {
         this.iMagHandler = iMagHandler;
     }
 
-    /* (non-Javadoc)
-     * @see appli.IApplication#getiProducteur()
-     */
-    /* (non-Javadoc)
-	 * @see appli.IApp#getiPanHandler()
-	 */
 	public IPanierHandler getiPanHandler() {
         return iPanHandler;
     }
 
-    /* (non-Javadoc)
-     * @see appli.IApplication#getiProducteur()
-     */
-    /* (non-Javadoc)
-	 * @see appli.IApp#setiPanHandler(actuateur.IPanierHandler)
-	 */
 	public void setiPanHandler(IPanierHandler iPanHandler) {
         this.iPanHandler = iPanHandler;
     }
 
-    /* (non-Javadoc)
-     * @see appli.IApplication#getiProducteur()
-     */
-    /* (non-Javadoc)
-	 * @see appli.IApp#getiAffich()
-	 */
 	public IAfficheur getiAffich() {
         return iAffich;
     }
 
-    /* (non-Javadoc)
-     * @see appli.IApplication#getiProducteur()
-     */
-    /* (non-Javadoc)
-	 * @see appli.IApp#setiAffich(afficheur.IAfficheur)
-	 */
 	public void setiAffich(IAfficheur iAffich) {
         this.iAffich = iAffich;
     }
 
-
-    /* (non-Javadoc)
-     * @see appli.IApplication#getiProducteur()
-     */
-    /* (non-Javadoc)
-	 * @see appli.IApp#doIt()
-	 */
     @Override
     public void doIt() {
         ArrayList<String> listeExtention = Plateforme.getPlateforme().getExtensions();
@@ -137,7 +82,7 @@ public class Application implements IApplication{
                 if(listeExtention.get(i).contains("load=now")){
                     System.out.println("Load immediat...");
                     try {
-                        aff = (IAfficheur) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+                        aff = (IAfficheur) Plateforme.getPlateforme().creaInstance(listeExtention.get(i));
                         setiAffich(aff);
                         loadnow = true;
                         i = listeExtention.size();
@@ -152,7 +97,7 @@ public class Application implements IApplication{
             System.out.println("Quel affichage ? ");
             i = sc.nextInt();
             try {
-                aff = (IAfficheur) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+                aff = (IAfficheur) Plateforme.getPlateforme().creaInstance(listeExtention.get(i));
                 setiAffich(aff);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -169,7 +114,7 @@ public class Application implements IApplication{
                 if(listeExtention.get(i).contains("load=now")){
                     System.out.println("Load immediat...");
                     try {
-                        prod = (IProducteur) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+                        prod = (IProducteur) Plateforme.getPlateforme().creaInstance(listeExtention.get(i));
                         setiProducteur(prod);
                         loadnow = true;
                         i = listeExtention.size();
@@ -184,7 +129,7 @@ public class Application implements IApplication{
             System.out.println("Quel producteur ? ");
             i = sc.nextInt();
             try {
-                prod = (IProducteur) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+                prod = (IProducteur) Plateforme.getPlateforme().creaInstance(listeExtention.get(i));
                 setiProducteur(prod);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -201,7 +146,7 @@ public class Application implements IApplication{
                 if(listeExtention.get(i).contains("load=now")){
                     System.out.println("Load immediat...");
                     try {
-                        maghand = (IMagasinHandler) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+                        maghand = (IMagasinHandler) Plateforme.getPlateforme().creaInstance(listeExtention.get(i));
                         setiMagHandler(maghand);
                         loadnow = true;
                         i = listeExtention.size();
@@ -216,7 +161,7 @@ public class Application implements IApplication{
             System.out.println("Quel managers de Magasins ?");
             i = sc.nextInt();
             try {
-                maghand = (IMagasinHandler) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+                maghand = (IMagasinHandler) Plateforme.getPlateforme().creaInstance(listeExtention.get(i));
                 setiMagHandler(maghand);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -233,7 +178,7 @@ public class Application implements IApplication{
                 if(listeExtention.get(i).contains("load=now")){
                     System.out.println("Load immediat...");
                     try {
-                        panhand = (IPanierHandler) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+                        panhand = (IPanierHandler) Plateforme.getPlateforme().creaInstance(listeExtention.get(i));
                         setiPanHandler(panhand);
                         loadnow = true;
                         i = listeExtention.size();
@@ -248,7 +193,7 @@ public class Application implements IApplication{
             System.out.println("Quel managers de Paniers ?");
             i = sc.nextInt();
             try {
-                panhand = (IPanierHandler) Plateforme.getPlateforme().CreaInstance(listeExtention.get(i));
+                panhand = (IPanierHandler) Plateforme.getPlateforme().creaInstance(listeExtention.get(i));
                 setiPanHandler(panhand);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -306,7 +251,7 @@ public class Application implements IApplication{
                 break;
 ////////////////////////////////////////////////////////////////////////////
               default:
-              i = Integer.parseInt(iAffich.affichePhrase("vous voulez 1- ajouter un produit, 2- modifier un produit, 3-valider le panier? :", sc));
+              i = Integer.parseInt(iAffich.affichePhrase("vous voulez 1- ajouter un produit, 2- modifier un produit, 3-supprimer un produit, 4-connaitre le prix du panier, 5-valider le panier? :", sc));
               switch(i){
                 case 1:
                   j = Integer.parseInt(iAffich.affichePhrase("quel produit? :", sc));
@@ -322,7 +267,17 @@ public class Application implements IApplication{
                   break;
               
                 case 3:
-                	System.out.println(iPanHandler.calculePrix(iProduc.getMagasin()));
+                	j = Integer.parseInt(iAffich.affichePhrase("quel produit? :", sc));
+                	IProduit r = iProduc.getMagasin().getPanier().getContenu().get(j);
+                	iPanHandler.supprimer(r, iProduc.getMagasin().getPanier());
+                  break;
+                  
+                case 4:
+                	iAffich.affichePhrase(iPanHandler.calculePrix(iProduc.getMagasin()), null);
+                  break;
+                  
+                case 5:
+                	iAffich.affichePhrase(iPanHandler.calculePrix(iProduc.getMagasin()),null);
                     iPanHandler.valider(iProduc.getMagasin());
                   break;
                 
